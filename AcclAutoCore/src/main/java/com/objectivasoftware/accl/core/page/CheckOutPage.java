@@ -105,16 +105,22 @@ public class CheckOutPage extends BasePage {
 	public void selectRegularInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(INVOICE_WAY_CSS));
 
 		invoiceWay.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(RADIO_SPECIAL_INVOICE_CSS));
 
 		regularInvoiceRadio.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+		
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 
 		WebElement regularInvoiceContent = regularInvoiceContents.get(index);
 		WebElement regularInvoiceIcon = regularInvoiceContent.findElement(By.cssSelector(".tick"));

@@ -19,4 +19,4 @@ Scenario Outline: search product, and confirm the product title.
     Then Cancel the order and verify the order status.
     Examples:
     |userName		|password	|provinceName	|promotionName			|productName		|giftName	|
-    |59376340		|123456		|辽宁省			|雅姿恒时凝颜系列试用装	|雅姿®恒时凝颜®眼霜	|恒时试用装	|
+    |59376340		|123456		|辽宁省			|雅姿恒时凝颜系列试用装	|雅姿®恒时凝颜®精华乳	|恒时试用装	|

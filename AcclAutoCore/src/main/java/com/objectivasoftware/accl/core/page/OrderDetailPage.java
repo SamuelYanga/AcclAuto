@@ -75,6 +75,7 @@ public class OrderDetailPage extends BasePage {
 		}
 
 		super.scrollMoveToElement(invoiceDetailLink);
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(invoiceDetailLink);
 		invoiceDetailLink.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.id(INVOICE_DETAIL_CLOSE_ID));
