@@ -83,6 +83,12 @@ public class BasePayAction {
 		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_MORE, "0.2");
 	}
 
+	@And("Select Union-pay with payment more, and click pay now, then the Union-pay page displayed.")
+	public void payWithUnionPayMore() {
+		PaymentPage paymentPage = new PaymentPage();
+		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_MORE, "0.2");
+	}
+
 	@And("Pay on the Union-pay page, then back to payment page.")
 	public void unionPay() {
 		UnionPayPage unionPayPage = new UnionPayPage();

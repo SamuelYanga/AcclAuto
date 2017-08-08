@@ -69,6 +69,7 @@ public class CheckOutPage extends BasePage {
 	public static final String CART_ITEM_TICKET_CSS = ".account-name .red-cylinder.ecoupon-btn";
 
 	public void addNewAddress(DeliveryAddressVO deliveryAddressVO) {
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(addAddress);
 		addAddress.click();
 		WaitUtil.waitOn(myDriver).untilShown(By.id(ADD_ADDRESS_WRAPPER_ID));
 		AddDeliveryAddressComponent addDeliveryAddressComponent = new AddDeliveryAddressComponent();
