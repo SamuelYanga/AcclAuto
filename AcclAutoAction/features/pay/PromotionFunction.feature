@@ -1,5 +1,5 @@
-@all
-Feature: Test scenario 1
+@all@all4
+Feature: Test scenario 4
 
 Background:
 	Given Open the home page.

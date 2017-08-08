@@ -40,6 +40,7 @@ public class HeaderComponent extends BaseComponent {
 	}
 
 	public void clickLogin() {
+		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(LOGIN_LINK_CSS));
 		try {
 			loginLink.click();
@@ -49,7 +50,6 @@ public class HeaderComponent extends BaseComponent {
 			loginLink.click();
 		}
 		WaitUtil.waitOn(myDriver).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
-		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
 		WaitUtil.waitOn(myDriver).waitTime(1000);
 	}
 

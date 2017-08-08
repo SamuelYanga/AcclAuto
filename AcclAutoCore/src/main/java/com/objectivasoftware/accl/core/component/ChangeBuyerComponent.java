@@ -64,6 +64,7 @@ public class ChangeBuyerComponent extends BaseComponent {
 
 		confirmButton.click();
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(POPUP_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(500);
 
 		popupConfirmButton.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
