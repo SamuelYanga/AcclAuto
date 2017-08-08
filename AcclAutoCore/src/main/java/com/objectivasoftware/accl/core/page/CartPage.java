@@ -30,6 +30,8 @@ public class CartPage extends BasePage {
 		checkOutButton.click();
 		WaitUtil.waitOn(myDriver).waitTime(1000L);
 		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		try {
 			WaitUtil.waitOn(myDriver, 3000).untilShown(By.id(CBOX_CLOSE_BUTTON_ID));
 			WaitUtil.waitOn(myDriver).waitTime(1000L);

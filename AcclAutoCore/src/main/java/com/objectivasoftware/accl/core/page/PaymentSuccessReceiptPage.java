@@ -1,11 +1,14 @@
 package com.objectivasoftware.accl.core.page;
 
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 import com.objectivasoftware.accl.core.util.UrlConstant;
 
@@ -25,10 +28,22 @@ public class PaymentSuccessReceiptPage extends BasePage {
 	}
 
 	public void close() {
+		int handleSize = myDriver.getWindowHandles().size();
 		closeButton.click();
-		WaitUtil.waitOn(myDriver).waitTime(3000L);
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
+			@Override
+			public boolean excute() {
+				int newHandles = myDriver.getWindowHandles().size();
+				return newHandles == handleSize - 1;
+			}
+		}).untilEventHappened();
+		WaitUtil.waitOn(myDriver).waitTime(2000L);
+
+		
+		Set<String> handles = myDriver.getWindowHandles();
+		
+		myDriver.switchTo().window(handles.iterator().next());
 		super.switchToWindowByUrl(UrlConstant.PAYMENT);
-		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 	}

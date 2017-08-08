@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.core.util.CommonConstant;
 import com.objectivasoftware.accl.core.vo.checkout.DeliveryAddressVO;
 
 public class AddDeliveryAddressComponent extends BaseComponent {
@@ -73,6 +74,8 @@ public class AddDeliveryAddressComponent extends BaseComponent {
 		}
 		submitButton.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilHidden(By.id(COMPONENT_PAGE_ID));
 	}
 

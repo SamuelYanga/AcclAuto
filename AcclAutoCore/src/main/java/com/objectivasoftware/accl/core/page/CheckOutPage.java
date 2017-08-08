@@ -83,10 +83,12 @@ public class CheckOutPage extends BasePage {
 	public void checkOutAndNaviToPayment() {
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CHECKOUT_BUTTON_CSS));
 		super.scrollMoveToElement(checkoutButton);
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CHECKOUT_BUTTON_CSS));
 		WaitUtil.waitOn(myDriver).waitTime(500);
 		checkoutButton.click();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CHECKOUT_BUTTON_CSS));
-		// WaitUtil.waitOn(myDriver).waitTime(500);
 		WaitUtil.waitOn(myDriver).untilPageDown();
 	}
 
@@ -202,6 +204,7 @@ public class CheckOutPage extends BasePage {
 	}
 
 	private WebElement getCartItemByUser(String user) {
+		WaitUtil.waitOn(myDriver).untilListShown(By.cssSelector(CART_LIST_CSS));
 		for (WebElement cart : cartList) {
 			WebElement userElement = cart.findElement(By.cssSelector(CART_ITEM_USER_CSS));
 			String value = userElement.getText();

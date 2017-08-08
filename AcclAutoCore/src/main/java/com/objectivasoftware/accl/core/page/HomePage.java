@@ -11,6 +11,7 @@ import com.objectivasoftware.accl.base.browser.DriverFactory;
 import com.objectivasoftware.accl.base.browser.MyDriver;
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.core.component.HeaderComponent;
 
 public class HomePage extends BasePage {
 
@@ -39,6 +40,9 @@ public class HomePage extends BasePage {
 			LOGGER.info("The [change location popup] is not displayed");
 		}
 
+		WaitUtil.waitOn(browser).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
+		WaitUtil.waitOn(browser).waitTime(1000);
+		
 		return new HomePage();
 	}
 

@@ -154,13 +154,31 @@ public class PaymentPage extends BasePage {
 		return text.contains("您已成功支付");
 	}
 
-	public void navigateToOrderDetail() {
+	public void navigateToOrderDetailWithNewHandle() {
+		WaitUtil.waitOn(myDriver).waitTime(1000);
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).waitTime(4000);
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(ORDER_DETAIL_CSS));
+
+		int handles = myDriver.getWindowHandles().size();
 		orderDetailLink.click();
+
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
+			@Override
+			public boolean excute() {
+				int newHandles = myDriver.getWindowHandles().size();
+				return newHandles == handles + 1;
+			}
+		}).untilEventHappened();
+
 		WaitUtil.waitOn(myDriver).untilPageDown();
+
+		super.switchToWindowByUrl(UrlConstant.ORDER_DETAIL);
+
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 	}
 
 }

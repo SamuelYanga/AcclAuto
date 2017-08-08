@@ -29,10 +29,11 @@ public class HeaderComponent extends BaseComponent {
 	public static final String SEARCH_BUTTON_CSS = "searchBtn";
 	@FindBy(id = SEARCH_BUTTON_CSS)
 	private WebElement searchButton;
+	
+	public static final String HEADER_BANNER_CLOSE_CSS = ".header-banner .btn-close";
 
 	public void searchProduct(String product) {
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(SEARCH_INPUT_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
 		searchInput.clear();
 		searchInput.sendKeys(product);
 		searchButton.click();
@@ -48,6 +49,8 @@ public class HeaderComponent extends BaseComponent {
 			loginLink.click();
 		}
 		WaitUtil.waitOn(myDriver).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
+		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(1000);
 	}
 
 	public boolean isLogin() {

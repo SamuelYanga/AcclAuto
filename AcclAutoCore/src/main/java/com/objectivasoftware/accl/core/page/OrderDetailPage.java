@@ -42,15 +42,15 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_ORDER_CSS));
 		super.scrollMoveToElement(cancelOrderButton);
 		cancelOrderButton.click();
-		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CANCEL_CONFIRM_CSS));
 		cancelConfirmButton.click();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
-		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
-		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 	}
 
 	public static final String INVOICE_DETAIL_LINK_CSS = ".item-digi-invoice a";

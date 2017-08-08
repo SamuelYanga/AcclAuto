@@ -13,7 +13,6 @@ import com.objectivasoftware.accl.core.page.ProductDetailPage;
 import com.objectivasoftware.accl.core.page.SearchPage;
 import com.objectivasoftware.accl.core.page.UnionPayPage;
 import com.objectivasoftware.accl.core.page.UnionPayResultPage;
-import com.objectivasoftware.accl.core.util.UrlConstant;
 import com.objectivasoftware.accl.core.page.PaymentPage.PayMethod;
 import com.objectivasoftware.accl.core.page.PaymentPage.PayType;
 import com.objectivasoftware.accl.core.page.PaymentSuccessReceiptPage;
@@ -106,8 +105,7 @@ public class BasePayAction {
 	@And("Navigate to order detail page from payment.")
 	public void navigateToOrderDetail() {
 		PaymentPage paymentPage = new PaymentPage();
-		paymentPage.navigateToOrderDetail();
-		paymentPage.switchToWindowByUrl(UrlConstant.ORDER_DETAIL);
+		paymentPage.navigateToOrderDetailWithNewHandle();
 	}
 
 	@Then("Cancel the order and verify the order status.")
