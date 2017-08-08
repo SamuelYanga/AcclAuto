@@ -7,12 +7,12 @@ Background:
 @RegularInvoice
 Scenario Outline: search product, and confirm the product title.
     And Login with valid user. userName="<userName>" password="<password>"
-    And Add a product to card. productId="<product>"
-    And Navigate to check out page.
+    And Search and add a product to card. productId="<product>"
+    And Click checkout button on card page, then navigate to check out page.
     And Select a Regular invoice.
-    And Navigate to payment page.
-    And Select Union-pay.
-    And Pay on the Union-pay page.
+    And Click payment button, then navigate to payment page.
+    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the Regular invoice in order detail page.
     Then Cancel the order and verify the order status.
@@ -23,12 +23,12 @@ Scenario Outline: search product, and confirm the product title.
 @SpecialInvoice
 Scenario Outline: search product, and confirm the product title.
     And Login with valid user. userName="<userName>" password="<password>"
-    And Add a product to card. productId="<product>"
-    And Navigate to check out page.
+    And Search and add a product to card. productId="<product>"
+    And Click checkout button on card page, then navigate to check out page.
     And Select a Special invoice.
-    And Navigate to payment page.
-    And Select Union-pay.
-    And Pay on the Union-pay page.
+    And Click payment button, then navigate to payment page.
+    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the Special invoice in order detail page.
     Then Cancel the order and verify the order status.
@@ -39,12 +39,12 @@ Scenario Outline: search product, and confirm the product title.
 @DigitalInvoice
 Scenario Outline: search product, and confirm the product title.
     And Login with valid user. userName="<userName>" password="<password>"
-    And Add a product to card. productId="<product>"
-    And Navigate to check out page.
+    And Search and add a product to card. productId="<product>"
+    And Click checkout button on card page, then navigate to check out page.
     And Select a Digital invoice.
-    And Navigate to payment page.
-    And Select Union-pay.
-    And Pay on the Union-pay page.
+    And Click payment button, then navigate to payment page.
+    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the Digital invoice in order detail page.
     Then Cancel the order and verify the order status.

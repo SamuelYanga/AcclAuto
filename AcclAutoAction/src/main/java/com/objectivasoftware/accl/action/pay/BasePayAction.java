@@ -39,7 +39,7 @@ public class BasePayAction {
 		}
 	}
 
-	@And("Add a product to card. productId=\"(.*)\"")
+	@And("Search and add a product to card. productId=\"(.*)\"")
 	public void addProductToCard(String product) {
 		HeaderComponent headerComponent = new HeaderComponent();
 		headerComponent.searchProduct(product);
@@ -53,7 +53,7 @@ public class BasePayAction {
 		productDetailPage.navigateToCartPageByMiniCart();
 	}
 
-	@And("Navigate to check out page.")
+	@And("Click checkout button on card page, then navigate to check out page.")
 	public void checkOutProduct() {
 		CartPage cartPage = new CartPage();
 		cartPage.checkout();
@@ -71,19 +71,19 @@ public class BasePayAction {
 		checkOutPage.addNewAddress();
 	}
 
-	@And("Navigate to payment page.")
+	@And("Click payment button, then navigate to payment page.")
 	public void navigateToPayment() {
 		CheckOutPage checkOutPage = new CheckOutPage();
 		checkOutPage.checkOutAndNaviToPayment();
 	}
 
-	@And("Select Union-pay.")
+	@And("Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.")
 	public void payWithUnionPay() {
 		PaymentPage paymentPage = new PaymentPage();
 		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_MORE, "0.2");
 	}
 
-	@And("Pay on the Union-pay page.")
+	@And("Pay on the Union-pay page, then back to payment page.")
 	public void unionPay() {
 		UnionPayPage unionPayPage = new UnionPayPage();
 		unionPayPage.pay(UnionPayVO.getDefaultVO());

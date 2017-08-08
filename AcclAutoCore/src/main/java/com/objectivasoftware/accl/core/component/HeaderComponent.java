@@ -1,5 +1,7 @@
 package com.objectivasoftware.accl.core.component;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
@@ -42,11 +44,12 @@ public class HeaderComponent extends BaseComponent {
 			loginLink.click();
 		} catch (WebDriverException e) {
 			System.out.println("*******************************************login error first");
+			WaitUtil.waitOn(myDriver).waitTime(3000);
 			loginLink.click();
 		}
 		WaitUtil.waitOn(myDriver).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
 	}
-	
+
 	public boolean isLogin() {
 		try {
 			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(LOGIN_LINK_CSS));
@@ -55,20 +58,17 @@ public class HeaderComponent extends BaseComponent {
 		}
 		return false;
 	}
-	
-	
-	
+
 	public static final String PURCHASER_SECTION_CSS = ".purchaser-section";
 	@FindBy(css = PURCHASER_SECTION_CSS)
 	private WebElement purchaserSection;
-	
+
 	public static final String CHANGE_BUYER_LINK_CSS = ".purchaser-section .change-buyer-link";
 	@FindBy(css = CHANGE_BUYER_LINK_CSS)
 	private WebElement changeBuyerLink;
 
-	
-	//.purchaser-block-wrapper .purchases-buyer .change-buyer-link
-	
+	// .purchaser-block-wrapper .purchases-buyer .change-buyer-link
+
 	private void moveToPurchaserSection() {
 		Actions action = new Actions(myDriver.getDelegate());
 		action.moveToElement(purchaserSection).perform();
@@ -80,7 +80,7 @@ public class HeaderComponent extends BaseComponent {
 			}
 		}).untilEventHappened();
 	}
-	
+
 	public void changeBuyer(String buyer) {
 		moveToPurchaserSection();
 
@@ -90,6 +90,55 @@ public class HeaderComponent extends BaseComponent {
 
 		ChangeBuyerComponent changeBuyerComponent = new ChangeBuyerComponent();
 		changeBuyerComponent.selectNewBuyer(buyer);
+	}
+
+	public static final String PROMOTION_ZONE_STR = "促销专区";
+
+	public static final String RIGHT_NAVIGATIONS_CSS = ".right-navigation a";
+	@FindBy(css = RIGHT_NAVIGATIONS_CSS)
+	private List<WebElement> rightNavigations;
+
+	public void navigateToPromotionZone() {
+		rightNavigation(PROMOTION_ZONE_STR);
+	}
+
+	public void rightNavigation(String name) {
+		WebElement element = getRightNavigation(name);
+		element.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+	}
+
+	private WebElement getRightNavigation(String name) {
+		for (WebElement element : rightNavigations) {
+			String value = element.getText().trim();
+			if (name.equals(value)) {
+				return element;
+			}
+		}
+		return null;
+	}
+
+	public static final String CHANGE_PROVINCE_LINK_CSS = ".header-change-location .change-location-section";
+	@FindBy(css = CHANGE_PROVINCE_LINK_CSS)
+	private WebElement changeProvinceLink;
+	
+	public static final String PROVINCES_LINK_CSS = ".change-location-content .list-group a";
+	@FindBy(css = PROVINCES_LINK_CSS)
+	private List<WebElement> provinceList;
+	
+	public void selectProvince(String provinceName) {
+		changeProvinceLink.click();
+		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(PROVINCES_LINK_CSS));
+
+		for (WebElement province : provinceList) {
+			String value = province.getText();
+			if (provinceName.equals(value)) {
+				province.click();
+				WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(PROVINCES_LINK_CSS));
+				WaitUtil.waitOn(myDriver).untilPageDown();
+				return;
+			}
+		}
 	}
 
 }

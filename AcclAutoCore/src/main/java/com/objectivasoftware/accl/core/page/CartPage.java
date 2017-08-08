@@ -1,5 +1,8 @@
 package com.objectivasoftware.accl.core.page;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -61,5 +64,32 @@ public class CartPage extends BasePage {
 
 		ChangeBuyerComponent changeBuyerComponent = new ChangeBuyerComponent();
 		changeBuyerComponent.selfShopping();
+	}
+
+	public static final String PROMOTION_NAME_CSS = ".promotion-section .promotional-title";
+	@FindBy(css = PROMOTION_NAME_CSS)
+	private List<WebElement> promotionNameElement;
+
+	public static final String GIFT_PRODUCT_NAME_CSS = ".promotion-section .prodname";
+	@FindBy(css = GIFT_PRODUCT_NAME_CSS)
+	private List<WebElement> giftProductNameElement;
+	
+	//send-promotional-show-detail
+	public static final String PROMOTION_DETAIL_LINK_CSS = ".send-promotional-show-detail";
+	@FindBy(css = PROMOTION_DETAIL_LINK_CSS)
+	private WebElement promotionDetailLink;
+
+	public boolean verifyPromotion(String promotionName, String giftName) {
+		List<String> promotionList = new ArrayList<>();
+		for (WebElement promotion : promotionNameElement) {
+			promotionList.add(promotion.getText().trim());
+		}
+
+		List<String> giftList = new ArrayList<>();
+		for (WebElement gift : giftProductNameElement) {
+			giftList.add(gift.getText().trim());
+		}
+
+		return promotionList.contains(promotionName) && giftList.contains(giftName);
 	}
 }
