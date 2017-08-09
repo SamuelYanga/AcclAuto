@@ -5,7 +5,7 @@ Background:
 	Given Open the home page.
 
 @ChangeBuyer
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->add to cart->change buyer->add to cart->check out->select digital ticket->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Search and add a product to card. productId="<product>"
     And Change buyer in cart page. newBuyer="<newBuyer>"

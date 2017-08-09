@@ -5,7 +5,7 @@ Background:
 	Given Open the home page.
 
 @RegularInvoice
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->add to cart->check out->select Regular invoice->payment page->order detail page->Verify Special invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
@@ -21,7 +21,7 @@ Scenario Outline: search product, and confirm the product title.
     |59376340		|123456		|31573		|
 
 @SpecialInvoice
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->add to cart->check out->select Special invoice->payment page->order detail page->Verify Special invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
@@ -37,7 +37,7 @@ Scenario Outline: search product, and confirm the product title.
     |59376340		|123456		|31573		|
 
 @DigitalInvoice
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->add to cart->check out->select Digital invoice->payment page->order detail page->Verify Digital invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.

@@ -5,7 +5,7 @@ Background:
 	Given Open the home page.
 
 @promotion
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->promotion page->add to cart->check gift->check out->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
     And Navigate to promotion zone, and select a promotion. promotionName="<promotionName>"

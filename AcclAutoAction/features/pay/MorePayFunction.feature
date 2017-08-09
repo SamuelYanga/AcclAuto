@@ -5,7 +5,7 @@ Background:
 	Given Open the home page.
 
 @morePay
-Scenario Outline: search product, and confirm the product title.
+Scenario Outline: Login->add to cart->check out->payment page->select more pay->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
