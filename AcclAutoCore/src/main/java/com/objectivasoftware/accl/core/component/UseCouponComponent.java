@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
-import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 import com.objectivasoftware.accl.core.vo.orderdetail.DigitalTicket;;
 

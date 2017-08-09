@@ -28,6 +28,29 @@ public class OrderDetailPage extends BasePage {
 	@FindBy(css = CANCEL_CONFIRM_CSS)
 	private WebElement cancelConfirmButton;
 
+	public static final String INVOICE_DETAIL_LINK_CSS = ".item-digi-invoice a";
+	@FindBy(css = INVOICE_DETAIL_LINK_CSS)
+	private WebElement invoiceDetailLink;
+	
+	public static final String INVOICE_DETAIL_CLOSE_ID = "cboxClose";
+	@FindBy(id = INVOICE_DETAIL_CLOSE_ID)
+	private WebElement invoiceDetailClose;
+	
+	public static final String INVOICE_DETAIL_TITLE_ID = "cboxTitle";
+	@FindBy(id = INVOICE_DETAIL_TITLE_ID)
+	private WebElement invoiceDetailTitle;
+
+	public static final String ORDER_DETAIL_TICKET_LIST_CSS = ".orderdetail-ticket-list";
+
+	public static final String DIGITAL_TICKET_LIST_CSS = ".orderdetail-ticket-list .payment-detail-list .pagination-values-row";
+	@FindBy(css = DIGITAL_TICKET_LIST_CSS)
+	private List<WebElement> digiTicketList;
+
+	public static final String DIGITAL_TICKET_NAME_CSS = "div.item-name[class$=item-name]";
+	public static final String DIGITAL_TICKET_DIGI_NUM_CSS = "div.item-digi-num[class$=item-digi-num]";
+	public static final String DIGITAL_TICKET_DIGI_TYPE_CSS = "div.item-digi-type[class$=item-digi-type]";
+	public static final String DIGITAL_TICKET_DIGI_MONEY_CSS = "div.item-digi-money[class$=item-digi-money]";
+
 	public boolean verifyOrderSuccess() {
 		String text = payentStatus.getText();
 		return text.equals("付款成功") || text.equals("支付中");
@@ -52,20 +75,6 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
 	}
-
-	public static final String INVOICE_DETAIL_LINK_CSS = ".item-digi-invoice a";
-	@FindBy(css = INVOICE_DETAIL_LINK_CSS)
-	private WebElement invoiceDetailLink;
-	
-	public static final String INVOICE_DETAIL_CLOSE_ID = "cboxClose";
-	@FindBy(id = INVOICE_DETAIL_CLOSE_ID)
-	private WebElement invoiceDetailClose;
-	
-	public static final String INVOICE_DETAIL_TITLE_ID = "cboxTitle";
-	@FindBy(id = INVOICE_DETAIL_TITLE_ID)
-	private WebElement invoiceDetailTitle;
-	
-	//invoice-details-popup   colorbox   cboxTitle  cboxClose
 	
 	public boolean verifyInvoiceType(InvoiceType type) {
 		try {
@@ -99,21 +108,6 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilHidden(By.id(INVOICE_DETAIL_CLOSE_ID));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 	}
-	
-	
-	
-	
-	
-	public static final String ORDER_DETAIL_TICKET_LIST_CSS = ".orderdetail-ticket-list";
-
-	public static final String DIGITAL_TICKET_LIST_CSS = ".orderdetail-ticket-list .payment-detail-list .pagination-values-row";
-	@FindBy(css = DIGITAL_TICKET_LIST_CSS)
-	private List<WebElement> digiTicketList;
-
-	public static final String DIGITAL_TICKET_NAME_CSS = "div.item-name[class$=item-name]";
-	public static final String DIGITAL_TICKET_DIGI_NUM_CSS = "div.item-digi-num[class$=item-digi-num]";
-	public static final String DIGITAL_TICKET_DIGI_TYPE_CSS = "div.item-digi-type[class$=item-digi-type]";
-	public static final String DIGITAL_TICKET_DIGI_MONEY_CSS = "div.item-digi-money[class$=item-digi-money]";
 
 	private List<DigitalTicket> getUseTicketsInfo() {
 		List<DigitalTicket> infos = new ArrayList<>();
@@ -163,9 +157,15 @@ public class OrderDetailPage extends BasePage {
 		return true;
 	}
 	
-	
-	
-	
-	
-	
+	//Deduct points
+	public static final String DEDUCT_AMPLUS_POINTS_CSS = ".pricing-summary .pricing-summary-value";
+	@FindBy(css = DEDUCT_AMPLUS_POINTS_CSS)
+	private List<WebElement> deductAmplusPoint;
+
+	public boolean verifyDeductAmplusPoint(String point) {
+		String value = deductAmplusPoint.get(4).getText().trim();
+		value = value.substring(0, value.indexOf("."));
+		return point.equals(value);
+	}
+
 }

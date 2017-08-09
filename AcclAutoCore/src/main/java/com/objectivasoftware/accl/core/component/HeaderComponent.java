@@ -46,7 +46,8 @@ public class HeaderComponent extends BaseComponent {
 			loginLink.click();
 		} catch (WebDriverException e) {
 			System.out.println("*******************************************login error first");
-			WaitUtil.waitOn(myDriver).waitTime(3000);
+			WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
+			WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(LOGIN_LINK_CSS));
 			loginLink.click();
 		}
 		WaitUtil.waitOn(myDriver).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
@@ -96,6 +97,7 @@ public class HeaderComponent extends BaseComponent {
 	}
 
 	public static final String PROMOTION_ZONE_STR = "促销专区";
+	public static final String AMPLUS_GIFT_ZONE_STR = "悦享荟礼品";
 
 	public static final String RIGHT_NAVIGATIONS_CSS = ".right-navigation a";
 	@FindBy(css = RIGHT_NAVIGATIONS_CSS)
@@ -103,6 +105,10 @@ public class HeaderComponent extends BaseComponent {
 
 	public void navigateToPromotionZone() {
 		rightNavigation(PROMOTION_ZONE_STR);
+	}
+
+	public void navigateToAmplusZone() {
+		rightNavigation(AMPLUS_GIFT_ZONE_STR);
 	}
 
 	public void rightNavigation(String name) {

@@ -3,6 +3,7 @@ package com.objectivasoftware.accl.core.page;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -112,11 +113,19 @@ public class PaymentPage extends BasePage {
 		return null;
 	}
 
-	private void selectPayMethod(PayMethod payMethod, String amount) {
+	private void selectPayMethod(PayMethod payMethod) {
 		WebElement method = getPayMethod(payMethod);
 		if (payMethod.name().equals("PAY_MORE")) {
-			method.click();
-			WaitUtil.waitOn(myDriver).untilShown(By.id(PAYMENT_AMOUNT2_ID));
+			try {
+				method.click();
+				WaitUtil.waitOn(myDriver).untilShown(By.id(PAYMENT_AMOUNT2_ID));
+			} catch (TimeoutException e) {
+				WebElement method0 = getPayMethod(PayMethod.PAY_ONE);
+				method0.click();
+				WaitUtil.waitOn(myDriver).waitTime(1000L);
+				method.click();
+				WaitUtil.waitOn(myDriver).untilShown(By.id(PAYMENT_AMOUNT2_ID));
+			}
 		} else {
 			method.click();
 			WaitUtil.waitOn(myDriver).waitTime(1000L);
@@ -124,7 +133,7 @@ public class PaymentPage extends BasePage {
 	}
 
 	public void payNow(PayType type, PayMethod method, String amount) {
-		selectPayMethod(method, amount);
+		selectPayMethod(method);
 		selectPayType(type);
 		if (method.name().equals("PAY_MORE")) {
 			if (type.name().equals("UNION_PAY")) {
