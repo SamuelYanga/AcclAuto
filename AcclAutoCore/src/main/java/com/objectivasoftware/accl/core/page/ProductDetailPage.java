@@ -3,6 +3,7 @@ package com.objectivasoftware.accl.core.page;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -58,14 +59,26 @@ public class ProductDetailPage extends BasePage {
 		for (WebElement element : amplusPriceTypes) {
 			String value = element.getText().trim();
 			if (value.contains(filter)) {
+				WaitUtil.waitOn(myDriver).untilElementToBeClickable(element);
 				element.click();
-				WaitUtil.waitOn(myDriver, new UntilEvent() {
-					@Override
-					public boolean excute() {
-						String classValue = element.getAttribute("class");
-						return classValue.contains(AMPLUS_PRICE_TYPE_SELECTED);
-					}
-				}).untilEventHappened();
+				try {
+					WaitUtil.waitOn(myDriver, 2000, new UntilEvent() {
+						@Override
+						public boolean excute() {
+							String classValue = element.getAttribute("class");
+							return classValue.contains(AMPLUS_PRICE_TYPE_SELECTED);
+						}
+					}).untilEventHappened();
+				} catch (TimeoutException e) {
+					element.click();
+					WaitUtil.waitOn(myDriver, 2000, new UntilEvent() {
+						@Override
+						public boolean excute() {
+							String classValue = element.getAttribute("class");
+							return classValue.contains(AMPLUS_PRICE_TYPE_SELECTED);
+						}
+					}).untilEventHappened();
+				}
 
 				value = value.replace(filter, "").trim();
 				value = value.split("\\+")[0].trim();

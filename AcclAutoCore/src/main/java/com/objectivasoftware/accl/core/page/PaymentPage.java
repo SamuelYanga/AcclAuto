@@ -117,8 +117,9 @@ public class PaymentPage extends BasePage {
 		WebElement method = getPayMethod(payMethod);
 		if (payMethod.name().equals("PAY_MORE")) {
 			try {
+				WaitUtil.waitOn(myDriver).untilElementToBeClickable(method);
 				method.click();
-				WaitUtil.waitOn(myDriver).untilShown(By.id(PAYMENT_AMOUNT2_ID));
+				WaitUtil.waitOn(myDriver,5000).untilShown(By.id(PAYMENT_AMOUNT2_ID));
 			} catch (TimeoutException e) {
 				WebElement method0 = getPayMethod(PayMethod.PAY_ONE);
 				method0.click();
