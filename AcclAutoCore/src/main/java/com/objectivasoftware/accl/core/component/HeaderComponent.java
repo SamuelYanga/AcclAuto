@@ -71,8 +71,6 @@ public class HeaderComponent extends BaseComponent {
 	@FindBy(css = CHANGE_BUYER_LINK_CSS)
 	private WebElement changeBuyerLink;
 
-	// .purchaser-block-wrapper .purchases-buyer .change-buyer-link
-
 	private void moveToPurchaserSection() {
 		Actions action = new Actions(myDriver.getDelegate());
 		action.moveToElement(purchaserSection).perform();
@@ -148,6 +146,15 @@ public class HeaderComponent extends BaseComponent {
 				return;
 			}
 		}
+	}
+
+	public static final String CART_ITEMS_TOTAL_CSS = ".site-mini-cart .nav-items-total";
+	@FindBy(css = CART_ITEMS_TOTAL_CSS)
+	private WebElement cartItmesTotal;
+
+	public boolean isCartNull() {
+		String value = cartItmesTotal.getText().trim();
+		return "".equals(value) || "0".equals(value);
 	}
 
 }

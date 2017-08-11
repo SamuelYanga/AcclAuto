@@ -59,6 +59,9 @@ public class PaymentPage extends BasePage {
 	@FindBy(id = PAYMENT_AMOUNT1_ID)
 	private WebElement paymentAmountInput;
 
+	public static final String PAY_METHOD_CSS = "input.payment-method-radio";
+	public static final String PAY_ICON_CSS = ".xradio";
+
 	public void selectPayType(PayType type) {
 		if (type == null) {
 			type = PayType.UNION_PAY;
@@ -89,9 +92,6 @@ public class PaymentPage extends BasePage {
 	public void selectPayType() {
 		selectPayType(PayType.UNION_PAY);
 	}
-
-	public static final String PAY_METHOD_CSS = "input.payment-method-radio";
-	public static final String PAY_ICON_CSS = ".xradio";
 
 	private WebElement getPayMethod(PayMethod payMethod) {
 		String temp;

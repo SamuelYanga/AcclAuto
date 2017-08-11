@@ -11,6 +11,7 @@ import com.objectivasoftware.accl.base.browser.DriverFactory;
 import com.objectivasoftware.accl.base.browser.MyDriver;
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.core.component.AecLocationComponent;
 import com.objectivasoftware.accl.core.component.HeaderComponent;
 
 public class HomePage extends BasePage {
@@ -28,6 +29,15 @@ public class HomePage extends BasePage {
 		browser.skipSSLValidation();
 		// browser.switchToAlert();
 		browser.manage().window().maximize();
+
+		try {
+			WaitUtil.waitOn(browser, 2000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			LOGGER.info("The [change aec location popup] is displayed");
+			browser.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
+			WaitUtil.waitOn(browser).untilRemoved(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+		} catch (TimeoutException e) {
+			LOGGER.info("The [change aec location popup] is not displayed");
+		}
 
 		try {
 			WaitUtil.waitOn(browser, 1000).untilShown(By.cssSelector(CHANGE_LOCATION_WRAPPER));

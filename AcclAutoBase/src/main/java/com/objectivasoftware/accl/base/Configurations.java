@@ -13,12 +13,12 @@ public class Configurations {
 
 	private static void readProperty() {
 
-		System.setProperty("webdriver.chrome.driver",
-				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/googlechrome/64bit/chromedriver.exe");
-		System.setProperty("webdriver.gecko.driver",
-				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/marionette/64bit/geckodriver.exe");
-		System.setProperty("webdriver.ie.driver",
-				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/internetexplorer/64bit/IEDriverServer.exe");
+//		System.setProperty("webdriver.chrome.driver",
+//				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/googlechrome/64bit/chromedriver.exe");
+//		System.setProperty("webdriver.gecko.driver",
+//				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/marionette/64bit/geckodriver.exe");
+//		System.setProperty("webdriver.ie.driver",
+//				"D:/develop/eclipse_accl/git_code/AcclAuto/AcclAutoAction/src/test/resources/selenium_standalone_binaries/windows/internetexplorer/64bit/IEDriverServer.exe");
 
 		properties = new Properties();
 		InputStream is = null;
