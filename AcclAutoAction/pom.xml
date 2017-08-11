@@ -31,7 +31,7 @@
 				<monochrome>true</monochrome> </configuration> </execution> </executions> 
 				</plugin> -->
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>com.lazerycode.selenium</groupId>
 				<artifactId>driver-binary-downloader-maven-plugin</artifactId>
 				<version>${driver-binary-downloader-maven-plugin.version}</version>
@@ -48,7 +48,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
