@@ -21,6 +21,8 @@ public class HomePage extends BasePage {
 	public static final String CHANGE_LOCALTION_POPUP = ".change-location-popup";
 	public static final String CHANGE_LOCATION_WRAPPER = "#cboxLoadedContent .change-location-wrapper .change-location-content";
 	public static final String CHANGE_LOCATION_WRAPPER_AMBTN = "#cboxLoadedContent .change-location-wrapper .change-location-content .ambtn-sm";
+	
+	public static boolean firstOpen = false;
 
 	public static HomePage open() {
 		MyDriver browser = DriverFactory.getBrowser();
@@ -29,6 +31,9 @@ public class HomePage extends BasePage {
 		browser.skipSSLValidation();
 		// browser.switchToAlert();
 		browser.manage().window().maximize();
+		if (firstOpen) {
+			WaitUtil.waitOn(browser).waitTime(3000);
+		}
 
 		try {
 			WaitUtil.waitOn(browser, 3000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
@@ -52,6 +57,7 @@ public class HomePage extends BasePage {
 
 		WaitUtil.waitOn(browser).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
 		WaitUtil.waitOn(browser).waitTime(1000);
+		firstOpen = true;
 		
 		return new HomePage();
 	}
