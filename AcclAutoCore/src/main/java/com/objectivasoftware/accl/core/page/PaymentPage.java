@@ -133,10 +133,16 @@ public class PaymentPage extends BasePage {
 		}
 	}
 
+	public void payNow(PayType type) {
+		payNow(type, null, null);
+	}
+
 	public void payNow(PayType type, PayMethod method, String amount) {
-		selectPayMethod(method);
+		if (method != null) {
+			selectPayMethod(method);
+		}
 		selectPayType(type);
-		if (method.name().equals("PAY_MORE")) {
+		if (method != null && method.name().equals("PAY_MORE")) {
 			if (type.name().equals("UNION_PAY")) {
 				paymentAmountInput.clear();
 				paymentAmountInput.sendKeys(amount);

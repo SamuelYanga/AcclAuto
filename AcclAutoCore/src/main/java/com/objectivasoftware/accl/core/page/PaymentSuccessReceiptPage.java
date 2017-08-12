@@ -1,8 +1,10 @@
 package com.objectivasoftware.accl.core.page;
 
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,6 +23,10 @@ public class PaymentSuccessReceiptPage extends BasePage {
 	public static final String CLOSE_BUTTON_CSS = "a.ambtn-white";
 	@FindBy(css = CLOSE_BUTTON_CSS)
 	private WebElement closeButton;
+
+	public static final String COFFEE_COUPON_INFO_CSS = ".coupon-box p";
+	@FindBy(css = COFFEE_COUPON_INFO_CSS)
+	private List<WebElement> couponInfos;
 
 	public boolean verifyPaySuccess() {
 		String text = successContent.getText();
@@ -46,5 +52,18 @@ public class PaymentSuccessReceiptPage extends BasePage {
 		super.switchToWindowByUrl(UrlConstant.PAYMENT);
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+	}
+
+	public String exchangeCoffeeCouponSuccessful() {
+		try {
+			WaitUtil.waitOn(myDriver, 5000).untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
+		} catch (TimeoutException e) {
+			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&fresh");
+			myDriver.navigate().refresh();
+			WaitUtil.waitOn(myDriver, 5000).untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
+		}
+		String value = couponInfos.get(1).getText().trim();
+		value = value.substring(value.indexOf("：") + 1);
+		return value;
 	}
 }

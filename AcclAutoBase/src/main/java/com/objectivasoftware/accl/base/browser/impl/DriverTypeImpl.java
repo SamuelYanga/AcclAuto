@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.TemporaryFilesystem;
 import org.openqa.selenium.io.Zip;
@@ -62,9 +61,9 @@ public enum DriverTypeImpl implements DriverType {
 		}
 
 		public MyDriver getBrowserObject(DesiredCapabilities capabilities) {
-//			ChromeOptions op = new ChromeOptions();
-//			op.addArguments("--lang=zh-CN");
-//			capabilities.setCapability("chromeOptions", op);
+			ChromeOptions op = new ChromeOptions();
+			op.addArguments("--lang=zh-CN");
+			capabilities.setCapability("chromeOptions", op);
 			
 			WebDriver webDriver = new ChromeDriver(capabilities);
 			return new MyDriver(webDriver);
