@@ -31,7 +31,7 @@ public class HomePage extends BasePage {
 		browser.manage().window().maximize();
 
 		try {
-			WaitUtil.waitOn(browser, 2000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			WaitUtil.waitOn(browser, 3000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
 			LOGGER.info("The [change aec location popup] is displayed");
 			browser.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
 			WaitUtil.waitOn(browser).untilRemoved(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));

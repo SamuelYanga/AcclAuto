@@ -30,6 +30,7 @@ public class CartPage extends BasePage {
 
 	public void checkout() {
 		WaitUtil.waitOn(myDriver).waitTime(1000L);
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(checkOutButton);
 		checkOutButton.click();
 		WaitUtil.waitOn(myDriver).waitTime(1000L);
 		WaitUtil.waitOn(myDriver).untilPageDown();
