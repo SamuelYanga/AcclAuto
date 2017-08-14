@@ -68,12 +68,12 @@ public class DeliveryAddressVO {
 
 	public static DeliveryAddressVO getDefaultVO() {
 		DeliveryAddressVO vo = new DeliveryAddressVO();
-		vo.setName("张三");
-		vo.setDetaileAddress("科技路1号");
+		vo.setName("小李子");
+		vo.setDetaileAddress("天安门广场");
 		vo.setPhone("13333333333");
-		vo.setProvince("辽宁省");
-		vo.setCity("大连市");
-		vo.setArea("甘井子区");
+		vo.setProvince("北京市");
+		vo.setCity("北京市");
+		vo.setArea("海淀区");
 		vo.setDefault(false);
 		return vo;
 	}
