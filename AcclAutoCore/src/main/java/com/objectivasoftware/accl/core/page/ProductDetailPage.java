@@ -3,6 +3,7 @@ package com.objectivasoftware.accl.core.page;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
+import com.objectivasoftware.accl.core.component.AecLocationComponent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 import com.objectivasoftware.accl.core.util.enu.AmplusPriceType;
 
@@ -87,6 +89,42 @@ public class ProductDetailPage extends BasePage {
 			}
 		}
 		return null;
+	}
+
+	public static final String AMPLUS_CHECK_OUT_CSS = ".checkoutnow.amplus-gift";
+	@FindBy(css = AMPLUS_CHECK_OUT_CSS)
+	private WebElement amplusCheckOut;
+
+	public static final String NON_PARTICIPATION_BUTTON = "#cboxLoadedContent .newMemberPopUpDisplay .ambtn.ambtn-sm.am-white";
+	@FindBy(css = NON_PARTICIPATION_BUTTON)
+	private WebElement nonparticipation;
+
+	public void checkOutAmplusGift() {
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(AMPLUS_CHECK_OUT_CSS));
+		amplusCheckOut.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+
+		try {
+			WaitUtil.waitOn(myDriver, 3000).untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
+			WaitUtil.waitOn(myDriver).waitTime(1000L);
+			nonparticipation.click();
+			WaitUtil.waitOn(myDriver).untilPageDown();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(NON_PARTICIPATION_BUTTON));
+			WaitUtil.waitOn(myDriver).waitTime(3000L);
+		} catch (TimeoutException e) {
+
+		} catch (NoSuchElementException e) {
+
+		}
+
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			AecLocationComponent aecLocationComponent = new AecLocationComponent();
+			aecLocationComponent.closeAecComponent();
+		} catch (TimeoutException e) {
+		}
 	}
 
 }

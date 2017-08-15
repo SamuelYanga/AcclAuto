@@ -36,6 +36,14 @@ public class BasePayAction {
 			LoginComponent loginComponent = new LoginComponent();
 			loginComponent.login(userName, password);
 		}
+
+		if (!headerComponent.isCartNull()) {
+			headerComponent.navigateToCartPageByMiniCart();
+			CartPage cartPage = new CartPage();
+			cartPage.cleanCard();
+			this.openHomePage();
+		}
+
 	}
 
 	@And("Search and add a product to card. productId=\"(.*)\"")

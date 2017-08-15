@@ -51,6 +51,8 @@ public class OrderDetailPage extends BasePage {
 	public static final String DIGITAL_TICKET_DIGI_TYPE_CSS = "div.item-digi-type[class$=item-digi-type]";
 	public static final String DIGITAL_TICKET_DIGI_MONEY_CSS = "div.item-digi-money[class$=item-digi-money]";
 
+	public static final String ORDER_DETAIL_HEAD_NUM_CSS = ".orderdetail-head-num";
+
 	public boolean verifyOrderSuccess() {
 		String text = payentStatus.getText();
 		return text.equals("付款成功") || text.equals("支付中");

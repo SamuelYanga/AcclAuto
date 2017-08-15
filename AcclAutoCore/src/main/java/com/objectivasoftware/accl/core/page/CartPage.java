@@ -36,6 +36,7 @@ public class CartPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+
 		try {
 			WaitUtil.waitOn(myDriver, 3000).untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
 			WaitUtil.waitOn(myDriver).waitTime(1000L);
@@ -107,22 +108,34 @@ public class CartPage extends BasePage {
 
 		return promotionList.contains(promotionName) && giftList.contains(giftName);
 	}
-	
-	
+
 	public static final String CART_LIST_CSS = ".cart-listing";
 	@FindBy(css = CART_LIST_CSS)
 	private List<WebElement> cartList;
 
-	public static final String CART_DETAIL_LINK_CSS = ".cartdetails a";
-	public static final String CART_DELETE_CSS = ".transparent-button";
+	public static final String CART_DETAIL_LINKS_CSS = ".cart-listing .cartdetails a";
+	@FindBy(css = CART_DETAIL_LINKS_CSS)
+	private List<WebElement> cartDetailLinks;
+	public static final String CART_DELETE_LINKS_CSS = ".cart-listing .transparent-button";
+	@FindBy(css = CART_DELETE_LINKS_CSS)
+	private List<WebElement> cartDeleteLinks;
 	
 	public static final String REMOVE_CART_CONFIRM_CSS = "#cboxLoadedContent .remove-modal-container .remove-cart .confirm";
 	@FindBy(css = REMOVE_CART_CONFIRM_CSS)
 	private WebElement removeCartConfirm;
 	
-	public void openCartDetails() {
-		for (WebElement cart : cartList) {
-			WebElement cartDetailLink = cart.findElement(By.cssSelector(CART_DETAIL_LINK_CSS));
+	private void openCartDetails() {
+		
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(CART_DETAIL_LINKS_CSS));
+		} catch (TimeoutException e) {
+			return;
+		}
+		
+		if (cartDetailLinks == null || cartDetailLinks.size() == 0) {
+			return;
+		}
+		for (WebElement cartDetailLink : cartDetailLinks) {
 			cartDetailLink.click();
 			WaitUtil.waitOn(myDriver, new UntilEvent() {
 				@Override
@@ -134,8 +147,29 @@ public class CartPage extends BasePage {
 		}
 	}
 	
-	public void deleteCart() {
-		
+	private void deleteCart() {
+
+		if (cartDeleteLinks == null || cartDeleteLinks.size() == 0) {
+			return;
+		}
+
+		int size = cartDeleteLinks.size();
+
+		for (int i = 0; i < size; i++) {
+			WebElement cartDeleteLink = cartDeleteLinks.get(0);
+			cartDeleteLink.click();
+			WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(REMOVE_CART_CONFIRM_CSS));
+			removeCartConfirm.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).untilPageDown();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(REMOVE_CART_CONFIRM_CSS));
+		}
+	}
+	
+	public void cleanCard() {
+		openCartDetails();
+		deleteCart();
 	}
 
 }

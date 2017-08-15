@@ -7,6 +7,7 @@ Background:
 @RegularInvoice
 Scenario Outline: Login->add to cart->check out->select Regular invoice->payment page->order detail page->Verify Special invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
+    And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
     And Select a Regular invoice.
@@ -17,12 +18,13 @@ Scenario Outline: Login->add to cart->check out->select Regular invoice->payment
     And Verify the Regular invoice in order detail page.
     Then Cancel the order and verify the order status.
     Examples:
-    |userName		|password	|product	|
-    |59376340		|123456		|31573		|
+    |userName		|password	|provinceName	|product	|
+    |59376340		|123456		|北京市			|31573		|
 
 @SpecialInvoice
 Scenario Outline: Login->add to cart->check out->select Special invoice->payment page->order detail page->Verify Special invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
+    And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
     And Select a Special invoice.
@@ -33,12 +35,13 @@ Scenario Outline: Login->add to cart->check out->select Special invoice->payment
     And Verify the Special invoice in order detail page.
     Then Cancel the order and verify the order status.
     Examples:
-    |userName		|password	|product	|
-    |59376340		|123456		|31573		|
+    |userName		|password	|provinceName	|product	|
+    |59376340		|123456		|北京市			|31573		|
 
 @DigitalInvoice
 Scenario Outline: Login->add to cart->check out->select Digital invoice->payment page->order detail page->Verify Digital invoice->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
+    And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
     And Select a Digital invoice.
@@ -49,5 +52,5 @@ Scenario Outline: Login->add to cart->check out->select Digital invoice->payment
     And Verify the Digital invoice in order detail page.
     Then Cancel the order and verify the order status.
     Examples:
-    |userName		|password	|product	|
-    |59376340		|123456		|31573		|
+    |userName		|password	|provinceName	|product	|
+    |59376340		|123456		|北京市			|31573		|

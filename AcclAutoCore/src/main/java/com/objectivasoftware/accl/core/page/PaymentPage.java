@@ -197,4 +197,14 @@ public class PaymentPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 	}
 
+	public static final String VIEW_DETAIL_LINK_CSS = ".order-detail-link";
+	@FindBy(css = VIEW_DETAIL_LINK_CSS)
+	private WebElement viewDetailLink;
+
+	public void navigateToOrderDetail() {
+		viewDetailLink.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilListShown(By.cssSelector(OrderDetailPage.ORDER_DETAIL_HEAD_NUM_CSS));
+	}
+
 }

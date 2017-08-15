@@ -157,4 +157,13 @@ public class HeaderComponent extends BaseComponent {
 		return "".equals(value) || "0".equals(value);
 	}
 
+	public static final String RIGHT_CART_LINK_CSS = ".cart-wrapper";
+	@FindBy(css = RIGHT_CART_LINK_CSS)
+	private WebElement rightCartLink;
+
+	public void navigateToCartPageByMiniCart() {
+		rightCartLink.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+	}
+
 }

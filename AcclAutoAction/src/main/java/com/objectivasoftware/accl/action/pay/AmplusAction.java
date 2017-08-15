@@ -6,6 +6,7 @@ import org.junit.Assert;
 import com.objectivasoftware.accl.core.component.AmplusCoffeeCouponComponent;
 import com.objectivasoftware.accl.core.component.HeaderComponent;
 import com.objectivasoftware.accl.core.page.AmplusPage;
+import com.objectivasoftware.accl.core.page.CheckOutPage;
 import com.objectivasoftware.accl.core.page.OrderDetailPage;
 import com.objectivasoftware.accl.core.page.PaymentPage;
 import com.objectivasoftware.accl.core.page.PaymentSuccessReceiptPage;
@@ -114,6 +115,45 @@ public class AmplusAction {
 		PaymentSuccessReceiptPage paymentSuccessReceiptPage = new PaymentSuccessReceiptPage();
 		String coponCode = paymentSuccessReceiptPage.exchangeCoffeeCouponSuccessful();
 		Assert.assertTrue(StringUtils.isNotEmpty(coponCode));
+	}
+
+	@And("Search store product and navigate to pdp. productId=\"(.*)\"")
+	public void searchStoreProductAndNaviToPdp(String product) {
+		HeaderComponent headerComponent = new HeaderComponent();
+		headerComponent.searchProduct(product);
+
+		SearchPage searchPage = new SearchPage();
+		searchPage.navigateToPdp(product);
+	}
+
+	@And("Select exchange type with integral, then exchange and navigate to check out page.")
+	public void selectIntegralAndExchangeToCheckout() {
+		ProductDetailPage productDetailPage = new ProductDetailPage();
+		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL);
+
+		productDetailPage.checkOutAmplusGift();
+	}
+
+	@And("Select exchange type with integral and cash, then exchange and navigate to check out page.")
+	public void selectIntegralCashAndExchangeToCheckout() {
+		ProductDetailPage productDetailPage = new ProductDetailPage();
+		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL_CASH);
+
+		productDetailPage.checkOutAmplusGift();
+	}
+
+	@And("Click payment button, then pay success and navigate to payment page.")
+	public void navigateToPayment() {
+		CheckOutPage checkOutPage = new CheckOutPage();
+		checkOutPage.checkOutAndNaviToPayment();
+		PaymentPage paymentPage = new PaymentPage();
+		Assert.assertTrue(paymentPage.verifyOrderSuccess());
+	}
+
+	@And("Navigate to order detail page by click View Detail Link from payment.")
+	public void navigateToOrderDetail() {
+		PaymentPage paymentPage = new PaymentPage();
+		paymentPage.navigateToOrderDetail();
 	}
 
 }

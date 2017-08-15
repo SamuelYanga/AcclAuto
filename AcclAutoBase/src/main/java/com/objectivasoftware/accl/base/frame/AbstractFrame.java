@@ -8,7 +8,9 @@ import com.objectivasoftware.accl.base.wait.MyElementLocatorFactory;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -36,6 +38,29 @@ public class AbstractFrame {
 		}
 	}
 
+	/** 注入jQuery支持 */
+	public void inJectJquery(JavascriptExecutor jsExecutor) {
+		if (jQueryLoaded(myDriver)) {
+			return;
+		}
+
+		jsExecutor.executeScript("var headID = document.getElementsByTagName(\"head\")[0];"
+				+ "var newScript = document.createElement('script');" + "newScript.type = 'text/Javascript';"
+				+ "newScript.src=\"http://code.jquery.com/jquery-2.1.4.min.js\";" + "headID.appendChild(newScript);");
+	}
+
+	/** 判断当前页面是否使用了jQuery */
+	public Boolean jQueryLoaded(JavascriptExecutor jsExecutor) {
+		Boolean loaded = true;
+		try {
+			loaded = (Boolean) jsExecutor.executeScript("return jQuery()! = null");
+		} catch (WebDriverException e) {
+			loaded = false;
+		}
+
+		return loaded;
+	}
+
 	protected List<String> getLoadIdentifier() {
 		return Collections.emptyList();
 	}
@@ -59,6 +84,7 @@ public class AbstractFrame {
 	}
 
 	private void windowScrollToTop(int move) {
+		inJectJquery(myDriver);
 		String setscroll = "$(window).scrollTop(" + move + ");";
 		myDriver.executeScript(setscroll);
 	}
