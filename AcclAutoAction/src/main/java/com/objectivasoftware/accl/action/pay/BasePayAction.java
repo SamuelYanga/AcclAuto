@@ -131,4 +131,13 @@ public class BasePayAction {
 		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
 	}
 
+	@Then("Cancel the order with no pay and verify the order status.")
+	public void cancelOrderWithNoPay() {
+		OrderDetailPage orderDetailPage = new OrderDetailPage();
+		Assert.assertTrue(orderDetailPage.verifyOrderSuccess());
+		orderDetailPage.waittime(5000);
+		orderDetailPage.cancelOrder();
+		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
+	}
+
 }

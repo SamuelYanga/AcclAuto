@@ -63,6 +63,10 @@ public class OrderDetailPage extends BasePage {
 		return text.equals("取消订单");
 	}
 
+	public void waittime(int time) {
+		WaitUtil.waitOn(myDriver).waitTime(time);
+	}
+
 	public void cancelOrder() {
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_ORDER_CSS));
 		super.scrollMoveToElement(cancelOrderButton);
