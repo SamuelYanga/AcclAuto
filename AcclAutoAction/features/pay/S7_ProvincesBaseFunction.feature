@@ -1,10 +1,10 @@
-@all@all7
+@all@Scenario7
 Feature: Test scenario 1
 
 Background:
 	Given Open the home page.
 
-@province_北京
+@province_beijing
 Scenario Outline: Login->add to cart->check out->add new address->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"

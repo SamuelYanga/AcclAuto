@@ -1,4 +1,4 @@
-@all@all4
+@all@Scenario4
 Feature: Test scenario 4
 
 Background:
