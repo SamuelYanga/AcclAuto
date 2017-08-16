@@ -55,7 +55,7 @@ public class OrderDetailPage extends BasePage {
 
 	public boolean verifyOrderSuccess() {
 		String text = payentStatus.getText();
-		return text.equals("付款成功") || text.equals("支付中");
+		return text.equals("付款成功") || text.equals("支付中") || text.equals("待付款");
 	}
 
 	public boolean verifyOrderCancel() {
