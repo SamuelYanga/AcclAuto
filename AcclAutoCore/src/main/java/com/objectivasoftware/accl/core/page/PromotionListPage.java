@@ -8,13 +8,14 @@ import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class PromotionListPage extends BasePage {
 
 	public static final String PROMOTION_LIST_CSS = ".pro-listing .details .pro-title a";
 	@FindBy(css = PROMOTION_LIST_CSS)
 	private List<WebElement> promotionList;
-	
+
 	public void selectPromotion(String promotionName) {
 		WaitUtil.waitOn(myDriver).waitTime(2000);
 		for (WebElement element : promotionList) {
@@ -22,6 +23,8 @@ public class PromotionListPage extends BasePage {
 			if (promotionName.equals(value)) {
 				super.scrollMoveToElement(element);
 				element.click();
+				WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+				WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 				WaitUtil.waitOn(myDriver).untilPageDown();
 				WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".product-listing"));
 				return;

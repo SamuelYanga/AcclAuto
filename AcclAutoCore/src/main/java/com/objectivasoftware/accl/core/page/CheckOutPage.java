@@ -248,15 +248,18 @@ public class CheckOutPage extends BasePage {
 	public void selectSpecialInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(INVOICE_WAY_CSS));
 
 		invoiceWay.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(RADIO_SPECIAL_INVOICE_CSS));
 
 		specialInvoiceRadio.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".special-invoice"));
 
 		WebElement specialInvoiceContent = specialInvoiceContents.get(index);
@@ -276,15 +279,18 @@ public class CheckOutPage extends BasePage {
 	public void selectDigitalInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(INVOICE_WAY_CSS));
 
 		invoiceWay.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(RADIO_SPECIAL_INVOICE_CSS));
 
 		digitalInvoiceRadio.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
 
 		WebElement regularInvoiceContent = regularInvoiceContents.get(index);
