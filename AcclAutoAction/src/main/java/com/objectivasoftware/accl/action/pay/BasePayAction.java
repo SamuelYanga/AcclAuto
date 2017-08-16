@@ -72,6 +72,13 @@ public class BasePayAction {
 		checkOutPage.addNewAddress();
 	}
 
+	@And("Add and select a delivery address by province on check out page. province=\"(.*)\"")
+	public void addAndSelectNewAddress(String provinceName) {
+		CheckOutPage checkOutPage = new CheckOutPage();
+		checkOutPage.addNewAddress(provinceName);
+		checkOutPage.selectAddress(provinceName);
+	}
+
 	@And("Select a delivery address on check out page.")
 	public void selectAddress() {
 		CheckOutPage checkOutPage = new CheckOutPage();

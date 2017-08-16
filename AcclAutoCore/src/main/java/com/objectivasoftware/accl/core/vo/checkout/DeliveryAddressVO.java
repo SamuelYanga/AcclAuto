@@ -1,5 +1,7 @@
 package com.objectivasoftware.accl.core.vo.checkout;
 
+import com.objectivasoftware.accl.core.util.enu.ProvinceInfo;
+
 public class DeliveryAddressVO {
 
 	private String name;
@@ -74,6 +76,20 @@ public class DeliveryAddressVO {
 		vo.setProvince("北京市");
 		vo.setCity("北京市");
 		vo.setArea("海淀区");
+		vo.setDefault(false);
+		return vo;
+	}
+	
+	public static DeliveryAddressVO getDefaultVO(String provinceName) {
+		DeliveryAddressVO vo = new DeliveryAddressVO();
+		ProvinceInfo province = ProvinceInfo.getProvinceByName(provinceName);
+
+		vo.setName(province.getProvince().substring(0, 2) + "张三");
+		vo.setDetaileAddress(vo.getName() + "家");
+		vo.setPhone("13333333333");
+		vo.setProvince(province.getProvince());
+		vo.setCity(province.getDefaultCity());
+		vo.setArea(province.getDefaultZone());
 		vo.setDefault(false);
 		return vo;
 	}

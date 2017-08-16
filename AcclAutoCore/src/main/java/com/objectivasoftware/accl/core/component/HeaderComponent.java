@@ -128,12 +128,24 @@ public class HeaderComponent extends BaseComponent {
 	public static final String CHANGE_PROVINCE_LINK_CSS = ".header-change-location .change-location-section";
 	@FindBy(css = CHANGE_PROVINCE_LINK_CSS)
 	private WebElement changeProvinceLink;
-	
+
 	public static final String PROVINCES_LINK_CSS = ".change-location-content .list-group a";
 	@FindBy(css = PROVINCES_LINK_CSS)
 	private List<WebElement> provinceList;
-	
+
+	public static final String CURRENT_LOCATION_CSS = ".header-change-location .change-location-section .icon-wrapper";
+	@FindBy(css = CURRENT_LOCATION_CSS)
+	private WebElement currentLocation;
+
+	private boolean isCurrentLocation(String provinceName) {
+		String value = currentLocation.getText().trim();
+		return value.contains(provinceName);
+	}
+
 	public void selectProvince(String provinceName) {
+		if (isCurrentLocation(provinceName)) {
+			return;
+		}
 		changeProvinceLink.click();
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(PROVINCES_LINK_CSS));
 

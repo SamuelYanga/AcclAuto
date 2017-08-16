@@ -174,16 +174,4 @@ public class AddDeliveryAddressComponent extends BaseComponent {
 		return 1;
 	}
 
-	private int getSizeOfOneElement(List<WebElement> list) {
-		if (list == null || list.size() <= 1) {
-			return 0;
-		}
-
-		try {
-			return list.get(1).getLocation().getY() - list.get(0).getLocation().getY();
-		} catch (Exception e) {
-			return 0;
-		}
-	}
-
 }

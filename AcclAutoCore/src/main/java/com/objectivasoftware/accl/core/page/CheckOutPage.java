@@ -3,7 +3,9 @@ package com.objectivasoftware.accl.core.page;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -77,7 +79,114 @@ public class CheckOutPage extends BasePage {
 	}
 
 	public void addNewAddress() {
-		addNewAddress(DeliveryAddressVO.getDefaultVO());
+		DeliveryAddressVO vo = DeliveryAddressVO.getDefaultVO();
+		if (isAdded(vo.getName())) {
+			return;
+		}
+		addNewAddress(vo);
+	}
+
+	public void addNewAddress(String provinceName) {
+		DeliveryAddressVO vo = DeliveryAddressVO.getDefaultVO(provinceName);
+		if (isAdded(vo.getName())) {
+			return;
+		}
+		addNewAddress(vo);
+	}
+
+	public static final String ADDRESS_ITEMS_CSS = ".addresslist-item .right-con .custom-radio";
+	@FindBy(css = ADDRESS_ITEMS_CSS)
+	private List<WebElement> addressItems;
+	public static final String ADDRESS_ITEM_CHECK_CSS = ".xradio";
+	public static final String ADDRESS_ITEM_NAME_CSS = "em";
+
+	private WebElement getAddressItem(String userName) {
+		for (WebElement addressItem : addressItems) {
+			WebElement nameElement = addressItem.findElement(By.cssSelector(ADDRESS_ITEM_NAME_CSS));
+			String value = nameElement.getText();
+			if (userName.equals(value)) {
+				return addressItem;
+			}
+		}
+		return null;
+	}
+
+	public void selectAddress(String provinceName) {
+		DeliveryAddressVO vo = DeliveryAddressVO.getDefaultVO(provinceName);
+		openAddresses();
+		WebElement addressItem = getAddressItem(vo.getName());
+		addressItem.click();
+		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+	}
+
+	public static final String ADDRESS_LIST_CSS = ".address-list .addresslist-item";
+	@FindBy(css = ADDRESS_LIST_CSS)
+	private List<WebElement> addressList;
+	
+	public static final String VIEW_ALL_ADDRESS_CSS = ".checkout-address.hidden-xs.hidden-sm";
+	@FindBy(css = VIEW_ALL_ADDRESS_CSS)
+	private WebElement viewAllAddress;
+
+	private void openAddresses() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(VIEW_ALL_ADDRESS_CSS));
+
+			String classValue0 = viewAllAddress.getAttribute("class");
+
+			if (!classValue0.contains("more")) {
+				return;
+			}
+			viewAllAddress.click();
+			WaitUtil.waitOn(myDriver, new UntilEvent() {
+				@Override
+				public boolean excute() {
+					String classValue = viewAllAddress.getAttribute("class");
+					return classValue.indexOf("more") == -1;
+				}
+			}).untilEventHappened();
+
+		} catch (TimeoutException e) {
+			return;
+		}
+	}
+
+	private boolean isAdded(String userName) {
+		openAddresses();
+		int size = addressList.size();
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
+			@Override
+			public boolean excute() {
+				addressScroll(size - 1);
+				return addressList.get(size - 1).isDisplayed();
+			}
+		}).untilEventHappened();
+
+		for (int i = 0; i < size; i++) {
+			addressScroll(i);
+			String text = addressList.get(i).getText().trim();
+			if (StringUtils.isEmpty(text)) {
+				continue;
+			}
+			String textName = getUserName(text);
+			if (userName.equals(textName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private String getUserName(String text) {
+		String[] args = text.split(" ");
+		return args[0];
+	}
+
+	public void addressScroll(int index) {
+		int size = getSizeOfOneElement(addressList);
+		int move = size * (index);
+		String setscroll = "$('.address-list').scrollTop(" + move + ")";
+		myDriver.executeScript(setscroll);
 	}
 
 	public void checkOutAndNaviToPayment() {
