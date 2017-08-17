@@ -135,7 +135,7 @@ public class BasePayAction {
 	public void cancelOrderWithNoPay() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
 		Assert.assertTrue(orderDetailPage.verifyOrderSuccess());
-		orderDetailPage.waittime(5000);
+		orderDetailPage.waittime(10000);
 		orderDetailPage.cancelOrder();
 		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
 	}

@@ -70,7 +70,7 @@ Scenario Outline: Login->search coupon->select integral->exchange
     And Click payment button, then pay success and navigate to payment page.
     And Navigate to order detail page by click View Detail Link from payment.
     And Verify the deduct amplus point in order detail page.
-    Then Cancel the order and verify the order status.
+    Then Cancel the order with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|81067		|
