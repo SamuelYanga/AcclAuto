@@ -18,16 +18,22 @@ import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class CartPage extends BasePage {
 
+	// [去结算]按钮
 	public static final String CHECKOUT_BUTTON = "a.checkout-btn.checkout-button";
 	@FindBy(css = CHECKOUT_BUTTON)
 	private WebElement checkOutButton;
 
+	// 不参与活动按钮
 	public static final String NON_PARTICIPATION_BUTTON = "#cboxLoadedContent .newMemberPopUpDisplay .ambtn.ambtn-sm.am-white";
 	@FindBy(css = NON_PARTICIPATION_BUTTON)
 	private WebElement nonparticipation;
 
+	// 关闭弹窗
 	public static final String CBOX_CLOSE_BUTTON_ID = "cboxClose";
 
+	/**
+	 * 点击[去结算]
+	 */
 	public void checkout() {
 		WaitUtil.waitOn(myDriver).waitTime(1000L);
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(checkOutButton);
@@ -58,10 +64,15 @@ public class CartPage extends BasePage {
 		}
 	}
 
+	// 更换购买人链接
 	public static final String CHANGE_BUYER_LINK_CSS = ".cart-header .change-buyer-link";
 	@FindBy(css = CHANGE_BUYER_LINK_CSS)
 	private WebElement changeBuyerLink;
 
+	/**
+	 * 更换购买人
+	 * @param buyer
+	 */
 	public void changeBuyer(String buyer) {
 
 		changeBuyerLink.click();
@@ -72,6 +83,9 @@ public class CartPage extends BasePage {
 		changeBuyerComponent.selectNewBuyer(buyer);
 	}
 
+	/**
+	 * 购买人改为自己
+	 */
 	public void changeBuyerToSelf() {
 
 		changeBuyerLink.click();
@@ -82,19 +96,27 @@ public class CartPage extends BasePage {
 		changeBuyerComponent.selfShopping();
 	}
 
+	// 促销活动名称列表
 	public static final String PROMOTION_NAME_CSS = ".promotion-section .promotional-title";
 	@FindBy(css = PROMOTION_NAME_CSS)
 	private List<WebElement> promotionNameElement;
 
+	// 礼品名称列表
 	public static final String GIFT_PRODUCT_NAME_CSS = ".promotion-section .prodname";
 	@FindBy(css = GIFT_PRODUCT_NAME_CSS)
 	private List<WebElement> giftProductNameElement;
-	
-	//send-promotional-show-detail
+
+	// 促销详情链接
 	public static final String PROMOTION_DETAIL_LINK_CSS = ".send-promotional-show-detail";
 	@FindBy(css = PROMOTION_DETAIL_LINK_CSS)
 	private WebElement promotionDetailLink;
 
+	/**
+	 * 验证促销名称，礼品名称是否显示
+	 * @param promotionName
+	 * @param giftName
+	 * @return
+	 */
 	public boolean verifyPromotion(String promotionName, String giftName) {
 		List<String> promotionList = new ArrayList<>();
 		for (WebElement promotion : promotionNameElement) {
@@ -109,21 +131,29 @@ public class CartPage extends BasePage {
 		return promotionList.contains(promotionName) && giftList.contains(giftName);
 	}
 
+	// 购物车列表
 	public static final String CART_LIST_CSS = ".cart-listing";
 	@FindBy(css = CART_LIST_CSS)
 	private List<WebElement> cartList;
 
+	// 购物车详情链接列表
 	public static final String CART_DETAIL_LINKS_CSS = ".cart-listing .cartdetails a";
 	@FindBy(css = CART_DETAIL_LINKS_CSS)
 	private List<WebElement> cartDetailLinks;
+	
+	// 删除购物车链接列表
 	public static final String CART_DELETE_LINKS_CSS = ".cart-listing .transparent-button";
 	@FindBy(css = CART_DELETE_LINKS_CSS)
 	private List<WebElement> cartDeleteLinks;
 	
+	// 删除购物车确认按钮
 	public static final String REMOVE_CART_CONFIRM_CSS = "#cboxLoadedContent .remove-modal-container .remove-cart .confirm";
 	@FindBy(css = REMOVE_CART_CONFIRM_CSS)
 	private WebElement removeCartConfirm;
-	
+
+	/**
+	 * 打开购物车详情
+	 */
 	private void openCartDetails() {
 		
 		try {
@@ -146,7 +176,10 @@ public class CartPage extends BasePage {
 			}).untilEventHappened();
 		}
 	}
-	
+
+	/**
+	 * 删除购物车
+	 */
 	private void deleteCart() {
 
 		if (cartDeleteLinks == null || cartDeleteLinks.size() == 0) {

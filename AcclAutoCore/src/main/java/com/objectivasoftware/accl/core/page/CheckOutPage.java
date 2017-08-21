@@ -70,6 +70,10 @@ public class CheckOutPage extends BasePage {
 	public static final String CART_ITEM_USER_CSS = ".account-name strong";
 	public static final String CART_ITEM_TICKET_CSS = ".account-name .red-cylinder.ecoupon-btn";
 
+	/**
+	 * 添加一個新地址
+	 * @param deliveryAddressVO
+	 */
 	public void addNewAddress(DeliveryAddressVO deliveryAddressVO) {
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(addAddress);
 		addAddress.click();
@@ -86,6 +90,10 @@ public class CheckOutPage extends BasePage {
 		addNewAddress(vo);
 	}
 
+	/**
+	 * 根據省份添加一個新地址
+	 * @param deliveryAddressVO
+	 */
 	public void addNewAddress(String provinceName) {
 		DeliveryAddressVO vo = DeliveryAddressVO.getDefaultVO(provinceName);
 		if (isAdded(vo.getName())) {
@@ -111,6 +119,10 @@ public class CheckOutPage extends BasePage {
 		return null;
 	}
 
+	/**
+	 * 選擇一個地址
+	 * @param provinceName
+	 */
 	public void selectAddress(String provinceName) {
 		DeliveryAddressVO vo = DeliveryAddressVO.getDefaultVO(provinceName);
 		openAddresses();
@@ -152,6 +164,11 @@ public class CheckOutPage extends BasePage {
 		}
 	}
 
+	/**
+	 * 根據收貨人名稱判斷是否已添加
+	 * @param userName
+	 * @return
+	 */
 	private boolean isAdded(String userName) {
 		openAddresses();
 		int size = addressList.size();
@@ -182,13 +199,20 @@ public class CheckOutPage extends BasePage {
 		return args[0];
 	}
 
-	public void addressScroll(int index) {
+	/**
+	 * 移動滾動條
+	 * @param index
+	 */
+	private void addressScroll(int index) {
 		int size = getSizeOfOneElement(addressList);
 		int move = size * (index);
 		String setscroll = "$('.address-list').scrollTop(" + move + ")";
 		myDriver.executeScript(setscroll);
 	}
 
+	/**
+	 * 点击【去支付】进入支付页面
+	 */
 	public void checkOutAndNaviToPayment() {
 		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CHECKOUT_BUTTON_CSS));
 		super.scrollMoveToElement(checkoutButton);
@@ -201,6 +225,11 @@ public class CheckOutPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 	}
 
+	/**
+	 * 根据类型和标号选择一个发票
+	 * @param type
+	 * @param index
+	 */
 	public void selectInvoiceContent(InvoiceType type, int index) {
 		if ("REGULAR".equals(type.name())) {
 			selectRegularInvoiceContent(index);
@@ -211,6 +240,10 @@ public class CheckOutPage extends BasePage {
 		}
 	}
 
+	/**
+	 * 根据标号选择一个普通发票
+	 * @param index
+	 */
 	public void selectRegularInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
@@ -245,6 +278,10 @@ public class CheckOutPage extends BasePage {
 		}).untilEventHappened();
 	}
 
+	/**
+	 * 根据标号选择一个专用发票
+	 * @param index
+	 */
 	public void selectSpecialInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
@@ -276,6 +313,10 @@ public class CheckOutPage extends BasePage {
 		}).untilEventHappened();
 	}
 
+	/**
+	 * 根据标号选择一个电子发票
+	 * @param index
+	 */
 	public void selectDigitalInvoiceContent(int index) {
 		super.scrollMoveToElement(invoiceReceiptTrue);
 		invoiceReceiptTrue.click();
@@ -307,6 +348,10 @@ public class CheckOutPage extends BasePage {
 		}).untilEventHappened();
 	}
 
+	/**
+	 * 使用优惠券
+	 * @param map
+	 */
 	public void useDigiTicket(Map<String, List<DigitalTicket>> map) {
 		for (Map.Entry<String, List<DigitalTicket>> e : map.entrySet()) {
 			String user = e.getKey();

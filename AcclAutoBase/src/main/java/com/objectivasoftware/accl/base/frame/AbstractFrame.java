@@ -65,6 +65,24 @@ public class AbstractFrame {
 		return Collections.emptyList();
 	}
 
+	public void windowScrollToBottom() {
+		int webPageViewHeight0 = getWebPageViewHeight();
+		windowScrollToTop(webPageViewHeight0);
+		int webPageViewHeight1 = getWebPageViewHeight();
+		if (webPageViewHeight0 != webPageViewHeight1) {
+			windowScrollToBottom();
+		} else {
+			return;
+		}
+	}
+
+	private int getWebPageViewHeight() {
+		String script = "return document.body.clientHeight;";
+		Object obj = myDriver.executeScript(script);
+		int webPageViewHeight = Integer.valueOf(obj.toString());
+		return webPageViewHeight;
+	}
+
 	public void scrollMoveToElement(WebElement we) {
 		scrollToTop();
 		int y = we.getLocation().getY();
@@ -87,6 +105,7 @@ public class AbstractFrame {
 		inJectJquery(myDriver);
 		String setscroll = "$(window).scrollTop(" + move + ");";
 		myDriver.executeScript(setscroll);
+		WaitUtil.waitOn(myDriver).waitTime(300);
 	}
 
 	public String currentHandle;

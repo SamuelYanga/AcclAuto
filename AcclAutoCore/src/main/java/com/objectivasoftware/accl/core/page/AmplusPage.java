@@ -9,11 +9,16 @@ import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 
 public class AmplusPage extends BasePage {
-	
+
+	// 产品列表
 	public static final String PRODUCT_LIST_CSS = ".product-listing .product-title-link";
 	@FindBy(css = PRODUCT_LIST_CSS)
 	private List<WebElement> productItems;
 	
+	/**
+	 * 选择一个产品，点击进入pdp
+	 * @param productName
+	 */
 	public void selectProductAndNaviToPdp(String productName) {
 		WebElement item = null;
 		

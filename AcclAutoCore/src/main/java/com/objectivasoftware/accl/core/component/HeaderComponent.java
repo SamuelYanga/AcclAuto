@@ -82,6 +82,16 @@ public class HeaderComponent extends BaseComponent {
 			}
 		}).untilEventHappened();
 	}
+	
+	public static final String LOG_OUT_CSS = ".purchaser-section .logout";
+	@FindBy(css = LOG_OUT_CSS)
+	private WebElement logoutLink;
+	
+	public void logout() {
+		moveToPurchaserSection();
+		logoutLink.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+	}
 
 	public void changeBuyer(String buyer) {
 		moveToPurchaserSection();
