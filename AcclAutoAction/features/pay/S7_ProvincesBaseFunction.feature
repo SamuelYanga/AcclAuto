@@ -1,5 +1,5 @@
 @all@Scenario7
-Feature: Test scenario 1
+Feature: Test scenario 7
 
 Background:
 	Given Open the home page.
@@ -102,7 +102,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|内蒙古自治区		|31573		|
 
-@province_heibei
+@province_hebei
 Scenario Outline: Login->add to cart->check out->add new address->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
@@ -116,7 +116,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|河北省			|31573		|
 
-@province_heibei
+@province_shanghai
 Scenario Outline: Login->add to cart->check out->add new address->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
@@ -130,7 +130,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|上海市			|31573		|
 
-@province_heibei
+@province_liaoning
 Scenario Outline: Login->add to cart->check out->add new address->payment page->order detail page->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
