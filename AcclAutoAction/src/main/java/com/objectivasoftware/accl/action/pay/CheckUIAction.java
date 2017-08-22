@@ -22,6 +22,7 @@ public class CheckUIAction {
 	@And("Check home page is displayed correctly when user login with Standard Edition.")
 	public void checkHomeUIWithStandardEdition() {
 		HomePage homePage = new HomePage();
+		homePage.returnToDefaultBusinessView();
 		homePage.windowScrollToBottom();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
 		Assert.assertTrue(homePage.articleBannersIsDisplayed());
