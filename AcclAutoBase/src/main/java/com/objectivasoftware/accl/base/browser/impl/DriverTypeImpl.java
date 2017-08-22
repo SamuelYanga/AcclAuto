@@ -57,14 +57,15 @@ public enum DriverTypeImpl implements DriverType {
 			HashMap<String, String> chromePreferences = new HashMap<String, String>();
 			chromePreferences.put("profile.password_manager_enabled", "false");
 			capabilities.setCapability("chrome.prefs", chromePreferences);
+
+//			ChromeOptions op = new ChromeOptions();
+//			op.addArguments("--lang=zh-CN");
+//			capabilities.setCapability("chromeOptions", op);
+
 			return capabilities;
 		}
 
 		public MyDriver getBrowserObject(DesiredCapabilities capabilities) {
-			ChromeOptions op = new ChromeOptions();
-			op.addArguments("--lang=zh-CN");
-			capabilities.setCapability("chromeOptions", op);
-			
 			WebDriver webDriver = new ChromeDriver(capabilities);
 			return new MyDriver(webDriver);
 		}
