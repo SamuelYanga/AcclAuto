@@ -53,16 +53,17 @@ public class PaymentSuccessReceiptPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(PAY_SUCCESS_CSS));
-			paySuccessCss.click();
-			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
-			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-			WaitUtil.waitOn(myDriver).untilPageDown();
-			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(PAY_SUCCESS_CSS));
-		} catch (TimeoutException e) {
-			
-		}
+//		try {
+//			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(PAY_SUCCESS_CSS));
+//			paySuccessCss.click();
+//			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+//			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+//			WaitUtil.waitOn(myDriver).untilPageDown();
+//			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(PAY_SUCCESS_CSS));
+//		} catch (TimeoutException e) {
+//			
+//		}
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(PAY_SUCCESS_CSS));
 
 	}
 
