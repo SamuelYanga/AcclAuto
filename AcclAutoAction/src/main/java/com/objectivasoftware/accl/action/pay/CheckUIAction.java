@@ -14,7 +14,6 @@ public class CheckUIAction {
 	public void checkHomeUIWithGuest() {
 		HomePage homePage = new HomePage();
 		homePage.windowScrollToBottom();
-		homePage.screenshot();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.articleBannersIsDisplayed());
@@ -22,6 +21,7 @@ public class CheckUIAction {
 		Assert.assertTrue(homePage.categoryProductShowIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
+		homePage.screenshot();
 	}
 
 	@And("Check home page is displayed correctly when user login with Standard Edition.")
@@ -29,7 +29,6 @@ public class CheckUIAction {
 		HomePage homePage = new HomePage();
 		homePage.returnToDefaultBusinessView();
 		homePage.windowScrollToBottom();
-		homePage.screenshot();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.articleBannersIsDisplayed());
@@ -37,18 +36,19 @@ public class CheckUIAction {
 		Assert.assertTrue(homePage.categoryProductShowIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
+		homePage.screenshot();
 	}
 
 	@And("Check home page is displayed correctly when user login with Shortcut Edition.")
 	public void checkHomeUIWithShortcutEdition() {
 		HomePage homePage = new HomePage();
 		homePage.windowScrollToBottom();
-		homePage.screenshot();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.hotProductShowIsDisplayed());
 		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
+		homePage.screenshot();
 	}
 
 	String businessView = "";
