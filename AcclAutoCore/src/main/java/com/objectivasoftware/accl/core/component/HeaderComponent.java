@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import com.objectivasoftware.accl.base.Configurations;
+import com.objectivasoftware.accl.base.Constants;
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
@@ -65,6 +67,14 @@ public class HeaderComponent extends BaseComponent {
 	private WebElement purchaserSection;
 
 	private void moveToPurchaserSection() {
+
+		String currentUrl = myDriver.getCurrentUrl();
+		String domain = Configurations.getConfiguration(Constants.SELENIUM_TARGETURL);
+		String str = currentUrl.replace(domain, "");
+		if (str.length() > 0 && !str.startsWith("?")) {
+			backToHomePage();
+		}
+
 		super.scrollMoveToElement(purchaserSection);
 		Actions action = new Actions(myDriver.getDelegate());
 		action.moveToElement(purchaserSection).perform();
@@ -178,6 +188,12 @@ public class HeaderComponent extends BaseComponent {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 	}
 
+	public void backToHomePage() {
+		logoImg.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HEADER_BANNER_CLOSE_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(1000);
+	}
 	
 	//logo图标Amway Logo
 	public static final String LOGO_IMG_CSS = "img[title=\"Amway Logo\"]";
