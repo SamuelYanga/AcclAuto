@@ -5,7 +5,7 @@ Background:
 	Given Open the home page.
 
 @HomePageUI
-Scenario Outline: Login->add to cart->check out->add new address->payment page->order detail page->cancel order
+Scenario Outline: open homepage->login->log out->login
 	And Check home page is displayed correctly with guest.
     And Login with valid user. userName="<userName>" password="<password>"
 	And Check home page is displayed correctly when user login with Standard Edition.
@@ -17,3 +17,15 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     Examples:
     |userName		|password	|
     |59376340		|123456		|
+
+@HeaderUI
+Scenario Outline: open homepage->login->add to cart
+	And Check header is displayed correctly with guest.
+    And Login with valid user. userName="<userName>" password="<password>"
+    And Check header is displayed correctly when user login with.
+    And Select a province for stock. provinceName="<provinceName>"
+    And Search and add a product to card. productId="<product>"
+    Then Check header is displayed correctly in cart page.
+    Examples:
+    |userName		|password	|provinceName	|product	|
+    |59376340		|123456		|北京市			|31573		|

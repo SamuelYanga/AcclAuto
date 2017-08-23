@@ -2,6 +2,7 @@ package com.objectivasoftware.accl.core.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -109,9 +110,11 @@ public class HomePage extends BasePage {
 	 */
 	public boolean kvBillboardIsDisplayed() {
 		try {
-			super.scrollMoveToElement(kvBillboard);
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(KV_BILLBOARD_CSS));
+			super.scrollMoveToElement(kvBillboard);
 		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
 			return false;
 		}
 
@@ -124,9 +127,11 @@ public class HomePage extends BasePage {
 	 */
 	public boolean articleBannersIsDisplayed() {
 		try {
-			super.scrollMoveToElement(articleBanners);
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ARTICLE_BANNERS_CSS));
+			super.scrollMoveToElement(articleBanners);
 		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
 			return false;
 		}
 
@@ -139,9 +144,11 @@ public class HomePage extends BasePage {
 	 */
 	public boolean categoryProductShowIsDisplayed() {
 		try {
-			super.scrollMoveToElement(categoryProductShowCases);
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CATEGORY_PRODUCT_SHOW_CASES_CSS));
+			super.scrollMoveToElement(categoryProductShowCases);
 		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
 			return false;
 		}
 
@@ -154,9 +161,11 @@ public class HomePage extends BasePage {
 	 */
 	public boolean amplusGiftShowIsDisplayed() {
 		try {
-			super.scrollMoveToElement(amplusGiftShowCase);
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMPLUS_GIFT_SHOW_CASE_CSS));
+			super.scrollMoveToElement(amplusGiftShowCase);
 		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
 			return false;
 		}
 
@@ -172,6 +181,8 @@ public class HomePage extends BasePage {
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(BUSINESS_VIEW_BTN_CSS));
 		} catch (TimeoutException e) {
 			return false;
+		} catch (NoSuchElementException e) {
+			return false;
 		}
 
 		return businessViewBtn.isDisplayed();
@@ -183,9 +194,11 @@ public class HomePage extends BasePage {
 	 */
 	public boolean hotProductShowIsDisplayed() {
 		try {
-			super.scrollMoveToElement(hotProductShowCase);
 			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOT_PRODUCT_SHOW_CASE_CSS));
+			super.scrollMoveToElement(hotProductShowCase);
 		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
 			return false;
 		}
 

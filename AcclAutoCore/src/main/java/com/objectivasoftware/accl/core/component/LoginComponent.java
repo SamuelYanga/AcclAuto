@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
 
 public class LoginComponent extends BaseComponent {
 
@@ -43,6 +44,15 @@ public class LoginComponent extends BaseComponent {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(HeaderComponent.LOGIN_LINK_CSS));
 		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
+
+			@Override
+			public boolean excute() {
+				WebElement eVouchersWrapper = myDriver.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
+				String classValue = eVouchersWrapper.getAttribute("class");
+				return !classValue.contains("dropdown-active");
+			}
+		}).untilEventHappened();
 	}
 
 }

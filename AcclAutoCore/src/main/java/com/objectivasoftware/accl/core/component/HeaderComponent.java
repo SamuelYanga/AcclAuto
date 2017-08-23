@@ -3,6 +3,7 @@ package com.objectivasoftware.accl.core.component;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -20,17 +21,13 @@ public class HeaderComponent extends BaseComponent {
 	@FindBy(css = LOGIN_LINK_CSS)
 	private WebElement loginLink;
 
-	// search input
-	public static final String SEARCH_INPUT_CSS = ".search-form-SearchBox #js-site-search-input";
-	@FindBy(css = SEARCH_INPUT_CSS)
-	private WebElement searchInput;
-
 	// search button
 	public static final String SEARCH_BUTTON_CSS = "searchBtn";
 	@FindBy(id = SEARCH_BUTTON_CSS)
 	private WebElement searchButton;
-	
+
 	public static final String HEADER_BANNER_CLOSE_CSS = ".header-banner .btn-close";
+	public static final String E_VOUCHERS_WRAPPER_CSS = ".nav-top-right-section.login-user .qty-wrapper";
 
 	public void searchProduct(String product) {
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(SEARCH_INPUT_CSS));
@@ -66,10 +63,6 @@ public class HeaderComponent extends BaseComponent {
 	public static final String PURCHASER_SECTION_CSS = ".purchaser-section";
 	@FindBy(css = PURCHASER_SECTION_CSS)
 	private WebElement purchaserSection;
-
-	public static final String CHANGE_BUYER_LINK_CSS = ".purchaser-section .change-buyer-link";
-	@FindBy(css = CHANGE_BUYER_LINK_CSS)
-	private WebElement changeBuyerLink;
 
 	private void moveToPurchaserSection() {
 		Actions action = new Actions(myDriver.getDelegate());
@@ -143,10 +136,6 @@ public class HeaderComponent extends BaseComponent {
 	@FindBy(css = PROVINCES_LINK_CSS)
 	private List<WebElement> provinceList;
 
-	public static final String CURRENT_LOCATION_CSS = ".header-change-location .change-location-section .icon-wrapper";
-	@FindBy(css = CURRENT_LOCATION_CSS)
-	private WebElement currentLocation;
-
 	private boolean isCurrentLocation(String provinceName) {
 		String value = currentLocation.getText().trim();
 		return value.contains(provinceName);
@@ -188,4 +177,529 @@ public class HeaderComponent extends BaseComponent {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 	}
 
+	
+	//logo图标Amway Logo
+	public static final String LOGO_IMG_CSS = "img[title=\"Amway Logo\"]";
+	@FindBy(css = LOGO_IMG_CSS)
+	private WebElement logoImg;
+
+	// 欢迎标语
+	public static final String WELCOME_TEXT_CSS = ".headInfo .welcom-text";
+	@FindBy(css = WELCOME_TEXT_CSS)
+	private WebElement welcomeText;
+
+	// 帮助中心_guest 
+	public static final String HELP_CENTER_GUEST_CSS = ".log-out-user a[title=\"帮助中心\"]";
+	@FindBy(css = HELP_CENTER_GUEST_CSS)
+	private WebElement logoutHelpCenter;
+
+	// 帮助中心_user
+	public static final String HELP_CENTER_USER_CSS = ".login-user a[title=\"帮助中心\"]";
+	@FindBy(css = HELP_CENTER_USER_CSS)
+	private WebElement loginHelpCenter;
+
+	// 商城首页 
+	public static final String HOME_PAGE_CSS = ".nav.nav-pills.js-offcanvas-links a[title=\"商城首页\"]";
+	@FindBy(css = HOME_PAGE_CSS)
+	private WebElement homepageCss;
+
+	// 在线客服_guest 
+	public static final String ONLINE_CHAT_GUEST_CSS = ".log-out-user a[title=\"在线客服\"]";
+	@FindBy(css = ONLINE_CHAT_GUEST_CSS)
+	private WebElement logoutOnlineChat;
+
+	// 在线客服_user
+	public static final String AONLINE_CHAT_USER_CSS = ".login-user a[title=\"在线客服\"]";
+	@FindBy(css = AONLINE_CHAT_USER_CSS)
+	private WebElement loginOnlineChat;
+
+	// 易联网
+	public static final String AMWAY_NET_CSS = ".login-user a[title=\"易联网\"]";
+	@FindBy(css = AMWAY_NET_CSS)
+	private WebElement amwayNet;
+
+	// 我的账户 
+	public static final String MY_ACCOUNT_CSS = ".cdd-title a[href=\"/my-account/profile\"]";
+	@FindBy(css = MY_ACCOUNT_CSS)
+	private WebElement myAccountCss;
+
+	// 电子券
+	public static final String E_VOUCHERS_CSS = ".qty-wrapper a[href=\"/my-account/voucherPage#notUsedEV\"]";
+	@FindBy(css = E_VOUCHERS_CSS)
+	private WebElement eVouchersCss;
+
+	// 切换快捷版/标准版 
+	public static final String BUSSINESS_VIEW_CSS = ".business-view";
+	@FindBy(css = BUSSINESS_VIEW_CSS)
+	private WebElement bussinessView;
+
+	// 当前购货人
+	public static final String CURRENT_BUYER_TEXT_CSS = ".purchaser-section .purchases-buyer .login-username";
+	@FindBy(css = CURRENT_BUYER_TEXT_CSS)
+	private WebElement currentBuyerText;
+
+	// 更换购货人
+	public static final String CHANGE_BUYER_LINK_CSS = ".purchaser-section .change-buyer-link";
+	@FindBy(css = CHANGE_BUYER_LINK_CSS)
+	private WebElement changeBuyerLink;
+
+	// 送货至
+	public static final String CURRENT_LOCATION_CSS = ".header-change-location .change-location-section .icon-wrapper";
+	@FindBy(css = CURRENT_LOCATION_CSS)
+	private WebElement currentLocation;
+
+	// 搜索框
+	public static final String SEARCH_INPUT_CSS = ".search-form-SearchBox #js-site-search-input";
+	@FindBy(css = SEARCH_INPUT_CSS)
+	private WebElement searchInput;
+
+	// 快速下单
+	public static final String QUICK_BUY_CSS = ".site-mini-cart .login-user a[href=\"/quickBuy\"]";
+	@FindBy(css = QUICK_BUY_CSS)
+	private WebElement quickBuy;
+
+	// 订单查询
+	public static final String ORDER_QUERY_CSS = ".site-mini-cart .login-user a[href=\"/my-account/orders\"]";
+	@FindBy(css = ORDER_QUERY_CSS)
+	private WebElement orderQuery;
+
+	// 迷你购物车
+	public static final String MINI_CART_LINK_CSS = ".site-mini-cart .miniCartSlot .mini-cart-link";
+	@FindBy(css = MINI_CART_LINK_CSS)
+	private WebElement miniCartLink;
+
+	// 分类导航栏
+	public static final String CATEGORY_NAVIGATION_BAR_CSS = ".main-navigation";
+	@FindBy(css = CATEGORY_NAVIGATION_BAR_CSS)
+	private WebElement gategoryNavigationBar;
+
+	// 热销产品
+	public static final String HOT_SALES_CSS = ".right-navigation a[href=\"c/800\"]";
+	@FindBy(css = HOT_SALES_CSS)
+	private WebElement hotSales;
+
+	// 配售专区
+	public static final String QUOTA_SALES_CSS = ".right-navigation a[href=\"/quota/quotaList\"]";
+	@FindBy(css = QUOTA_SALES_CSS)
+	private WebElement quotaSales;
+
+	// 促销专区
+	public static final String PROMOTIONS_ZONE_CSS = ".right-navigation a[href=\"/promotionlisting\"]";
+	@FindBy(css = PROMOTIONS_ZONE_CSS)
+	private WebElement promotionsZone;
+
+	// 悦享荟礼品
+	public static final String AMPLUS_GIFTS_CSS = ".right-navigation a[href=\"c/600\"]";
+	@FindBy(css = AMPLUS_GIFTS_CSS)
+	private WebElement amplusGifts;
+
+	// 海外购
+	public static final String CROSS_BORDER_CSS = ".right-navigation a[title=\"海外购\"]";
+	@FindBy(css = CROSS_BORDER_CSS)
+	private WebElement crossBorder;
+
+	// 如何购买安利产品
+	public static final String HOW_TO_BUY_CSS = ".site-mini-cart .log-out-user-active a[href=\"/howToBuy\"]";
+	@FindBy(css = HOW_TO_BUY_CSS)
+	private WebElement howToBuy;
+
+	/**
+	 * logo图标是否显示
+	 * @return
+	 */
+	public boolean logoIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(LOGO_IMG_CSS));
+			super.scrollMoveToElement(logoImg);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return logoImg.isDisplayed();
+	}
+
+	/**
+	 * 欢迎标语是否显示
+	 * @return
+	 */
+	public boolean welcomeTextIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(WELCOME_TEXT_CSS));
+			super.scrollMoveToElement(welcomeText);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return welcomeText.isDisplayed();
+	}
+
+	/**
+	 * 帮助中心_guest是否显示
+	 * @return
+	 */
+	public boolean guestHelpCenterIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HELP_CENTER_GUEST_CSS));
+			super.scrollMoveToElement(logoutHelpCenter);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return logoutHelpCenter.isDisplayed();
+	}
+
+	/**
+	 * 帮助中心_user是否显示
+	 * @return
+	 */
+	public boolean userHelpCenterIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HELP_CENTER_USER_CSS));
+			super.scrollMoveToElement(loginHelpCenter);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return loginHelpCenter.isDisplayed();
+	}
+
+	/**
+	 * 商城首页是否显示
+	 * @return
+	 */
+	public boolean homepageLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOME_PAGE_CSS));
+			super.scrollMoveToElement(homepageCss);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return homepageCss.isDisplayed();
+	}
+
+	/**
+	 * 在线客服_guest是否显示
+	 * @return
+	 */
+	public boolean guestOnlineChatIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ONLINE_CHAT_GUEST_CSS));
+			super.scrollMoveToElement(logoutOnlineChat);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return logoutOnlineChat.isDisplayed();
+	}
+
+	/**
+	 * 在线客服_user是否显示
+	 * @return
+	 */
+	public boolean userOnlineChatIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AONLINE_CHAT_USER_CSS));
+			super.scrollMoveToElement(loginOnlineChat);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return loginOnlineChat.isDisplayed();
+	}
+
+	/**
+	 * 易联网是否显示
+	 * @return
+	 */
+	public boolean amwayNetIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMWAY_NET_CSS));
+			super.scrollMoveToElement(amwayNet);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return amwayNet.isDisplayed();
+	}
+
+	/**
+	 * 我的账户是否显示
+	 * @return
+	 */
+	public boolean myAccountLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(MY_ACCOUNT_CSS));
+			super.scrollMoveToElement(myAccountCss);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return myAccountCss.isDisplayed();
+	}
+
+	/**
+	 * 电子券是否显示
+	 * @return
+	 */
+	public boolean eVouchersLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(E_VOUCHERS_CSS));
+			super.scrollMoveToElement(eVouchersCss);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return eVouchersCss.isDisplayed();
+	}
+
+	/**
+	 * 切换快捷版/标准版 是否显示
+	 * @return
+	 */
+	public boolean bussinessViewIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(BUSSINESS_VIEW_CSS));
+			super.scrollMoveToElement(bussinessView);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return bussinessView.isDisplayed();
+	}
+
+	/**
+	 * 当前购货人是否显示
+	 * @return
+	 */
+	public boolean currentBuyerTextIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CURRENT_BUYER_TEXT_CSS));
+			super.scrollMoveToElement(currentBuyerText);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return currentBuyerText.isDisplayed();
+	}
+
+	/**
+	 * 更换购货人是否显示
+	 * @return
+	 */
+	public boolean changeBuyerLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CHANGE_BUYER_LINK_CSS));
+			super.scrollMoveToElement(changeBuyerLink);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return changeBuyerLink.isDisplayed();
+	}
+
+	/**
+	 * 送货至是否显示
+	 * @return
+	 */
+	public boolean currentLocationIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CURRENT_LOCATION_CSS));
+			super.scrollMoveToElement(currentLocation);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return currentLocation.isDisplayed();
+	}
+
+	/**
+	 * 搜索框是否显示
+	 * @return
+	 */
+	public boolean searchInputIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(SEARCH_INPUT_CSS));
+			super.scrollMoveToElement(searchInput);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return searchInput.isDisplayed();
+	}
+
+	/**
+	 * 快速下单是否显示
+	 * @return
+	 */
+	public boolean quickBuyIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(QUICK_BUY_CSS));
+			super.scrollMoveToElement(quickBuy);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return quickBuy.isDisplayed();
+	}
+
+	/**
+	 * 订单查询是否显示
+	 * @return
+	 */
+	public boolean orderQueryIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ORDER_QUERY_CSS));
+			super.scrollMoveToElement(orderQuery);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return orderQuery.isDisplayed();
+	}
+
+	/**
+	 * 迷你购物车是否显示
+	 * @return
+	 */
+	public boolean miniCartLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(MINI_CART_LINK_CSS));
+			super.scrollMoveToElement(miniCartLink);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return miniCartLink.isDisplayed();
+	}
+
+	/**
+	 * 分类导航栏是否显示
+	 * @return
+	 */
+	public boolean gategoryNavigationBarIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CATEGORY_NAVIGATION_BAR_CSS));
+			super.scrollMoveToElement(gategoryNavigationBar);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return gategoryNavigationBar.isDisplayed();
+	}
+
+	/**
+	 * 热销产品是否显示
+	 * @return
+	 */
+	public boolean hotSalesIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOT_SALES_CSS));
+			super.scrollMoveToElement(hotSales);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return hotSales.isDisplayed();
+	}
+
+	/**
+	 * 配售专区是否显示
+	 * @return
+	 */
+	public boolean quotaSalesIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(QUOTA_SALES_CSS));
+			super.scrollMoveToElement(quotaSales);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return quotaSales.isDisplayed();
+	}
+
+	/**
+	 * 促销专区是否显示
+	 * @return
+	 */
+	public boolean promotionsZoneLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(PROMOTIONS_ZONE_CSS));
+			super.scrollMoveToElement(promotionsZone);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return promotionsZone.isDisplayed();
+	}
+
+	/**
+	 * 悦享荟礼品是否显示
+	 * @return
+	 */
+	public boolean amplusGiftsLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMPLUS_GIFTS_CSS));
+			super.scrollMoveToElement(amplusGifts);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return amplusGifts.isDisplayed();
+	}
+
+	/**
+	 * 海外购是否显示
+	 * @return
+	 */
+	public boolean crossBorderLinkIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CROSS_BORDER_CSS));
+			super.scrollMoveToElement(crossBorder);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return crossBorder.isDisplayed();
+	}
+
+	/**
+	 * 如何购买安利产品是否显示
+	 * @return
+	 */
+	public boolean howToBuyIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOW_TO_BUY_CSS));
+			super.scrollMoveToElement(howToBuy);
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return howToBuy.isDisplayed();
+	}
 }

@@ -10,10 +10,12 @@ import com.objectivasoftware.accl.base.wait.WaitUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -190,4 +192,11 @@ public class AbstractFrame {
 			return 0;
 		}
 	}
+
+	public void screenshot() {
+		byte[] screenshot = myDriver.getScreenshotAs(OutputType.BYTES);
+		imgList.add(screenshot);
+	}
+
+	public static List<byte[]> imgList = new ArrayList<byte[]>();
 }
