@@ -27,6 +27,7 @@ Scenario Outline: open homepage->login->add to cart
     And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     Then Check header is displayed correctly in cart page.
+	And Log out from home page.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|31573		|
@@ -41,6 +42,7 @@ Scenario Outline: open homepage->login->add to cart
     Then Mouse move to [Order history] of float ment, then order history link displayed.
     Then Mouse move to [E-voucher] of float ment, then e-voucher link displayed.
     Then Mouse move to [Quick buy] of float ment, then Quick buy content displayed.
+	And Log out from home page.
     Examples:
     |userName		|password	|
     |59376340		|123456		|
