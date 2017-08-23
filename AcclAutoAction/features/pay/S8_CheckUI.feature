@@ -14,6 +14,7 @@ Scenario Outline: open homepage->login->log out->login
 	And Log out from home page.
     And Login with valid user. userName="<userName>" password="<password>"
     Then Verify the business view is not changed.
+	And Log out from home page.
     Examples:
     |userName		|password	|
     |59376340		|123456		|
