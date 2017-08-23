@@ -4,12 +4,12 @@ Feature: Test scenario 6
 Background:
 	Given Open the home page.
 
-@amplusIntegral
-Scenario Outline: Login->Amplus page->select integral->add to cart->check out->payment page->order detail page->check point->cancel order
+@amplusPoints
+Scenario Outline: Login->Amplus page->select points->add to cart->check out->payment page->order detail page->check point->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
     And Navigate to Amplus gift zone, and select a product, then navigate to pdp. productName="<productName>"
-    And Select Amplus price type with integral, then add to cart.
+    And Select Amplus price type with points, then add to cart.
     And Click checkout button on card page, then navigate to check out page.
     And Click payment button, then navigate to payment page.
     And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
@@ -21,12 +21,12 @@ Scenario Outline: Login->Amplus page->select integral->add to cart->check out->p
     |userName		|password	|provinceName	|productName	|
     |59376340		|123456		|北京市			|早旋律乐队		|
 
-@amplusIntegralCash
-Scenario Outline: Login->Amplus page->select integral+cash->add to cart->check out->payment page->order detail page->check point->cancel order
+@amplusPoints+Cash
+Scenario Outline: Login->Amplus page->select points+cash->add to cart->check out->payment page->order detail page->check point->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
     And Navigate to Amplus gift zone, and select a product, then navigate to pdp. productName="<productName>"
-    And Select Amplus price type with integral and cash, then add to cart.
+    And Select Amplus price type with points and cash, then add to cart.
     And Click checkout button on card page, then navigate to check out page.
     And Click payment button, then navigate to payment page.
     And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
@@ -38,22 +38,22 @@ Scenario Outline: Login->Amplus page->select integral+cash->add to cart->check o
     |userName		|password	|provinceName	|productName	|
     |59376340		|123456		|北京市			|早旋律乐队		|
 
-@CoffeeIntegral
-Scenario Outline: Login->search coupon->select integral->exchange
+@CoffeeCouponPoints
+Scenario Outline: Login->search coupon->select points->exchange
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
     And Search coffee coupon and navigate to pdp. productId="<product>"
-    Then Select exchange type with integral, then exchange successful.
+    Then Select exchange type with points, then exchange successful.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|999902		|
 
-@CoffeeIntegralCash
-Scenario Outline: Login->search coupon->select integral->exchange
+@CoffeePoints+Cash
+Scenario Outline: Login->search coupon->select points->exchange->check out->payment page
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
     And Search coffee coupon and navigate to pdp. productId="<product>"
-    And Select exchange type with integral and cash, then click exchange, payment page is displayed.
+    And Select exchange type with points and cash, then click exchange, payment page is displayed.
     And Select Union-pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment result.
     Then Verify exchange Amplus Coffee Coupon successfully on payment result page.
@@ -61,12 +61,12 @@ Scenario Outline: Login->search coupon->select integral->exchange
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|999902		|
 
-@StoreProductIntegral
-Scenario Outline: Login->search coupon->select integral->exchange
+@GZcentralWHAmplusPoints
+Scenario Outline: Login->search coupon->select points->exchange->check out->payment page->order detail page->check point->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
-    And Search store product and navigate to pdp. productId="<product>"
-    And Select exchange type with integral, then exchange and navigate to check out page.
+    And search Amplus gift shipped from GZ central warehouse and navigate to pdp. productId="<product>"
+    And Select exchange type with points, then exchange and navigate to check out page.
     And Click payment button, then pay success and navigate to payment page.
     And Navigate to order detail page by click View Detail Link from payment.
     And Verify the deduct amplus point in order detail page.
@@ -75,12 +75,12 @@ Scenario Outline: Login->search coupon->select integral->exchange
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|81067		|
 
-@StoreProductIntegralCash
-Scenario Outline: Login->search coupon->select integral->exchange
+@GZcentralWHAmplusPoints+Cash
+Scenario Outline: Login->search coupon->select points->exchange->check out->payment page->order detail page->check point->cancel order
     And Login with valid user. userName="<userName>" password="<password>"
     And Select a province for stock. provinceName="<provinceName>"
-    And Search store product and navigate to pdp. productId="<product>"
-    And Select exchange type with integral and cash, then exchange and navigate to check out page.
+    And search Amplus gift shipped from GZ central warehouse and navigate to pdp. productId="<product>"
+    And Select exchange type with points and cash, then exchange and navigate to check out page.
     And Click payment button, then navigate to payment page.
     And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.

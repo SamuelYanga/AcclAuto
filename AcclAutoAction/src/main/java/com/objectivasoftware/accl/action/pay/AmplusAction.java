@@ -34,7 +34,7 @@ public class AmplusAction {
 		amplusPage.selectProductAndNaviToPdp(productName);
 	}
 
-	@And("Select Amplus price type with integral, then add to cart.")
+	@And("Select Amplus price type with points, then add to cart.")
 	public void selectIntegralAndAddToCart() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL);
@@ -43,7 +43,7 @@ public class AmplusAction {
 		productDetailPage.navigateToCartPageByMiniCart();
 	}
 
-	@And("Select Amplus price type with integral and cash, then add to cart.")
+	@And("Select Amplus price type with points and cash, then add to cart.")
 	public void selectIntegralCashAndAddToCart() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL_CASH);
@@ -67,7 +67,7 @@ public class AmplusAction {
 		searchPage.navigateToPdp(product);
 	}
 
-	@Then("Select exchange type with integral, then exchange successful.")
+	@Then("Select exchange type with points, then exchange successful.")
 	public void selectIntegralAndExchange() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL);
@@ -79,7 +79,7 @@ public class AmplusAction {
 		Assert.assertTrue(StringUtils.isNotEmpty(codeNumber));
 	}
 
-	@And("Select exchange type with integral and cash, then click exchange, payment page is displayed.")
+	@And("Select exchange type with points and cash, then click exchange, payment page is displayed.")
 	public void selectIntegralCashAndExchange() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL_CASH);
@@ -117,7 +117,7 @@ public class AmplusAction {
 		Assert.assertTrue(StringUtils.isNotEmpty(coponCode));
 	}
 
-	@And("Search store product and navigate to pdp. productId=\"(.*)\"")
+	@And("search Amplus gift shipped from GZ central warehouse and navigate to pdp. productId=\"(.*)\"")
 	public void searchStoreProductAndNaviToPdp(String product) {
 		HeaderComponent headerComponent = new HeaderComponent();
 		headerComponent.searchProduct(product);
@@ -126,7 +126,7 @@ public class AmplusAction {
 		searchPage.navigateToPdp(product);
 	}
 
-	@And("Select exchange type with integral, then exchange and navigate to check out page.")
+	@And("Select exchange type with points, then exchange and navigate to check out page.")
 	public void selectIntegralAndExchangeToCheckout() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL);
@@ -134,7 +134,7 @@ public class AmplusAction {
 		productDetailPage.checkOutAmplusGift();
 	}
 
-	@And("Select exchange type with integral and cash, then exchange and navigate to check out page.")
+	@And("Select exchange type with points and cash, then exchange and navigate to check out page.")
 	public void selectIntegralCashAndExchangeToCheckout() {
 		ProductDetailPage productDetailPage = new ProductDetailPage();
 		integral = productDetailPage.selectAmplusPriceType(AmplusPriceType.INTEGRAL_CASH);

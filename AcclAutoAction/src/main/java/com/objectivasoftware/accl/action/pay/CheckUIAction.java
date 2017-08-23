@@ -2,6 +2,7 @@ package com.objectivasoftware.accl.action.pay;
 
 import org.junit.Assert;
 
+import com.objectivasoftware.accl.core.component.FloatMenuComponent;
 import com.objectivasoftware.accl.core.component.HeaderComponent;
 import com.objectivasoftware.accl.core.page.HomePage;
 
@@ -93,7 +94,7 @@ public class CheckUIAction {
 		Assert.assertTrue(headerComponent.crossBorderLinkIsDisplayed());
 	}
 
-	@And("Check header is displayed correctly when user login with.")
+	@And("Check header is displayed correctly when user login.")
 	public void checkHeaderUIWithUser() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		headerComponent.screenshot();
@@ -140,6 +141,60 @@ public class CheckUIAction {
 		// 搜索框
 		Assert.assertTrue(headerComponent.searchInputIsDisplayed());
 
+	}
+
+	@And("Check float menu is displayed correctly with guest.")
+	public void checkFloatMenuUIWithGuest() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		floatMenuComponent.screenshot();
+		Assert.assertTrue(floatMenuComponent.returnToTopWrapperIsDisplayed());
+	}
+
+	@And("Check float menu is displayed correctly when user login.")
+	public void checkFloatMenuUIWithUser() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		floatMenuComponent.screenshot();
+		Assert.assertTrue(floatMenuComponent.currentBuyerWrapperIsDisplayed());
+		Assert.assertTrue(floatMenuComponent.cartWrapperIsDisplayed());
+		Assert.assertTrue(floatMenuComponent.orderWrapperIsDisplayed());
+		Assert.assertTrue(floatMenuComponent.ticketWrapperIsDisplayed());
+		Assert.assertTrue(floatMenuComponent.quickBuyWrapperIsDisplayed());
+		Assert.assertTrue(floatMenuComponent.returnToTopWrapperIsDisplayed());
+	}
+
+	@Then("Mouse move to \\[Change buyer\\] of float ment, then change buyer link displayed.")
+	public void mouseMoveToChangeBuyerWrapper() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		Assert.assertTrue(floatMenuComponent.moveToCurrentBuyerWrapper());
+		floatMenuComponent.screenshot();
+	}
+
+	@Then("Mouse move to \\[Cart\\] of float ment, then cart link displayed.")
+	public void mouseMoveToCartWrapper() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		Assert.assertTrue(floatMenuComponent.moveToCartWrapper());
+		floatMenuComponent.screenshot();
+	}
+
+	@Then("Mouse move to \\[Order history\\] of float ment, then order history link displayed.")
+	public void mouseMoveToOrderWrapper() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		Assert.assertTrue(floatMenuComponent.moveToOrderWrapper());
+		floatMenuComponent.screenshot();
+	}
+
+	@Then("Mouse move to \\[E-voucher\\] of float ment, then e-voucher link displayed.")
+	public void mouseMoveToTicketWrapper() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		Assert.assertTrue(floatMenuComponent.moveToTicketWrapper());
+		floatMenuComponent.screenshot();
+	}
+
+	@Then("Mouse move to \\[Quick buy\\] of float ment, then Quick buy content displayed.")
+	public void mouseMoveToQuickBuyWrapper() {
+		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
+		Assert.assertTrue(floatMenuComponent.moveToQuickBuyWrapper());
+		floatMenuComponent.screenshot();
 	}
 
 }
