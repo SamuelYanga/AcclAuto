@@ -65,6 +65,7 @@ public class HeaderComponent extends BaseComponent {
 	private WebElement purchaserSection;
 
 	private void moveToPurchaserSection() {
+		super.scrollMoveToElement(purchaserSection);
 		Actions action = new Actions(myDriver.getDelegate());
 		action.moveToElement(purchaserSection).perform();
 		WaitUtil.waitOn(myDriver, new UntilEvent() {

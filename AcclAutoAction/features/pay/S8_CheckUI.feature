@@ -46,3 +46,10 @@ Scenario Outline: open homepage->login->add to cart
     Examples:
     |userName		|password	|
     |59376340		|123456		|
+
+@FooterUI
+Scenario Outline: open homepage
+    Then Check footer info in home page.
+    Examples:
+    ||
+    ||

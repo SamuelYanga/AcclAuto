@@ -259,7 +259,20 @@ public class CheckOutPage extends BasePage {
 		regularInvoiceRadio.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+
+		try {
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+		} catch (TimeoutException e) {
+			specialInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).waitTime(500);
+			regularInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+		}
+		
 		
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -297,7 +310,19 @@ public class CheckOutPage extends BasePage {
 		specialInvoiceRadio.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".special-invoice"));
+
+		try {
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".special-invoice"));
+		} catch (TimeoutException e) {
+			regularInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).waitTime(500);
+			specialInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".special-invoice"));
+		}
 
 		WebElement specialInvoiceContent = specialInvoiceContents.get(index);
 		WebElement specialInvoiceIcon = specialInvoiceContent.findElement(By.cssSelector(".tick"));
@@ -332,7 +357,19 @@ public class CheckOutPage extends BasePage {
 		digitalInvoiceRadio.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+
+		try {
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+		} catch (TimeoutException e) {
+			regularInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).waitTime(500);
+			digitalInvoiceRadio.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(".common-invoice"));
+		}
 
 		WebElement regularInvoiceContent = regularInvoiceContents.get(index);
 		WebElement regularInvoiceIcon = regularInvoiceContent.findElement(By.cssSelector(".tick"));
@@ -371,6 +408,7 @@ public class CheckOutPage extends BasePage {
 
 	private WebElement getCartItemByUser(String user) {
 		WaitUtil.waitOn(myDriver).untilListShown(By.cssSelector(CART_LIST_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(500);
 		for (WebElement cart : cartList) {
 			WebElement userElement = cart.findElement(By.cssSelector(CART_ITEM_USER_CSS));
 			String value = userElement.getText();
