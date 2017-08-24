@@ -249,6 +249,9 @@ public class HomePage extends BasePage {
 	 */
 	public void logout() {
 		HeaderComponent headerComponent = new HeaderComponent();
+		if (!headerComponent.isLogin()) {
+			return;
+		}
 		headerComponent.logout();
 
 		try {

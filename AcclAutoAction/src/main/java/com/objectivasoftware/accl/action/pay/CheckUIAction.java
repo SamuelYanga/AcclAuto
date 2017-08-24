@@ -61,7 +61,7 @@ public class CheckUIAction {
 		businessView = homePage.changeBusinessView();
 	}
 
-	@And("Log out from home page.")
+	@And("If is login, log out from home page.")
 	public void logoutFromHomepage() {
 		HomePage homePage = new HomePage();
 		homePage.logout();
