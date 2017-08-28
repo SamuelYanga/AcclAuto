@@ -1,6 +1,7 @@
 package com.objectivasoftware.accl.core.page;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -150,18 +151,33 @@ public class PaymentPage extends BasePage {
 			}
 		}
 
-		int handles = myDriver.getWindowHandles().size();
+		int handleNum = myDriver.getWindowHandles().size();
 		payNowButton.click();
 		WaitUtil.waitOn(myDriver).waitTime(5000L);
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver, new UntilEvent() {
 			@Override
 			public boolean excute() {
-				int newHandles = myDriver.getWindowHandles().size();
-				return newHandles == handles + 1;
+				int newHandleNum = myDriver.getWindowHandles().size();
+				return newHandleNum == handleNum + 1;
 			}
 		}).untilEventHappened();
-		super.switchToWindowByUrl(UrlConstant.UNION_PAY_DOMAIN);
+
+		String currentHandle = myDriver.getWindowHandle();
+		Set<String> handles0 = myDriver.getWindowHandles();
+		for (String s : handles0) {
+			if (!currentHandle.equals(s)) {
+				myDriver.switchTo().window(s);
+			}
+		}
+
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
+			@Override
+			public boolean excute() {
+				String currentUrl = myDriver.getCurrentUrl();
+				return currentUrl.contains(UrlConstant.UNION_PAY_DOMAIN);
+			}
+		}).untilEventHappened();
 		WaitUtil.waitOn(myDriver, 90000).untilPageDown();
 	}
 

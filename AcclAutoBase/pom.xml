@@ -91,7 +91,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<waitTime>70000</waitTime>
+				<waitTime>50000</waitTime>
 			</properties>
 		</profile>
 		<profile>

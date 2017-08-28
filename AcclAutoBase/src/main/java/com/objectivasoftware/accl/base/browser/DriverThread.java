@@ -83,6 +83,6 @@ public class DriverThread {
         } else {
             Browser = selectedBrowserType.getBrowserObject(desiredCapabilities);
         }
-        Browser.manage().timeouts().pageLoadTimeout(Long.parseLong(Configurations.getConfiguration(Constants.SELENIUM_WAITTIME)) * 10, TimeUnit.MILLISECONDS);
+        Browser.manage().timeouts().pageLoadTimeout(Long.parseLong(Configurations.getConfiguration(Constants.SELENIUM_WAITTIME)) * 2, TimeUnit.MILLISECONDS);
     }
 }
