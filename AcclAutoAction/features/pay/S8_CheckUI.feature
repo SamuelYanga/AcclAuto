@@ -54,3 +54,16 @@ Scenario Outline: open homepage
     Examples:
     ||
     ||
+
+@PlpUI
+Scenario Outline: open homepage
+	And If is login, log out from home page.
+    Then Check first menu in home page.
+    Then Move the mouse to first menu Nutrilite, then sencon menu of Nutrilite is displayed.
+    Then Move the mouse to first menu Artistry, then sencon menu of Artistry is displayed.
+    Then Move the mouse to first menu Home Tech, then sencon menu of Home Tech is displayed.
+    Then Move the mouse to first menu Home Care, then sencon menu of Home Care is displayed.
+    Then Move the mouse to first menu Personaly Care, then sencon menu of Personaly Care is displayed.
+    Examples:
+    ||
+    ||

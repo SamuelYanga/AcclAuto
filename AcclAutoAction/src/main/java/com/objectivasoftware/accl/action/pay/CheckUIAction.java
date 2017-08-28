@@ -214,4 +214,51 @@ public class CheckUIAction {
 		Assert.assertTrue(footerComponent.checkCopyrightInfoAndIcp());
 	}
 
+	@Then("Check first menu in home page.")
+	public void checkFirstMenuIsDisplayed() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		headerComponent.screenshot();
+		Assert.assertTrue(headerComponent.firstMenuNutriliteIsDisplayed());
+		Assert.assertTrue(headerComponent.firstMenuArtistryIsDisplayed());
+		Assert.assertTrue(headerComponent.firstMenuHomeTechIsDisplayed());
+		Assert.assertTrue(headerComponent.firstMenuHomeCareIsDisplayed());
+		Assert.assertTrue(headerComponent.firstMenuPersonalCareIsDisplayed());
+		Assert.assertTrue(headerComponent.firstMenuAccessoriesIsDisplayed());
+	}
+
+	@Then("Move the mouse to first menu Nutrilite, then sencon menu of Nutrilite is displayed.")
+	public void checkSecondMenuOfNutrilite() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		Assert.assertTrue(headerComponent.moveToNutriAndSecMenuIsDisplayed());
+		headerComponent.screenshot();
+	}
+
+	@Then("Move the mouse to first menu Artistry, then sencon menu of Artistry is displayed.")
+	public void checkSecondMenuOfArtistry() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		Assert.assertTrue(headerComponent.moveToArtiAndSecMenuIsDisplayed());
+		headerComponent.screenshot();
+	}
+
+	@Then("Move the mouse to first menu Home Tech, then sencon menu of Home Tech is displayed.")
+	public void checkSecondMenuOfHomeTech() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		Assert.assertTrue(headerComponent.moveToHomeTechAndSecMenuIsDisplayed());
+		headerComponent.screenshot();
+	}
+
+	@Then("Move the mouse to first menu Home Care, then sencon menu of Home Care is displayed.")
+	public void checkSecondMenuOfHomeCare() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		Assert.assertTrue(headerComponent.moveToHomeCareAndSecMenuIsDisplayed());
+		headerComponent.screenshot();
+	}
+
+	@Then("Move the mouse to first menu Personaly Care, then sencon menu of Personaly Care is displayed.")
+	public void checkSecondMenuOfPersonalyCare() {
+		HeaderComponent headerComponent = new HeaderComponent();
+		Assert.assertTrue(headerComponent.moveToPersonCareAndSecMenuIsDisplayed());
+		headerComponent.screenshot();
+	}
+
 }

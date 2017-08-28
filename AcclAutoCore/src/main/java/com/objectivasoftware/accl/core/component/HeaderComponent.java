@@ -16,6 +16,7 @@ import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
+import com.objectivasoftware.accl.core.util.waitEvent.WaitClassChange;
 
 public class HeaderComponent extends BaseComponent {
 
@@ -719,4 +720,212 @@ public class HeaderComponent extends BaseComponent {
 		}
 		return howToBuy.isDisplayed();
 	}
+
+	// 纽崔莱
+	public static final String FIRST_MENU_NUTRILITE_CSS = ".js-offcanvas-links .nutrilite-cat";
+	@FindBy(css = FIRST_MENU_NUTRILITE_CSS)
+	private WebElement firstMenuNutrilite;
+	// 安利
+	public static final String FIRST_MENU_ARTISTRY_CSS = ".js-offcanvas-links .artistry-cat";
+	@FindBy(css = FIRST_MENU_ARTISTRY_CSS)
+	private WebElement firstMenuArtistry;
+	// 家居科技
+	public static final String FIRST_MENU_HOME_TECH_CSS = ".js-offcanvas-links .home-tech-cat";
+	@FindBy(css = FIRST_MENU_HOME_TECH_CSS)
+	private WebElement firstMenuHomeTech;
+	// 家居护理
+	public static final String FIRST_MENU_HOME_CARE_CSS = ".js-offcanvas-links .home-care-cat";
+	@FindBy(css = FIRST_MENU_HOME_CARE_CSS)
+	private WebElement firstMenuHomeCare;
+	// 个人护理
+	public static final String FIRST_MENU_PERSONAL_CARE_CSS = ".js-offcanvas-links .personal-care-cat";
+	@FindBy(css = FIRST_MENU_PERSONAL_CARE_CSS)
+	private WebElement firstMenuPersonalCare;
+	// 辅销产品
+	public static final String FIRST_MENU_ACCESSORIES_CSS = ".js-offcanvas-links .accessories-cat";
+	@FindBy(css = FIRST_MENU_ACCESSORIES_CSS)
+	private WebElement firstMenuAccessories;
+
+	public static final String SECOND_MENU_CSS = ".sub-navigation-section a";
+
+	/**
+	 * 鼠标悬停到一级菜单_纽崔莱 二级菜单是否显示
+	 * @return
+	 */
+	public boolean moveToNutriAndSecMenuIsDisplayed() {
+		List<WebElement> secondMenu = null;
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(firstMenuNutrilite).perform();
+		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuNutrilite, "md-show-sub")).untilEventHappened();
+
+		try {
+			secondMenu = firstMenuNutrilite.findElements(By.cssSelector(SECOND_MENU_CSS));
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return secondMenu != null && secondMenu.size() > 0;
+	}
+
+	/**
+	 * 鼠标悬停到一级菜单_安利 二级菜单是否显示
+	 * @return
+	 */
+	public boolean moveToArtiAndSecMenuIsDisplayed() {
+		List<WebElement> secondMenu = null;
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(firstMenuArtistry).perform();
+		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuArtistry, "md-show-sub")).untilEventHappened();
+
+		try {
+			secondMenu = firstMenuArtistry.findElements(By.cssSelector(SECOND_MENU_CSS));
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return secondMenu != null && secondMenu.size() > 0;
+	}
+
+	/**
+	 * 鼠标悬停到一级菜单_家居科技 二级菜单是否显示
+	 * @return
+	 */
+	public boolean moveToHomeTechAndSecMenuIsDisplayed() {
+		List<WebElement> secondMenu = null;
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(firstMenuHomeTech).perform();
+		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeTech, "md-show-sub")).untilEventHappened();
+
+		try {
+			secondMenu = firstMenuHomeTech.findElements(By.cssSelector(SECOND_MENU_CSS));
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return secondMenu != null && secondMenu.size() > 0;
+	}
+
+	/**
+	 * 鼠标悬停到一级菜单_家居护理 二级菜单是否显示
+	 * @return
+	 */
+	public boolean moveToHomeCareAndSecMenuIsDisplayed() {
+		List<WebElement> secondMenu = null;
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(firstMenuHomeCare).perform();
+		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeCare, "md-show-sub")).untilEventHappened();
+
+		try {
+			secondMenu = firstMenuHomeCare.findElements(By.cssSelector(SECOND_MENU_CSS));
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return secondMenu != null && secondMenu.size() > 0;
+	}
+
+	/**
+	 * 鼠标悬停到一级菜单_个人护理 二级菜单是否显示
+	 * @return
+	 */
+	public boolean moveToPersonCareAndSecMenuIsDisplayed() {
+		List<WebElement> secondMenu = null;
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(firstMenuPersonalCare).perform();
+		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuPersonalCare, "md-show-sub")).untilEventHappened();
+
+		try {
+			secondMenu = firstMenuPersonalCare.findElements(By.cssSelector(SECOND_MENU_CSS));
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return secondMenu != null && secondMenu.size() > 0;
+	}
+	
+	/**
+	 * 一级菜单_纽崔莱 是否显示
+	 * @return
+	 */
+	public boolean firstMenuNutriliteIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_NUTRILITE_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuNutrilite.isDisplayed();
+	}
+
+	/**
+	 * 一级菜单_安利 是否显示
+	 * @return
+	 */
+	public boolean firstMenuArtistryIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_ARTISTRY_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuArtistry.isDisplayed();
+	}
+
+	/**
+	 * 一级菜单_家居科技 是否显示
+	 * @return
+	 */
+	public boolean firstMenuHomeTechIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_HOME_TECH_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuHomeTech.isDisplayed();
+	}
+
+	/**
+	 * 一级菜单_家居护理 是否显示
+	 * @return
+	 */
+	public boolean firstMenuHomeCareIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_HOME_CARE_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuHomeCare.isDisplayed();
+	}
+
+	/**
+	 * 一级菜单_个人护理 是否显示
+	 * @return
+	 */
+	public boolean firstMenuPersonalCareIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_PERSONAL_CARE_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuPersonalCare.isDisplayed();
+	}
+
+	/**
+	 * 一级菜单_辅销产品 是否显示
+	 * @return
+	 */
+	public boolean firstMenuAccessoriesIsDisplayed() {
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_ACCESSORIES_CSS));
+		} catch (TimeoutException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return firstMenuAccessories.isDisplayed();
+	}
+
 }
