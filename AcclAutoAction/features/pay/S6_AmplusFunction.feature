@@ -19,7 +19,7 @@ Scenario Outline: Login->Amplus page->select points->add to cart->check out->pay
     Then Cancel the order and verify the order status.
     Examples:
     |userName		|password	|provinceName	|productName	|
-    |59376340		|123456		|北京市			|早旋律乐队		|
+    |59376340		|123456		|北京市			|拖把布			|
 
 @amplusPoints+Cash
 Scenario Outline: Login->Amplus page->select points+cash->add to cart->check out->payment page->order detail page->check point->cancel order
@@ -36,7 +36,7 @@ Scenario Outline: Login->Amplus page->select points+cash->add to cart->check out
     Then Cancel the order and verify the order status.
     Examples:
     |userName		|password	|provinceName	|productName	|
-    |59376340		|123456		|北京市			|早旋律乐队		|
+    |59376340		|123456		|北京市			|拖把布			|
 
 @CoffeeCouponPoints
 Scenario Outline: Login->search coupon->select points->exchange
