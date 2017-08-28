@@ -17,13 +17,13 @@ public class CheckUIAction {
 		HomePage homePage = new HomePage();
 		homePage.windowScrollToBottom();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.articleBannersIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.categoryProductShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 	}
 
 	@And("Check home page is displayed correctly when user login with Standard Edition.")
@@ -32,13 +32,13 @@ public class CheckUIAction {
 		homePage.returnToDefaultBusinessView();
 		homePage.windowScrollToBottom();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.articleBannersIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.categoryProductShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 	}
 
 	@And("Check home page is displayed correctly when user login with Shortcut Edition.")
@@ -46,11 +46,11 @@ public class CheckUIAction {
 		HomePage homePage = new HomePage();
 		homePage.windowScrollToBottom();
 		Assert.assertTrue(homePage.kvBillboardIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.hotProductShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 		Assert.assertTrue(homePage.amplusGiftShowIsDisplayed());
-		homePage.screenshot();
+//		homePage.screenshot();
 	}
 
 	String businessView = "";
@@ -78,7 +78,7 @@ public class CheckUIAction {
 	@And("Check header is displayed correctly with guest.")
 	public void checkHeaderUIWithGuest() {
 		HeaderComponent headerComponent = new HeaderComponent();
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 		Assert.assertTrue(headerComponent.logoIsDisplayed());
 		Assert.assertTrue(headerComponent.welcomeTextIsDisplayed());
 		Assert.assertTrue(headerComponent.guestHelpCenterIsDisplayed());
@@ -98,7 +98,7 @@ public class CheckUIAction {
 	@And("Check header is displayed correctly when user login.")
 	public void checkHeaderUIWithUser() {
 		HeaderComponent headerComponent = new HeaderComponent();
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 		Assert.assertTrue(headerComponent.logoIsDisplayed());
 		Assert.assertTrue(headerComponent.currentBuyerTextIsDisplayed());
 		Assert.assertTrue(headerComponent.changeBuyerLinkIsDisplayed());
@@ -125,7 +125,7 @@ public class CheckUIAction {
 	@Then("Check header is displayed correctly in cart page.")
 	public void checkHeaderUIInCartPage() {
 		HeaderComponent headerComponent = new HeaderComponent();
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 
 		// logo图标
 		Assert.assertTrue(headerComponent.logoIsDisplayed());
@@ -147,14 +147,14 @@ public class CheckUIAction {
 	@And("Check float menu is displayed correctly with guest.")
 	public void checkFloatMenuUIWithGuest() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 		Assert.assertTrue(floatMenuComponent.returnToTopWrapperIsDisplayed());
 	}
 
 	@And("Check float menu is displayed correctly when user login.")
 	public void checkFloatMenuUIWithUser() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 		Assert.assertTrue(floatMenuComponent.currentBuyerWrapperIsDisplayed());
 		Assert.assertTrue(floatMenuComponent.cartWrapperIsDisplayed());
 		Assert.assertTrue(floatMenuComponent.orderWrapperIsDisplayed());
@@ -167,42 +167,42 @@ public class CheckUIAction {
 	public void mouseMoveToChangeBuyerWrapper() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
 		Assert.assertTrue(floatMenuComponent.moveToCurrentBuyerWrapper());
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 	}
 
 	@Then("Mouse move to \\[Cart\\] of float ment, then cart link displayed.")
 	public void mouseMoveToCartWrapper() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
 		Assert.assertTrue(floatMenuComponent.moveToCartWrapper());
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 	}
 
 	@Then("Mouse move to \\[Order history\\] of float ment, then order history link displayed.")
 	public void mouseMoveToOrderWrapper() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
 		Assert.assertTrue(floatMenuComponent.moveToOrderWrapper());
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 	}
 
 	@Then("Mouse move to \\[E-voucher\\] of float ment, then e-voucher link displayed.")
 	public void mouseMoveToTicketWrapper() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
 		Assert.assertTrue(floatMenuComponent.moveToTicketWrapper());
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 	}
 
 	@Then("Mouse move to \\[Quick buy\\] of float ment, then Quick buy content displayed.")
 	public void mouseMoveToQuickBuyWrapper() {
 		FloatMenuComponent floatMenuComponent = new FloatMenuComponent();
 		Assert.assertTrue(floatMenuComponent.moveToQuickBuyWrapper());
-		floatMenuComponent.screenshot();
+//		floatMenuComponent.screenshot();
 	}
 
 	@Then("Check footer info in home page.")
 	public void checkFooterInfo() {
 		FooterComponent footerComponent = new FooterComponent();
 		footerComponent.windowScrollToBottom();
-		footerComponent.screenshot();
+//		footerComponent.screenshot();
 		Assert.assertTrue(footerComponent.checkAmwayCharityFoundation());
 		Assert.assertTrue(footerComponent.checkAmwayEdu());
 		Assert.assertTrue(footerComponent.checkContactUs());
@@ -217,7 +217,7 @@ public class CheckUIAction {
 	@Then("Check first menu in home page.")
 	public void checkFirstMenuIsDisplayed() {
 		HeaderComponent headerComponent = new HeaderComponent();
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 		Assert.assertTrue(headerComponent.firstMenuNutriliteIsDisplayed());
 		Assert.assertTrue(headerComponent.firstMenuArtistryIsDisplayed());
 		Assert.assertTrue(headerComponent.firstMenuHomeTechIsDisplayed());
@@ -230,35 +230,35 @@ public class CheckUIAction {
 	public void checkSecondMenuOfNutrilite() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		Assert.assertTrue(headerComponent.moveToNutriAndSecMenuIsDisplayed());
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 	}
 
 	@Then("Move the mouse to first menu Artistry, then sencon menu of Artistry is displayed.")
 	public void checkSecondMenuOfArtistry() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		Assert.assertTrue(headerComponent.moveToArtiAndSecMenuIsDisplayed());
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 	}
 
 	@Then("Move the mouse to first menu Home Tech, then sencon menu of Home Tech is displayed.")
 	public void checkSecondMenuOfHomeTech() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		Assert.assertTrue(headerComponent.moveToHomeTechAndSecMenuIsDisplayed());
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 	}
 
 	@Then("Move the mouse to first menu Home Care, then sencon menu of Home Care is displayed.")
 	public void checkSecondMenuOfHomeCare() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		Assert.assertTrue(headerComponent.moveToHomeCareAndSecMenuIsDisplayed());
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 	}
 
 	@Then("Move the mouse to first menu Personaly Care, then sencon menu of Personaly Care is displayed.")
 	public void checkSecondMenuOfPersonalyCare() {
 		HeaderComponent headerComponent = new HeaderComponent();
 		Assert.assertTrue(headerComponent.moveToPersonCareAndSecMenuIsDisplayed());
-		headerComponent.screenshot();
+//		headerComponent.screenshot();
 	}
 
 }
