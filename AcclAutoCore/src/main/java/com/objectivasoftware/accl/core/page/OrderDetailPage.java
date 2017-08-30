@@ -68,8 +68,10 @@ public class OrderDetailPage extends BasePage {
 	}
 
 	public void cancelOrder() {
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_ORDER_CSS));
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CANCEL_ORDER_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(200);
 		super.scrollMoveToElement(cancelOrderButton);
+		WaitUtil.waitOn(myDriver).waitTime(200);
 		cancelOrderButton.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
