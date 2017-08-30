@@ -6,7 +6,7 @@ import org.openqa.selenium.OutputType;
 
 import com.objectivasoftware.accl.base.browser.DriverFactory;
 import com.objectivasoftware.accl.base.browser.MyDriver;
-import com.objectivasoftware.accl.base.frame.AbstractFrame;
+import com.objectivasoftware.accl.base.frame.BasePage;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -37,11 +37,11 @@ public class Hooks {
 			scenario.embed(screenshot, "image/png");
 		}
 
-		if (AbstractFrame.imgList != null && AbstractFrame.imgList.size() > 0) {
-			for (byte[] screenshot : AbstractFrame.imgList) {
+		if (BasePage.imgList != null && BasePage.imgList.size() > 0) {
+			for (byte[] screenshot : BasePage.imgList) {
 				scenario.embed(screenshot, "image/png");
 			}
-			AbstractFrame.imgList.clear();
+			BasePage.imgList.clear();
 		}
 	}
 
