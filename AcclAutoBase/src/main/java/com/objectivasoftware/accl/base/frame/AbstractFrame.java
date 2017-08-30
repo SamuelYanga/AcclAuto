@@ -103,7 +103,7 @@ public class AbstractFrame {
 		windowScrollToTop(1);
 	}
 
-	private void windowScrollToTop(int move) {
+	public void windowScrollToTop(int move) {
 		inJectJquery(myDriver);
 		String setscroll = "$(window).scrollTop(" + move + ");";
 		myDriver.executeScript(setscroll);
