@@ -3,6 +3,7 @@ package com.objectivasoftware.accl.core.component;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -35,6 +36,16 @@ public class LoginComponent extends BaseComponent {
 	@FindBy(css = LOGIN_BTN_CSS)
 	private WebElement loginBtn;
 
+	public static final String NOTIFICATION_BTN_CSS = ".notification-banner .notification-btn";
+	@FindBy(css = NOTIFICATION_BTN_CSS)
+	private WebElement notificationButton;
+
+	public void closeNotification() {
+		notificationButton.click();
+		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(NOTIFICATION_BTN_CSS));
+		WaitUtil.waitOn(myDriver).untilPageDown();
+	}
+
 	public void login(String userName, String password) {
 		userNameInput.clear();
 		userNameInput.sendKeys(userName);
@@ -48,11 +59,18 @@ public class LoginComponent extends BaseComponent {
 
 			@Override
 			public boolean excute() {
-				WebElement eVouchersWrapper = myDriver.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
+				WebElement eVouchersWrapper = myDriver
+						.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
 				String classValue = eVouchersWrapper.getAttribute("class");
 				return !classValue.contains("dropdown-active");
 			}
 		}).untilEventHappened();
+
+		try {
+			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
+			closeNotification();
+		} catch (TimeoutException e) {
+		}
 	}
 
 }
