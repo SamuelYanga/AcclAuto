@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 
@@ -180,4 +183,18 @@ public abstract class BasePage extends AbstractFrame {
 
 	public static List<byte[]> imgList = new ArrayList<byte[]>();
 
+	protected boolean elementIsShown(By by) {
+		WebElement element = null;
+		try {
+			element = myDriver.findElement(by);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		return element.isDisplayed();
+	}
+
+	protected void mouseMoveToElement(WebElement element) {
+		Actions action = new Actions(myDriver.getDelegate());
+		action.moveToElement(element).perform();
+	}
 }

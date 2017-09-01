@@ -13,11 +13,11 @@ Scenario Outline: Login->Amplus page->select points->add to cart->check out->pay
     And Click checkout button on card page, then navigate to check out page.
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
-    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the deduct amplus point in order detail page.
-    Then Cancel the order and verify the order status.
+    Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|productName	|
     |59376340		|123456		|辽宁省			|礼盒（大）		|
@@ -31,11 +31,11 @@ Scenario Outline: Login->Amplus page->select points+cash->add to cart->check out
     And Click checkout button on card page, then navigate to check out page.
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
-    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the deduct amplus point in order detail page.
-    Then Cancel the order and verify the order status.
+    Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|productName	|
     |59376340		|123456		|辽宁省			|礼盒（大）		|
@@ -72,7 +72,7 @@ Scenario Outline: Login->search coupon->select points->exchange->check out->paym
     And Click payment button, then pay success and navigate to payment page.
     And Navigate to order detail page by click View Detail Link from payment.
     And Verify the deduct amplus point in order detail page.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|81067		|
@@ -84,11 +84,11 @@ Scenario Outline: Login->search coupon->select points->exchange->check out->paym
     And search Amplus gift shipped from GZ central warehouse and navigate to pdp. productId="<product>"
     And Select exchange type with points and cash, then exchange and navigate to check out page.
     And Click payment button, then navigate to payment page.
-    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
     And Verify the deduct amplus point in order detail page.
-    Then Cancel the order and verify the order status.
+    Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|81067		|

@@ -91,16 +91,16 @@ public class BasePayAction {
 		checkOutPage.checkOutAndNaviToPayment();
 	}
 
-	@And("Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.")
-	public void payWithUnionPay() {
+	@And("Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.")
+	public void payWithUnionPayMulti() {
 		PaymentPage paymentPage = new PaymentPage();
 		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_MORE, "0.2");
 	}
 
-	@And("Select Union-pay with payment more, and click pay now, then the Union-pay page displayed.")
-	public void payWithUnionPayMore() {
+	@And("Select Union-pay with one pay, and click pay now, then the Union-pay page displayed.")
+	public void payWithUnionPayOne() {
 		PaymentPage paymentPage = new PaymentPage();
-		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_MORE, "0.2");
+		paymentPage.payNow(PayType.UNION_PAY, PayMethod.PAY_ONE, null);
 	}
 
 	@And("Pay on the Union-pay page, then back to payment page.")
@@ -123,18 +123,26 @@ public class BasePayAction {
 		paymentPage.navigateToOrderDetailWithNewHandle();
 	}
 
-	@Then("Cancel the order and verify the order status.")
-	public void cancelOrder() {
+	@Then("Cancel the order which is pay completed and verify the order status.")
+	public void cancelOrderWithPaySuccess() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
-		Assert.assertTrue(orderDetailPage.verifyOrderSuccess());
+		Assert.assertTrue(orderDetailPage.verifyOrderPaySuccess());
 		orderDetailPage.cancelOrder();
 		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
 	}
 
-	@Then("Cancel the order with no pay and verify the order status.")
+	@Then("Cancel the order which is in payment and verify the order status.")
+	public void cancelOrderWhichInPayment() {
+		OrderDetailPage orderDetailPage = new OrderDetailPage();
+		Assert.assertTrue(orderDetailPage.verifyOrderInPayment());
+		orderDetailPage.cancelOrder();
+		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
+	}
+
+	@Then("Cancel the order which is pending payment with no pay and verify the order status.")
 	public void cancelOrderWithNoPay() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
-		Assert.assertTrue(orderDetailPage.verifyOrderSuccess());
+		Assert.assertTrue(orderDetailPage.verifyOrderPaymentPending());
 		orderDetailPage.waittime(10000);
 		orderDetailPage.cancelOrder();
 		Assert.assertTrue(orderDetailPage.verifyOrderCancel());

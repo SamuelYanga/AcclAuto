@@ -1,186 +1,133 @@
 package com.objectivasoftware.accl.core.component;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
-import com.objectivasoftware.accl.base.wait.WaitUtil;
 
 public class FloatMenuComponent extends BaseComponent {
 
+	// 当前购买人
 	public static final String CURRENT_BUYER_WRAPPER_CSS = ".floating-menu .user-wrapper .main-link.js-change-buyer-link";
 	@FindBy(css = CURRENT_BUYER_WRAPPER_CSS)
 	private WebElement currentBuyerWrapper;
 
 	public static final String CHANGE_BUYER_WRAPPER_HIDDEN_CSS = ".floating-menu .user-wrapper .hidden-xs .js-change-buyer-link";
-	@FindBy(css = CHANGE_BUYER_WRAPPER_HIDDEN_CSS)
-	private WebElement changeBuyerWrapperHidden;
 
+	/**
+	 * 当前购买人是否显示
+	 * @return
+	 */
 	public boolean currentBuyerWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CURRENT_BUYER_WRAPPER_CSS));
-			super.scrollMoveToElement(currentBuyerWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return currentBuyerWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(CURRENT_BUYER_WRAPPER_CSS));
 	}
 
+	/**
+	 * 鼠标悬停到当前购买人
+	 * @return
+	 */
 	public boolean moveToCurrentBuyerWrapper() {
 		mouseMoveToElement(currentBuyerWrapper);
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(CHANGE_BUYER_WRAPPER_HIDDEN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		}
-		return changeBuyerWrapperHidden.isDisplayed();
+		return elementIsShown(By.cssSelector(CHANGE_BUYER_WRAPPER_HIDDEN_CSS));
 	}
 
-	public void mouseMoveToElement(WebElement element) {
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(element).perform();
-	}
-
+	// 购物车
 	public static final String CART_WRAPPER_CSS = ".floating-menu .cart-wrapper .main-link.mini-cart-link";
 	@FindBy(css = CART_WRAPPER_CSS)
 	private WebElement cartWrapper;
-
 	public static final String CART_WRAPPER_HIDDEN_CSS = ".floating-menu .cart-wrapper div a[href=\"/cart\"]";
-	@FindBy(css = CART_WRAPPER_HIDDEN_CSS)
-	private WebElement cartWrapperHidden;
 
+	/**
+	 * 购物车是否显示
+	 * @return
+	 */
 	public boolean cartWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CART_WRAPPER_CSS));
-			super.scrollMoveToElement(cartWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return cartWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(CART_WRAPPER_CSS));
 	}
 
+	/**
+	 * 鼠标悬停到购物车
+	 * @return
+	 */
 	public boolean moveToCartWrapper() {
 		mouseMoveToElement(cartWrapper);
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(CART_WRAPPER_HIDDEN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		}
-		return cartWrapperHidden.isDisplayed();
+		return elementIsShown(By.cssSelector(CART_WRAPPER_HIDDEN_CSS));
 	}
 
+	// 订单
 	public static final String ORDER_WRAPPER_CSS = ".floating-menu .order-wrapper .main-link";
 	@FindBy(css = ORDER_WRAPPER_CSS)
 	private WebElement orderWrapper;
-
 	public static final String ORDER_WRAPPER_HIDDEN_CSS = ".floating-menu .order-wrapper div a[href=\"/my-account/orders\"]";
-	@FindBy(css = ORDER_WRAPPER_HIDDEN_CSS)
-	private WebElement orderWrapperHidden;
 
+	/**
+	 * 订单是否显示
+	 * @return
+	 */
 	public boolean orderWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ORDER_WRAPPER_CSS));
-			super.scrollMoveToElement(orderWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return orderWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(ORDER_WRAPPER_CSS));
 	}
 
+	/**
+	 * 鼠标悬停到订单
+	 * @return
+	 */
 	public boolean moveToOrderWrapper() {
 		mouseMoveToElement(orderWrapper);
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(ORDER_WRAPPER_HIDDEN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		}
-		return orderWrapperHidden.isDisplayed();
+		return elementIsShown(By.cssSelector(ORDER_WRAPPER_HIDDEN_CSS));
 	}
 
+	// 优惠券
 	public static final String TICKET_WRAPPER_CSS = ".floating-menu .ticket-wrapper .main-link";
 	@FindBy(css = TICKET_WRAPPER_CSS)
 	private WebElement ticketWrapper;
-
 	public static final String TICKET_WRAPPER_HIDDEN_CSS = ".floating-menu .ticket-wrapper div a[href=\"/my-account/voucherPage#notUsedEV\"]";
-	@FindBy(css = TICKET_WRAPPER_HIDDEN_CSS)
-	private WebElement ticketWrapperHidden;
 
+	/**
+	 * 优惠券是否显示
+	 * @return
+	 */
 	public boolean ticketWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(TICKET_WRAPPER_CSS));
-			super.scrollMoveToElement(ticketWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return ticketWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(TICKET_WRAPPER_CSS));
 	}
 
+	/**
+	 * 鼠标悬停到优惠券
+	 * @return
+	 */
 	public boolean moveToTicketWrapper() {
 		mouseMoveToElement(ticketWrapper);
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(TICKET_WRAPPER_HIDDEN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		}
-		return ticketWrapperHidden.isDisplayed();
+		return elementIsShown(By.cssSelector(TICKET_WRAPPER_HIDDEN_CSS));
 	}
 
+	// 快速购买
 	public static final String QUICK_BUY_WRAPPER_CSS = ".floating-menu .flash-wrapper .main-link";
 	@FindBy(css = QUICK_BUY_WRAPPER_CSS)
 	private WebElement quickBuyWrapper;
-
 	public static final String QUICK_BUY_WRAPPER_HIDDEN_CSS = ".floating-menu .flash-wrapper .hidden-xs";
-	@FindBy(css = QUICK_BUY_WRAPPER_HIDDEN_CSS)
-	private WebElement quickBuyWrapperHidden;
 
+	/**
+	 * 快速购买是否显示
+	 * @return
+	 */
 	public boolean quickBuyWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(QUICK_BUY_WRAPPER_CSS));
-			super.scrollMoveToElement(quickBuyWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return quickBuyWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(QUICK_BUY_WRAPPER_CSS));
 	}
 
+	/**
+	 * 鼠标悬停到快速购买
+	 * @return
+	 */
 	public boolean moveToQuickBuyWrapper() {
 		mouseMoveToElement(quickBuyWrapper);
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(QUICK_BUY_WRAPPER_HIDDEN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		}
-		return quickBuyWrapperHidden.isDisplayed();
+		return elementIsShown(By.cssSelector(QUICK_BUY_WRAPPER_HIDDEN_CSS));
 	}
 
 	public static final String RETURN_TO_TOP_WRAPPER_CSS = ".floating-menu .arrow-wrapper";
-	@FindBy(css = RETURN_TO_TOP_WRAPPER_CSS)
-	private WebElement returnToTopWrapper;
 
 	public boolean returnToTopWrapperIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(RETURN_TO_TOP_WRAPPER_CSS));
-			super.scrollMoveToElement(returnToTopWrapper);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return returnToTopWrapper.isDisplayed();
+		return elementIsShown(By.cssSelector(RETURN_TO_TOP_WRAPPER_CSS));
 	}
 
 }

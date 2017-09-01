@@ -13,7 +13,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|31573		|
@@ -27,7 +27,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|江苏省			|31573		|
@@ -41,7 +41,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|黑龙江省			|31573		|
@@ -55,7 +55,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|河南省			|31573		|
@@ -69,7 +69,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|海南省			|31573		|
@@ -83,7 +83,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|新疆自治区		|31573		|
@@ -97,7 +97,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|内蒙古自治区		|31573		|
@@ -111,7 +111,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|河北省			|31573		|
@@ -125,7 +125,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|上海市			|31573		|
@@ -139,7 +139,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|辽宁省			|31573		|
@@ -153,7 +153,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|吉林省			|31573		|
@@ -167,7 +167,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|安徽省			|31573		|
@@ -181,7 +181,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|江西省			|31573		|
@@ -195,7 +195,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|重庆市			|31573		|
@@ -209,7 +209,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|湖南省			|31573		|
@@ -223,7 +223,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|广东省			|31573		|
@@ -237,7 +237,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|贵州省			|31573		|
@@ -251,7 +251,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|四川省			|31573		|
@@ -265,7 +265,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|陕西省			|31573		|
@@ -279,7 +279,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|宁夏自治区		|31573		|
@@ -293,7 +293,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|青海省			|31573		|
@@ -307,7 +307,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|山西省			|31573		|
@@ -321,7 +321,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|浙江省			|31573		|
@@ -335,7 +335,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|山东省			|31573		|
@@ -349,7 +349,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|天津市			|31573		|
@@ -363,7 +363,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|福建省			|31573		|
@@ -377,7 +377,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|湖北省			|31573		|
@@ -391,7 +391,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|广西自治区		|31573		|
@@ -405,7 +405,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|云南省			|31573		|
@@ -419,7 +419,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|甘肃省			|31573		|
@@ -433,7 +433,7 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order with no pay and verify the order status.
+    Then Cancel the order which is pending payment with no pay and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|西藏自治区		|31573		|

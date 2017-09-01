@@ -74,7 +74,7 @@ public class PaymentPage extends BasePage {
 			if (typeName.equals(value)) {
 				WaitUtil.waitOn(myDriver).waitTime(1000L);
 				element.click();
-				WaitUtil.waitOn(myDriver).waitTime(2000L);
+				WaitUtil.waitOn(myDriver).waitTime(1000L);
 				WaitUtil.waitOn(myDriver, new UntilEvent() {
 					@Override
 					public boolean excute() {

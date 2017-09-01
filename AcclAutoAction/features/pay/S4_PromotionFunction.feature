@@ -13,10 +13,10 @@ Scenario Outline: Login->promotion page->add to cart->check gift->check out->pay
     And Verify the promotion gift is displayed correctly. promotionName="<promotionName>" giftName="<giftName>"
     And Click checkout button on card page, then navigate to check out page.
     And Click payment button, then navigate to payment page.
-    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order and verify the order status.
+    Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|promotionName			|productName		|giftName	|
     |59376340		|123456		|北京市			|雅姿恒时凝颜系列试用装	|雅姿®恒时凝颜®精华乳	|恒时试用装	|

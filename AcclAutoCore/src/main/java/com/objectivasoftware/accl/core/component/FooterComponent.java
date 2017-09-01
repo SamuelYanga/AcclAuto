@@ -1,13 +1,10 @@
 package com.objectivasoftware.accl.core.component;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
-import com.objectivasoftware.accl.base.wait.WaitUtil;
 
 public class FooterComponent extends BaseComponent {
 
@@ -18,15 +15,7 @@ public class FooterComponent extends BaseComponent {
 	private WebElement amwayCharityFoundationLink;
 
 	public boolean checkAmwayCharityFoundation() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMWAY_CHARITY_FOUNDATION_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!amwayCharityFoundationLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(AMWAY_CHARITY_FOUNDATION_LINK_CSS))) {
 			return false;
 		}
 
@@ -41,15 +30,7 @@ public class FooterComponent extends BaseComponent {
 	private WebElement amwayEduLink;
 
 	public boolean checkAmwayEdu() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMWAY_EDU_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!amwayEduLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(AMWAY_EDU_LINK_CSS))) {
 			return false;
 		}
 
@@ -64,15 +45,7 @@ public class FooterComponent extends BaseComponent {
 	private WebElement contactUsLink;
 
 	public boolean checkContactUs() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CONTACT_US_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!contactUsLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(CONTACT_US_LINK_CSS))) {
 			return false;
 		}
 
@@ -87,15 +60,7 @@ public class FooterComponent extends BaseComponent {
 	private WebElement termsOfServiceLink;
 
 	public boolean checkTermsOfService() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CONTACT_US_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!termsOfServiceLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(CONTACT_US_LINK_CSS))) {
 			return false;
 		}
 
@@ -110,22 +75,14 @@ public class FooterComponent extends BaseComponent {
 	private WebElement amwayGlobalNetworkLink;
 
 	public boolean checkAmwayGlobalNetwork() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMWAY_GLOBAL_NETWORK_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!amwayGlobalNetworkLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(AMWAY_GLOBAL_NETWORK_LINK_CSS))) {
 			return false;
 		}
 
 		String linkUrl = amwayGlobalNetworkLink.getAttribute("href");
 		return AMWAY_GLOBAL_NETWORK_LINK_URL.equals(linkUrl);
 	}
-	
+
 	// 直销信息披露
 	public static final String DIRECT_SELLING_INFO_DISCLOSURE_LINK_URL = "http://www.amway.com.cn/info/content/01/index.htm";
 	public static final String DIRECT_SELLING_INFO_DISCLOSURE_LINK_CSS = ".main-footer a[title=\"直销信息披露\"]";
@@ -133,22 +90,14 @@ public class FooterComponent extends BaseComponent {
 	private WebElement directSellingInfoDisclosureLink;
 
 	public boolean checkDirectSellingInfoDisclosure() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(DIRECT_SELLING_INFO_DISCLOSURE_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!directSellingInfoDisclosureLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(DIRECT_SELLING_INFO_DISCLOSURE_LINK_CSS))) {
 			return false;
 		}
 
 		String linkUrl = directSellingInfoDisclosureLink.getAttribute("href");
 		return DIRECT_SELLING_INFO_DISCLOSURE_LINK_URL.equals(linkUrl);
 	}
-	
+
 	// 企业证照
 	public static final String BUSINESS_LICENSE_LINK_URL = "http://www.amway.com.cn/toolbar/ec_preview1.html";
 	public static final String BUSINESS_LICENSE_LINK_CSS = ".main-footer a[title=\"企业证照\"]";
@@ -156,22 +105,14 @@ public class FooterComponent extends BaseComponent {
 	private WebElement businessLicenseLink;
 
 	public boolean checkBusinessLicense() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(BUSINESS_LICENSE_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!businessLicenseLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(BUSINESS_LICENSE_LINK_CSS))) {
 			return false;
 		}
 
 		String linkUrl = businessLicenseLink.getAttribute("href");
 		return BUSINESS_LICENSE_LINK_URL.equals(linkUrl);
 	}
-	
+
 	// 国家工商总局直销行业管理SAIC direct selling industry administration
 	public static final String SAIC_ADMINISTRATION_LINK_URL = "http://zxjg.saic.gov.cn/saicmrktout/";
 	public static final String SAIC_ADMINISTRATION_LINK_CSS = ".main-footer a[title=\"国家工商总局直销行业管理\"]";
@@ -179,22 +120,14 @@ public class FooterComponent extends BaseComponent {
 	private WebElement saicAdministrationLink;
 
 	public boolean checkSaicAdministration() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(SAIC_ADMINISTRATION_LINK_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!saicAdministrationLink.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(SAIC_ADMINISTRATION_LINK_CSS))) {
 			return false;
 		}
 
 		String linkUrl = saicAdministrationLink.getAttribute("href");
 		return SAIC_ADMINISTRATION_LINK_URL.equals(linkUrl);
 	}
-	
+
 	// 版权声明+ICP号
 	public static final String COPYRIGHT_INFO_AND_ICP_CONTENT = "版权为安利（中国）日用品有限公司所有未经许可不得转载或链接，2016年粤ICP备05013154";
 	public static final String COPYRIGHT_INFO_AND_ICP_CSS = ".main-footer .copyright";
@@ -202,15 +135,7 @@ public class FooterComponent extends BaseComponent {
 	private WebElement copyrightInfoAndIcp;
 
 	public boolean checkCopyrightInfoAndIcp() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(COPYRIGHT_INFO_AND_ICP_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
-		if (!copyrightInfoAndIcp.isDisplayed()) {
+		if (!elementIsShown(By.cssSelector(SAIC_ADMINISTRATION_LINK_CSS))) {
 			return false;
 		}
 

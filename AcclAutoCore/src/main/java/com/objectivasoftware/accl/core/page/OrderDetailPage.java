@@ -53,9 +53,19 @@ public class OrderDetailPage extends BasePage {
 
 	public static final String ORDER_DETAIL_HEAD_NUM_CSS = ".orderdetail-head-num";
 
-	public boolean verifyOrderSuccess() {
+	public boolean verifyOrderPaySuccess() {
 		String text = payentStatus.getText();
-		return text.equals("付款成功") || text.equals("支付中") || text.equals("待付款");
+		return text.equals("付款成功");
+	}
+
+	public boolean verifyOrderInPayment() {
+		String text = payentStatus.getText();
+		return text.equals("支付中");
+	}
+
+	public boolean verifyOrderPaymentPending() {
+		String text = payentStatus.getText();
+		return text.equals("待付款");
 	}
 
 	public boolean verifyOrderCancel() {

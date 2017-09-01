@@ -12,10 +12,10 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     And Click checkout button on card page, then navigate to check out page.
     And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Click payment button, then navigate to payment page.
-    And Select Union-pay on payment page, and click pay now, then the Union-pay page displayed.
+    And Select Union-pay with one pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
-    And Navigate to order detail page from payment.
-    Then Cancel the order and verify the order status.
+    And Navigate to order detail page by click View Detail Link from payment.
+    Then Cancel the order which is pay completed and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
-    |59376340		|123456		|北京市			|31573		|
+    |59376340		|123456		|广东省			|61694		|

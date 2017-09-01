@@ -172,16 +172,19 @@ public class HeaderComponent extends BaseComponent {
 	}
 
 	public static final String MINI_CART_DETAIL_CSS = ".site-mini-cart .mini-cart-list .mini-cart-detail";
-	private List<WebElement> miniCartDetails;
+	public static final String MINI_CART_SLOT_CSS = ".site-mini-cart .miniCartSlot";
+	@FindBy(css = MINI_CART_SLOT_CSS)
+	private WebElement miniCartSlot;
 
 	public boolean isCartNull() {
+		mouseMoveToElement(miniCartSlot);
+		WaitUtil.waitOn(myDriver).waitTime(500);
 		try {
-			miniCartDetails = myDriver.findElements(By.cssSelector(MINI_CART_DETAIL_CSS));
+			myDriver.findElement(By.cssSelector(MINI_CART_DETAIL_CSS));
 		} catch (NoSuchElementException e) {
 			return true;
 		}
-
-		return miniCartDetails == null || miniCartDetails.size() == 0;
+		return false;
 	}
 
 	public static final String RIGHT_CART_LINK_CSS = ".cart-wrapper";
@@ -330,15 +333,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean logoIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(LOGO_IMG_CSS));
-			super.scrollMoveToElement(logoImg);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return logoImg.isDisplayed();
+		return elementIsShown(By.cssSelector(LOGO_IMG_CSS));
 	}
 
 	/**
@@ -346,15 +341,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean welcomeTextIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(WELCOME_TEXT_CSS));
-			super.scrollMoveToElement(welcomeText);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return welcomeText.isDisplayed();
+		return elementIsShown(By.cssSelector(WELCOME_TEXT_CSS));
 	}
 
 	/**
@@ -362,15 +349,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean guestHelpCenterIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HELP_CENTER_GUEST_CSS));
-			super.scrollMoveToElement(logoutHelpCenter);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return logoutHelpCenter.isDisplayed();
+		return elementIsShown(By.cssSelector(HELP_CENTER_GUEST_CSS));
 	}
 
 	/**
@@ -378,15 +357,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean userHelpCenterIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HELP_CENTER_USER_CSS));
-			super.scrollMoveToElement(loginHelpCenter);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return loginHelpCenter.isDisplayed();
+		return elementIsShown(By.cssSelector(HELP_CENTER_USER_CSS));
 	}
 
 	/**
@@ -394,15 +365,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean homepageLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOME_PAGE_CSS));
-			super.scrollMoveToElement(homepageCss);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return homepageCss.isDisplayed();
+		return elementIsShown(By.cssSelector(HOME_PAGE_CSS));
 	}
 
 	/**
@@ -410,15 +373,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean guestOnlineChatIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ONLINE_CHAT_GUEST_CSS));
-			super.scrollMoveToElement(logoutOnlineChat);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return logoutOnlineChat.isDisplayed();
+		return elementIsShown(By.cssSelector(ONLINE_CHAT_GUEST_CSS));
 	}
 
 	/**
@@ -426,15 +381,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean userOnlineChatIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AONLINE_CHAT_USER_CSS));
-			super.scrollMoveToElement(loginOnlineChat);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return loginOnlineChat.isDisplayed();
+		return elementIsShown(By.cssSelector(AONLINE_CHAT_USER_CSS));
 	}
 
 	/**
@@ -442,15 +389,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean amwayNetIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMWAY_NET_CSS));
-			super.scrollMoveToElement(amwayNet);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return amwayNet.isDisplayed();
+		return elementIsShown(By.cssSelector(AMWAY_NET_CSS));
 	}
 
 	/**
@@ -458,15 +397,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean myAccountLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(MY_ACCOUNT_CSS));
-			super.scrollMoveToElement(myAccountCss);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return myAccountCss.isDisplayed();
+		return elementIsShown(By.cssSelector(MY_ACCOUNT_CSS));
 	}
 
 	/**
@@ -474,15 +405,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean eVouchersLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(E_VOUCHERS_CSS));
-			super.scrollMoveToElement(eVouchersCss);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return eVouchersCss.isDisplayed();
+		return elementIsShown(By.cssSelector(E_VOUCHERS_CSS));
 	}
 
 	/**
@@ -490,15 +413,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean bussinessViewIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(BUSSINESS_VIEW_CSS));
-			super.scrollMoveToElement(bussinessView);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return bussinessView.isDisplayed();
+		return elementIsShown(By.cssSelector(BUSSINESS_VIEW_CSS));
 	}
 
 	/**
@@ -506,15 +421,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean currentBuyerTextIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CURRENT_BUYER_TEXT_CSS));
-			super.scrollMoveToElement(currentBuyerText);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return currentBuyerText.isDisplayed();
+		return elementIsShown(By.cssSelector(CURRENT_BUYER_TEXT_CSS));
 	}
 
 	/**
@@ -522,15 +429,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean changeBuyerLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CHANGE_BUYER_LINK_CSS));
-			super.scrollMoveToElement(changeBuyerLink);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return changeBuyerLink.isDisplayed();
+		return elementIsShown(By.cssSelector(CHANGE_BUYER_LINK_CSS));
 	}
 
 	/**
@@ -538,15 +437,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean currentLocationIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CURRENT_LOCATION_CSS));
-			super.scrollMoveToElement(currentLocation);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return currentLocation.isDisplayed();
+		return elementIsShown(By.cssSelector(CURRENT_LOCATION_CSS));
 	}
 
 	/**
@@ -554,15 +445,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean searchInputIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(SEARCH_INPUT_CSS));
-			super.scrollMoveToElement(searchInput);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return searchInput.isDisplayed();
+		return elementIsShown(By.cssSelector(SEARCH_INPUT_CSS));
 	}
 
 	/**
@@ -570,15 +453,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean quickBuyIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(QUICK_BUY_CSS));
-			super.scrollMoveToElement(quickBuy);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return quickBuy.isDisplayed();
+		return elementIsShown(By.cssSelector(QUICK_BUY_CSS));
 	}
 
 	/**
@@ -586,15 +461,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean orderQueryIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ORDER_QUERY_CSS));
-			super.scrollMoveToElement(orderQuery);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return orderQuery.isDisplayed();
+		return elementIsShown(By.cssSelector(ORDER_QUERY_CSS));
 	}
 
 	/**
@@ -602,15 +469,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean miniCartLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(MINI_CART_LINK_CSS));
-			super.scrollMoveToElement(miniCartLink);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return miniCartLink.isDisplayed();
+		return elementIsShown(By.cssSelector(MINI_CART_LINK_CSS));
 	}
 
 	/**
@@ -618,15 +477,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean gategoryNavigationBarIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CATEGORY_NAVIGATION_BAR_CSS));
-			super.scrollMoveToElement(gategoryNavigationBar);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return gategoryNavigationBar.isDisplayed();
+		return elementIsShown(By.cssSelector(CATEGORY_NAVIGATION_BAR_CSS));
 	}
 
 	/**
@@ -634,15 +485,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean hotSalesIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOT_SALES_CSS));
-			super.scrollMoveToElement(hotSales);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return hotSales.isDisplayed();
+		return elementIsShown(By.cssSelector(HOT_SALES_CSS));
 	}
 
 	/**
@@ -650,15 +493,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean quotaSalesIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(QUOTA_SALES_CSS));
-			super.scrollMoveToElement(quotaSales);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return quotaSales.isDisplayed();
+		return elementIsShown(By.cssSelector(QUOTA_SALES_CSS));
 	}
 
 	/**
@@ -666,15 +501,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean promotionsZoneLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(PROMOTIONS_ZONE_CSS));
-			super.scrollMoveToElement(promotionsZone);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return promotionsZone.isDisplayed();
+		return elementIsShown(By.cssSelector(PROMOTIONS_ZONE_CSS));
 	}
 
 	/**
@@ -682,15 +509,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean amplusGiftsLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMPLUS_GIFTS_CSS));
-			super.scrollMoveToElement(amplusGifts);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return amplusGifts.isDisplayed();
+		return elementIsShown(By.cssSelector(AMPLUS_GIFTS_CSS));
 	}
 
 	/**
@@ -698,15 +517,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean crossBorderLinkIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CROSS_BORDER_CSS));
-			super.scrollMoveToElement(crossBorder);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return crossBorder.isDisplayed();
+		return elementIsShown(By.cssSelector(CROSS_BORDER_CSS));
 	}
 
 	/**
@@ -714,15 +525,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean howToBuyIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOW_TO_BUY_CSS));
-			super.scrollMoveToElement(howToBuy);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return howToBuy.isDisplayed();
+		return elementIsShown(By.cssSelector(HOW_TO_BUY_CSS));
 	}
 
 	// 纽崔莱
@@ -758,8 +561,7 @@ public class HeaderComponent extends BaseComponent {
 	 */
 	public boolean moveToNutriAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(firstMenuNutrilite).perform();
+		mouseMoveToElement(firstMenuNutrilite);
 		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuNutrilite, "md-show-sub")).untilEventHappened();
 
 		try {
@@ -776,8 +578,7 @@ public class HeaderComponent extends BaseComponent {
 	 */
 	public boolean moveToArtiAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(firstMenuArtistry).perform();
+		mouseMoveToElement(firstMenuArtistry);
 		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuArtistry, "md-show-sub")).untilEventHappened();
 
 		try {
@@ -794,8 +595,7 @@ public class HeaderComponent extends BaseComponent {
 	 */
 	public boolean moveToHomeTechAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(firstMenuHomeTech).perform();
+		mouseMoveToElement(firstMenuHomeTech);
 		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeTech, "md-show-sub")).untilEventHappened();
 
 		try {
@@ -812,8 +612,7 @@ public class HeaderComponent extends BaseComponent {
 	 */
 	public boolean moveToHomeCareAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(firstMenuHomeCare).perform();
+		mouseMoveToElement(firstMenuHomeCare);
 		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeCare, "md-show-sub")).untilEventHappened();
 
 		try {
@@ -830,8 +629,7 @@ public class HeaderComponent extends BaseComponent {
 	 */
 	public boolean moveToPersonCareAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
-		Actions action = new Actions(myDriver.getDelegate());
-		action.moveToElement(firstMenuPersonalCare).perform();
+		mouseMoveToElement(firstMenuPersonalCare);
 		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuPersonalCare, "md-show-sub")).untilEventHappened();
 
 		try {
@@ -847,14 +645,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuNutriliteIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_NUTRILITE_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuNutrilite.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_NUTRILITE_CSS));
 	}
 
 	/**
@@ -862,14 +653,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuArtistryIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_ARTISTRY_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuArtistry.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_ARTISTRY_CSS));
 	}
 
 	/**
@@ -877,14 +661,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuHomeTechIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_HOME_TECH_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuHomeTech.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_HOME_TECH_CSS));
 	}
 
 	/**
@@ -892,14 +669,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuHomeCareIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_HOME_CARE_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuHomeCare.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_HOME_CARE_CSS));
 	}
 
 	/**
@@ -907,14 +677,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuPersonalCareIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_PERSONAL_CARE_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuPersonalCare.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_PERSONAL_CARE_CSS));
 	}
 
 	/**
@@ -922,14 +685,7 @@ public class HeaderComponent extends BaseComponent {
 	 * @return
 	 */
 	public boolean firstMenuAccessoriesIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(FIRST_MENU_ACCESSORIES_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-		return firstMenuAccessories.isDisplayed();
+		return elementIsShown(By.cssSelector(FIRST_MENU_ACCESSORIES_CSS));
 	}
 
 }

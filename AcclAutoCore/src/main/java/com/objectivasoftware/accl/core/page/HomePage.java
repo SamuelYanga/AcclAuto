@@ -2,7 +2,6 @@ package com.objectivasoftware.accl.core.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,6 +39,13 @@ public class HomePage extends BasePage {
 		browser.skipSSLValidation();
 		// browser.switchToAlert();
 		browser.manage().window().maximize();
+		
+		try {
+			WaitUtil.waitOn(browser, 10000).untilHidden(By.cssSelector(".page-overlay span.loader"));
+		} catch (TimeoutException e) {
+			browser.navigate().refresh();
+		}
+		
 		if (firstOpen) {
 			WaitUtil.waitOn(browser).waitTime(3000);
 		}
@@ -109,16 +115,12 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean kvBillboardIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(KV_BILLBOARD_CSS));
+		boolean result = elementIsShown(By.cssSelector(KV_BILLBOARD_CSS));
+		if (result) {
 			super.scrollMoveToElement(kvBillboard);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
 		}
 
-		return kvBillboard.isDisplayed();
+		return result;
 	}
 
 	/**
@@ -126,16 +128,11 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean articleBannersIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(ARTICLE_BANNERS_CSS));
+		boolean result = elementIsShown(By.cssSelector(ARTICLE_BANNERS_CSS));
+		if (result) {
 			super.scrollMoveToElement(articleBanners);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
 		}
-
-		return articleBanners.isDisplayed();
+		return result;
 	}
 
 	/**
@@ -143,16 +140,11 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean categoryProductShowIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(CATEGORY_PRODUCT_SHOW_CASES_CSS));
+		boolean result = elementIsShown(By.cssSelector(CATEGORY_PRODUCT_SHOW_CASES_CSS));
+		if (result) {
 			super.scrollMoveToElement(categoryProductShowCases);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
 		}
-
-		return categoryProductShowCases.isDisplayed();
+		return result;
 	}
 
 	/**
@@ -160,16 +152,11 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean amplusGiftShowIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(AMPLUS_GIFT_SHOW_CASE_CSS));
+		boolean result = elementIsShown(By.cssSelector(AMPLUS_GIFT_SHOW_CASE_CSS));
+		if (result) {
 			super.scrollMoveToElement(amplusGiftShowCase);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
 		}
-
-		return amplusGiftShowCase.isDisplayed();
+		return result;
 	}
 
 	/**
@@ -177,15 +164,11 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean businessViewIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(BUSINESS_VIEW_BTN_CSS));
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
+		boolean result = elementIsShown(By.cssSelector(BUSINESS_VIEW_BTN_CSS));
+		if (result) {
+			super.scrollMoveToElement(businessViewBtn);
 		}
-
-		return businessViewBtn.isDisplayed();
+		return result;
 	}
 
 	/**
@@ -193,16 +176,11 @@ public class HomePage extends BasePage {
 	 * @return
 	 */
 	public boolean hotProductShowIsDisplayed() {
-		try {
-			WaitUtil.waitOn(myDriver, 2000).untilAdded(By.cssSelector(HOT_PRODUCT_SHOW_CASE_CSS));
+		boolean result = elementIsShown(By.cssSelector(HOT_PRODUCT_SHOW_CASE_CSS));
+		if (result) {
 			super.scrollMoveToElement(hotProductShowCase);
-		} catch (TimeoutException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
 		}
-
-		return hotProductShowCase.isDisplayed();
+		return result;
 	}
 
 	/**
