@@ -171,13 +171,17 @@ public class HeaderComponent extends BaseComponent {
 		}
 	}
 
-	public static final String CART_ITEMS_TOTAL_CSS = ".site-mini-cart .nav-items-total";
-	@FindBy(css = CART_ITEMS_TOTAL_CSS)
-	private WebElement cartItmesTotal;
+	public static final String MINI_CART_DETAIL_CSS = ".site-mini-cart .mini-cart-list .mini-cart-detail";
+	private List<WebElement> miniCartDetails;
 
 	public boolean isCartNull() {
-		String value = cartItmesTotal.getText().trim();
-		return "".equals(value) || "0".equals(value);
+		try {
+			miniCartDetails = myDriver.findElements(By.cssSelector(MINI_CART_DETAIL_CSS));
+		} catch (NoSuchElementException e) {
+			return true;
+		}
+
+		return miniCartDetails == null || miniCartDetails.size() == 0;
 	}
 
 	public static final String RIGHT_CART_LINK_CSS = ".cart-wrapper";
