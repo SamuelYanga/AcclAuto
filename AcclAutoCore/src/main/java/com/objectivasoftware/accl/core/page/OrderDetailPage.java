@@ -93,7 +93,7 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver, 1000).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
 	}
-	
+
 	public boolean verifyInvoiceType(InvoiceType type) {
 		try {
 			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(INVOICE_DETAIL_LINK_CSS));

@@ -14,7 +14,7 @@ Scenario Outline: Login->add to cart->check out->payment page->select more pay->
     And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
     And Pay on the Union-pay page, then back to payment page.
     And Navigate to order detail page from payment.
-    Then Cancel the order which is pay completed and verify the order status.
+    Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
     |59376340		|123456		|北京市			|31573		|
