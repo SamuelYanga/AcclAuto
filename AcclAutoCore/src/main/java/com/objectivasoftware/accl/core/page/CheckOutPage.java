@@ -181,7 +181,10 @@ public class CheckOutPage extends BasePage {
 		}).untilEventHappened();
 
 		for (int i = 0; i < size; i++) {
-			addressScroll(i);
+			int move = i - 6;
+			if (move > 0) {
+				addressScroll(move);
+			}
 			String text = addressList.get(i).getText().trim();
 			if (StringUtils.isEmpty(text)) {
 				continue;

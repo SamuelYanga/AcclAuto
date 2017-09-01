@@ -169,8 +169,11 @@ public abstract class BasePage extends AbstractFrame {
 			return 0;
 		}
 
+		int start = list.size() - 2;
+		int end = list.size() - 1;
+
 		try {
-			return list.get(1).getLocation().getY() - list.get(0).getLocation().getY();
+			return list.get(end).getLocation().getY() - list.get(start).getLocation().getY();
 		} catch (Exception e) {
 			return 0;
 		}
