@@ -53,24 +53,23 @@ public class OrderDetailPage extends BasePage {
 
 	public static final String ORDER_DETAIL_HEAD_NUM_CSS = ".orderdetail-head-num";
 
-	public boolean verifyOrderPaySuccess() {
-		String text = payentStatus.getText();
-		return text.equals("付款成功");
+	public static final String ORDER_STATUS_PAY_SUCCESS = "付款成功";
+	public static final String ORDER_STATUS_IN_PAYMENT = "支付中";
+	public static final String ORDER_STATUS_PENDING_PAYMENT = "待付款";
+	public static final String ORDER_STATUS_ORDER_CANCEL = "取消订单";
+
+	public static final String REFUND_STATUS_SUCCESS = "退款成功";
+	
+	public static final String REFUND_STATUS_CSS = ".payment-detail-list .payment-status";
+	@FindBy(css = REFUND_STATUS_CSS)
+	private WebElement refundStatus;
+
+	public String getRefundStatus() {
+		return refundStatus.getText().trim();
 	}
 
-	public boolean verifyOrderInPayment() {
-		String text = payentStatus.getText();
-		return text.equals("支付中");
-	}
-
-	public boolean verifyOrderPaymentPending() {
-		String text = payentStatus.getText();
-		return text.equals("待付款");
-	}
-
-	public boolean verifyOrderCancel() {
-		String text = payentStatus.getText();
-		return text.equals("取消订单");
+	public String getOrderStatus() {
+		return payentStatus.getText().trim();
 	}
 
 	public void waittime(int time) {

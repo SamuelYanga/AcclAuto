@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -56,8 +55,8 @@ public class HeaderComponent extends BaseComponent {
 
 	public boolean isLogin() {
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(LOGIN_LINK_CSS));
-		} catch (TimeoutException e) {
+			myDriver.findElement(By.cssSelector(LOGIN_LINK_CSS));
+		} catch (NoSuchElementException e) {
 			return true;
 		}
 		return false;

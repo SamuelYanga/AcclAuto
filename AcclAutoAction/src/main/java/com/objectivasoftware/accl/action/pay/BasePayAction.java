@@ -2,6 +2,8 @@ package com.objectivasoftware.accl.action.pay;
 
 import org.junit.Assert;
 
+import static org.hamcrest.Matchers.*;
+
 import com.objectivasoftware.accl.core.component.HeaderComponent;
 import com.objectivasoftware.accl.core.component.LoginComponent;
 import com.objectivasoftware.accl.core.page.CartPage;
@@ -126,26 +128,32 @@ public class BasePayAction {
 	@Then("Cancel the order which is pay completed and verify the order status.")
 	public void cancelOrderWithPaySuccess() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
-		Assert.assertTrue(orderDetailPage.verifyOrderPaySuccess());
+		String orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_PAY_SUCCESS));
 		orderDetailPage.cancelOrder();
-		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
+		orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_ORDER_CANCEL));
 	}
 
 	@Then("Cancel the order which is in payment and verify the order status.")
 	public void cancelOrderWhichInPayment() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
-		Assert.assertTrue(orderDetailPage.verifyOrderInPayment());
+		String orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_IN_PAYMENT));
 		orderDetailPage.cancelOrder();
-		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
+		orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_ORDER_CANCEL));
 	}
 
 	@Then("Cancel the order which is pending payment with no pay and verify the order status.")
 	public void cancelOrderWithNoPay() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
-		Assert.assertTrue(orderDetailPage.verifyOrderPaymentPending());
+		String orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_PENDING_PAYMENT));
 		orderDetailPage.waittime(10000);
 		orderDetailPage.cancelOrder();
-		Assert.assertTrue(orderDetailPage.verifyOrderCancel());
+		orderStatus = orderDetailPage.getOrderStatus();
+		Assert.assertThat(orderStatus, equalToIgnoringWhiteSpace(OrderDetailPage.ORDER_STATUS_ORDER_CANCEL));
 	}
 
 }

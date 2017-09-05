@@ -223,4 +223,33 @@ public class PaymentPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilListShown(By.cssSelector(OrderDetailPage.ORDER_DETAIL_HEAD_NUM_CSS));
 	}
 
+	public static final String APPLY_REFUND_CSS = ".am-dark-indigo";
+	@FindBy(css = APPLY_REFUND_CSS)
+	private WebElement applyForRefundLink;
+
+	public static final String APPLY_REFUND_CONFIRM_CSS = "#cboxLoadedContent .remove-cart .confirm-refund";
+	@FindBy(css = APPLY_REFUND_CONFIRM_CSS)
+	private WebElement applyForRefundConfirm;
+
+	public static final String REFUND_CONFIRM_CSS = "#cboxLoadedContent .remove-cart a.confirm";
+	@FindBy(css = REFUND_CONFIRM_CSS)
+	private WebElement refundConfirm;
+
+	public static final String PAYMENT_STATUS_CSS = ".payment-detail-list .payment-status";
+	@FindBy(css = PAYMENT_STATUS_CSS)
+	private WebElement paymentStatus;
+	
+	public void applyRefund() {
+		super.scrollMoveToElement(applyForRefundLink);
+		applyForRefundLink.click();
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(APPLY_REFUND_CONFIRM_CSS));
+		
+		applyForRefundConfirm.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(REFUND_CONFIRM_CSS));
+
+		refundConfirm.click();
+		WaitUtil.waitOn(myDriver).untilPageDown();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(REFUND_CONFIRM_CSS));
+	}
 }
