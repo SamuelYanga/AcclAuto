@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
+import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class LoginComponent extends BaseComponent {
 
@@ -54,7 +55,7 @@ public class LoginComponent extends BaseComponent {
 		loginBtn.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(HeaderComponent.LOGIN_LINK_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		WaitUtil.waitOn(myDriver, new UntilEvent() {
 
 			@Override
@@ -67,7 +68,7 @@ public class LoginComponent extends BaseComponent {
 		}).untilEventHappened();
 
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
 			closeNotification();
 		} catch (TimeoutException e) {
 		}

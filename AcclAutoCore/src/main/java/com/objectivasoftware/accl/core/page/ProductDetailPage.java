@@ -64,7 +64,7 @@ public class ProductDetailPage extends BasePage {
 				WaitUtil.waitOn(myDriver).untilElementToBeClickable(element);
 				element.click();
 				try {
-					WaitUtil.waitOn(myDriver, 2000, new UntilEvent() {
+					WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2, new UntilEvent() {
 						@Override
 						public boolean excute() {
 							String classValue = element.getAttribute("class");
@@ -73,7 +73,7 @@ public class ProductDetailPage extends BasePage {
 					}).untilEventHappened();
 				} catch (TimeoutException e) {
 					element.click();
-					WaitUtil.waitOn(myDriver, 2000, new UntilEvent() {
+					WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2, new UntilEvent() {
 						@Override
 						public boolean excute() {
 							String classValue = element.getAttribute("class");
@@ -107,12 +107,13 @@ public class ProductDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 
 		try {
-			WaitUtil.waitOn(myDriver, 3000).untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
-			WaitUtil.waitOn(myDriver).waitTime(1000L);
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3)
+					.untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 			nonparticipation.click();
 			WaitUtil.waitOn(myDriver).untilPageDown();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(NON_PARTICIPATION_BUTTON));
-			WaitUtil.waitOn(myDriver).waitTime(3000L);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL3);
 		} catch (TimeoutException e) {
 
 		} catch (NoSuchElementException e) {
@@ -120,7 +121,8 @@ public class ProductDetailPage extends BasePage {
 		}
 
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2)
+					.untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
 			AecLocationComponent aecLocationComponent = new AecLocationComponent();
 			aecLocationComponent.closeAecComponent();
 		} catch (TimeoutException e) {

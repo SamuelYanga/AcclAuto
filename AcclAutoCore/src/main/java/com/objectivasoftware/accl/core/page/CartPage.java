@@ -35,21 +35,22 @@ public class CartPage extends BasePage {
 	 * 点击[去结算]
 	 */
 	public void checkout() {
-		WaitUtil.waitOn(myDriver).waitTime(1000L);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(checkOutButton);
 		checkOutButton.click();
-		WaitUtil.waitOn(myDriver).waitTime(1000L);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 
 		try {
-			WaitUtil.waitOn(myDriver, 3000).untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
-			WaitUtil.waitOn(myDriver).waitTime(1000L);
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3)
+					.untilShown(By.cssSelector(NON_PARTICIPATION_BUTTON));
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 			nonparticipation.click();
 			WaitUtil.waitOn(myDriver).untilPageDown();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(NON_PARTICIPATION_BUTTON));
-			WaitUtil.waitOn(myDriver).waitTime(3000L);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL3);
 		} catch (TimeoutException e) {
 
 		} catch (NoSuchElementException e) {
@@ -57,7 +58,8 @@ public class CartPage extends BasePage {
 		}
 
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2)
+					.untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
 			AecLocationComponent aecLocationComponent = new AecLocationComponent();
 			aecLocationComponent.closeAecComponent();
 		} catch (TimeoutException e) {
@@ -157,7 +159,7 @@ public class CartPage extends BasePage {
 	private void openCartDetails() {
 		
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(CART_DETAIL_LINKS_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(CART_DETAIL_LINKS_CSS));
 		} catch (TimeoutException e) {
 			return;
 		}

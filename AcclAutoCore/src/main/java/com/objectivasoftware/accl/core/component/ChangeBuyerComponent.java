@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
+import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class ChangeBuyerComponent extends BaseComponent {
 
@@ -55,7 +56,7 @@ public class ChangeBuyerComponent extends BaseComponent {
 
 		WebElement selectedBuyer = getSelectBuyer(user);
 		selectedBuyer.click();
-		WaitUtil.waitOn(myDriver).waitTime(300);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 
 		updateButton.click();
 		WaitUtil.waitOn(myDriver).untilHidden(By.id(SELECT_FREQUENT_BUYER_LIST_ID));
@@ -64,11 +65,11 @@ public class ChangeBuyerComponent extends BaseComponent {
 
 		confirmButton.click();
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(POPUP_CONFIRM_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 
 		popupConfirmButton.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 	}
 
 	private WebElement getSelectBuyer(String user) {
@@ -89,7 +90,7 @@ public class ChangeBuyerComponent extends BaseComponent {
 		selfShoppingButton.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CHANGE_BUYER_WRAPPER_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 	}
 
 }

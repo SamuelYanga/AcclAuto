@@ -49,8 +49,8 @@ public class HeaderComponent extends BaseComponent {
 			WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(LOGIN_LINK_CSS));
 			loginLink.click();
 		}
-		WaitUtil.waitOn(myDriver).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
-		WaitUtil.waitOn(myDriver).waitTime(1000);
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 	}
 
 	public boolean isLogin() {
@@ -90,7 +90,7 @@ public class HeaderComponent extends BaseComponent {
 	public static final String LOG_OUT_CSS = ".purchaser-section .logout";
 	@FindBy(css = LOG_OUT_CSS)
 	private WebElement logoutLink;
-	
+
 	public void logout() {
 		moveToPurchaserSection();
 		logoutLink.click();
@@ -177,7 +177,7 @@ public class HeaderComponent extends BaseComponent {
 
 	public boolean isCartNull() {
 		mouseMoveToElement(miniCartSlot);
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		try {
 			myDriver.findElement(By.cssSelector(MINI_CART_DETAIL_CSS));
 		} catch (NoSuchElementException e) {
@@ -199,7 +199,7 @@ public class HeaderComponent extends BaseComponent {
 		logoImg.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HEADER_BANNER_CLOSE_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(1000);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 	}
 	
 	//logo图标Amway Logo
@@ -561,7 +561,8 @@ public class HeaderComponent extends BaseComponent {
 	public boolean moveToNutriAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
 		mouseMoveToElement(firstMenuNutrilite);
-		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuNutrilite, "md-show-sub")).untilEventHappened();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2,
+				new WaitClassChange(firstMenuNutrilite, "md-show-sub")).untilEventHappened();
 
 		try {
 			secondMenu = firstMenuNutrilite.findElements(By.cssSelector(SECOND_MENU_CSS));
@@ -578,7 +579,8 @@ public class HeaderComponent extends BaseComponent {
 	public boolean moveToArtiAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
 		mouseMoveToElement(firstMenuArtistry);
-		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuArtistry, "md-show-sub")).untilEventHappened();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2,
+				new WaitClassChange(firstMenuArtistry, "md-show-sub")).untilEventHappened();
 
 		try {
 			secondMenu = firstMenuArtistry.findElements(By.cssSelector(SECOND_MENU_CSS));
@@ -595,7 +597,8 @@ public class HeaderComponent extends BaseComponent {
 	public boolean moveToHomeTechAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
 		mouseMoveToElement(firstMenuHomeTech);
-		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeTech, "md-show-sub")).untilEventHappened();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2,
+				new WaitClassChange(firstMenuHomeTech, "md-show-sub")).untilEventHappened();
 
 		try {
 			secondMenu = firstMenuHomeTech.findElements(By.cssSelector(SECOND_MENU_CSS));
@@ -612,7 +615,8 @@ public class HeaderComponent extends BaseComponent {
 	public boolean moveToHomeCareAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
 		mouseMoveToElement(firstMenuHomeCare);
-		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuHomeCare, "md-show-sub")).untilEventHappened();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2,
+				new WaitClassChange(firstMenuHomeCare, "md-show-sub")).untilEventHappened();
 
 		try {
 			secondMenu = firstMenuHomeCare.findElements(By.cssSelector(SECOND_MENU_CSS));
@@ -629,7 +633,8 @@ public class HeaderComponent extends BaseComponent {
 	public boolean moveToPersonCareAndSecMenuIsDisplayed() {
 		List<WebElement> secondMenu = null;
 		mouseMoveToElement(firstMenuPersonalCare);
-		WaitUtil.waitOn(myDriver, 2000, new WaitClassChange(firstMenuPersonalCare, "md-show-sub")).untilEventHappened();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2,
+				new WaitClassChange(firstMenuPersonalCare, "md-show-sub")).untilEventHappened();
 
 		try {
 			secondMenu = firstMenuPersonalCare.findElements(By.cssSelector(SECOND_MENU_CSS));

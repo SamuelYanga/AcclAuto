@@ -15,6 +15,7 @@ import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
 import com.objectivasoftware.accl.core.component.AecLocationComponent;
 import com.objectivasoftware.accl.core.component.HeaderComponent;
+import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class HomePage extends BasePage {
 
@@ -41,18 +42,18 @@ public class HomePage extends BasePage {
 		browser.manage().window().maximize();
 		
 		try {
-			WaitUtil.waitOn(browser, 10000).untilHidden(By.cssSelector(".page-overlay span.loader"));
+			WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL5).untilHidden(By.cssSelector(".page-overlay span.loader"));
 		} catch (TimeoutException e) {
 			browser.navigate().refresh();
 		}
-		
+
 		if (firstOpen) {
-			WaitUtil.waitOn(browser).waitTime(3000);
+			WaitUtil.waitOn(browser).waitTime(CommonConstant.WAIT_TIME_LEVEL3);
 		}
 
 		// 关闭AEC网络pop-up
 		try {
-			WaitUtil.waitOn(browser, 3000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL3).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
 			LOGGER.info("The [change aec location popup] is displayed");
 			browser.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
 			WaitUtil.waitOn(browser).untilRemoved(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
@@ -62,7 +63,7 @@ public class HomePage extends BasePage {
 
 		// 关闭更新本地地址pop-up
 		try {
-			WaitUtil.waitOn(browser, 1000).untilShown(By.cssSelector(CHANGE_LOCATION_WRAPPER));
+			WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL1).untilShown(By.cssSelector(CHANGE_LOCATION_WRAPPER));
 			LOGGER.info("The [change location popup] is displayed");
 			WebElement ambtn = browser.findElement(By.cssSelector(CHANGE_LOCATION_WRAPPER_AMBTN));
 			ambtn.click();
@@ -72,8 +73,8 @@ public class HomePage extends BasePage {
 			LOGGER.info("The [change location popup] is not displayed");
 		}
 
-		WaitUtil.waitOn(browser).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
-		WaitUtil.waitOn(browser).waitTime(1000);
+		WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL4).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
+		WaitUtil.waitOn(browser).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		firstOpen = true;
 		
 		return new HomePage();
@@ -233,7 +234,8 @@ public class HomePage extends BasePage {
 		headerComponent.logout();
 
 		try {
-			WaitUtil.waitOn(myDriver, 3000).untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3)
+					.untilShown(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
 			LOGGER.info("The [change aec location popup] is displayed");
 			myDriver.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(AecLocationComponent.CHANGE_AEC_LOCATION_POPUP));
@@ -242,7 +244,8 @@ public class HomePage extends BasePage {
 		}
 
 		try {
-			WaitUtil.waitOn(myDriver, 1000).untilShown(By.cssSelector(CHANGE_LOCATION_WRAPPER));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL1)
+					.untilShown(By.cssSelector(CHANGE_LOCATION_WRAPPER));
 			LOGGER.info("The [change location popup] is displayed");
 			WebElement ambtn = myDriver.findElement(By.cssSelector(CHANGE_LOCATION_WRAPPER_AMBTN));
 			ambtn.click();
@@ -253,7 +256,7 @@ public class HomePage extends BasePage {
 		}
 
 		WaitUtil.waitOn(myDriver).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(1000);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 	}
 
 }

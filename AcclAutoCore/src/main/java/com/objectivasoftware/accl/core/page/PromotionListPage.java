@@ -17,7 +17,7 @@ public class PromotionListPage extends BasePage {
 	private List<WebElement> promotionList;
 
 	public void selectPromotion(String promotionName) {
-		WaitUtil.waitOn(myDriver).waitTime(2000);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL2);
 		for (WebElement element : promotionList) {
 			String value = element.getAttribute("title").trim();
 			if (promotionName.equals(value)) {

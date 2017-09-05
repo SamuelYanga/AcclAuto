@@ -91,7 +91,7 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver, 1000).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL1).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
 	}
 
 	public boolean verifyInvoiceType(InvoiceType type) {
@@ -215,7 +215,7 @@ public class OrderDetailPage extends BasePage {
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 			WaitUtil.waitOn(myDriver).untilPageDown();
-			WaitUtil.waitOn(myDriver, 1000).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL1).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
 		} else {
 			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_ORDER_ERROR_CSS));
 			String msg0 = cancelOrderErrors.get(0).getText().trim();

@@ -60,7 +60,7 @@ public class AmplusPage extends BasePage {
 		Object obj = myDriver.executeScript(script);
 		int webPageViewHeight0 = Integer.valueOf(obj.toString());
 		windowScrollToTop(webPageViewHeight0);
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOAD_MORE_LOADER_CSS));
 		obj = myDriver.executeScript(script);
 		int webPageViewHeight1 = Integer.valueOf(obj.toString());

@@ -43,27 +43,25 @@ public class PaymentSuccessReceiptPage extends BasePage {
 				return newHandles == handleSize - 1;
 			}
 		}).untilEventHappened();
-		WaitUtil.waitOn(myDriver).waitTime(2000L);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 
-		
 		Set<String> handles = myDriver.getWindowHandles();
-		
+
 		myDriver.switchTo().window(handles.iterator().next());
 		super.switchToWindowByUrl(UrlConstant.PAYMENT);
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		
+
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilShown(By.cssSelector(PAY_SUCCESS_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(PAY_SUCCESS_CSS));
 			paySuccessCss.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 			WaitUtil.waitOn(myDriver).untilPageDown();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(PAY_SUCCESS_CSS));
 		} catch (TimeoutException e) {
-			
+
 		}
-//		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(PAY_SUCCESS_CSS));
 
 	}
 
@@ -74,11 +72,13 @@ public class PaymentSuccessReceiptPage extends BasePage {
 
 	public String exchangeCoffeeCouponSuccessful() {
 		try {
-			WaitUtil.waitOn(myDriver, 5000).untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL4)
+					.untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
 		} catch (TimeoutException e) {
 			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&fresh");
 			myDriver.navigate().refresh();
-			WaitUtil.waitOn(myDriver, 5000).untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL4)
+					.untilShown(By.cssSelector(COFFEE_COUPON_INFO_CSS));
 		}
 		String value = couponInfos.get(1).getText().trim();
 		value = value.substring(value.indexOf("：") + 1);

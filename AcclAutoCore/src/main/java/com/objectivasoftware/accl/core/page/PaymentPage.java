@@ -72,9 +72,9 @@ public class PaymentPage extends BasePage {
 		for (WebElement element : payTypes) {
 			String value = element.getAttribute("data-payment-button");
 			if (typeName.equals(value)) {
-				WaitUtil.waitOn(myDriver).waitTime(1000L);
+				WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 				element.click();
-				WaitUtil.waitOn(myDriver).waitTime(1000L);
+				WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 				WaitUtil.waitOn(myDriver, new UntilEvent() {
 					@Override
 					public boolean excute() {
@@ -120,17 +120,17 @@ public class PaymentPage extends BasePage {
 			try {
 				WaitUtil.waitOn(myDriver).untilElementToBeClickable(method);
 				method.click();
-				WaitUtil.waitOn(myDriver,5000).untilShown(By.id(PAYMENT_AMOUNT2_ID));
+				WaitUtil.waitOn(myDriver,CommonConstant.WAIT_TIME_LEVEL4).untilShown(By.id(PAYMENT_AMOUNT2_ID));
 			} catch (TimeoutException e) {
 				WebElement method0 = getPayMethod(PayMethod.PAY_ONE);
 				method0.click();
-				WaitUtil.waitOn(myDriver).waitTime(1000L);
+				WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 				method.click();
 				WaitUtil.waitOn(myDriver).untilShown(By.id(PAYMENT_AMOUNT2_ID));
 			}
 		} else {
 			method.click();
-			WaitUtil.waitOn(myDriver).waitTime(1000L);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		}
 	}
 
@@ -147,13 +147,13 @@ public class PaymentPage extends BasePage {
 			if (type.name().equals("UNION_PAY")) {
 				paymentAmountInput.clear();
 				paymentAmountInput.sendKeys(amount);
-				WaitUtil.waitOn(myDriver).waitTime(500L);
+				WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 			}
 		}
 
 		int handleNum = myDriver.getWindowHandles().size();
 		payNowButton.click();
-		WaitUtil.waitOn(myDriver).waitTime(5000L);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL4);
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver, new UntilEvent() {
 			@Override
@@ -178,7 +178,7 @@ public class PaymentPage extends BasePage {
 				return currentUrl.contains(UrlConstant.UNION_PAY_DOMAIN);
 			}
 		}).untilEventHappened();
-		WaitUtil.waitOn(myDriver, 90000).untilPageDown();
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL7).untilPageDown();
 	}
 
 	public boolean verifyOrderSuccess() {
@@ -187,7 +187,7 @@ public class PaymentPage extends BasePage {
 	}
 
 	public void navigateToOrderDetailWithNewHandle() {
-		WaitUtil.waitOn(myDriver).waitTime(1000);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -242,14 +242,16 @@ public class PaymentPage extends BasePage {
 	public void applyRefund() {
 		super.scrollMoveToElement(applyForRefundLink);
 		applyForRefundLink.click();
-		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(APPLY_REFUND_CONFIRM_CSS));
-		
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2)
+				.untilElementToBeClickable(By.cssSelector(APPLY_REFUND_CONFIRM_CSS));
+
 		applyForRefundConfirm.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(REFUND_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2)
+				.untilElementToBeClickable(By.cssSelector(REFUND_CONFIRM_CSS));
 
 		refundConfirm.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(REFUND_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilRemoved(By.cssSelector(REFUND_CONFIRM_CSS));
 	}
 }

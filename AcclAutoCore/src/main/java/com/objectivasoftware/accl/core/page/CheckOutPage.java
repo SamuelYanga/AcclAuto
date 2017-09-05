@@ -128,7 +128,7 @@ public class CheckOutPage extends BasePage {
 		openAddresses();
 		WebElement addressItem = getAddressItem(vo.getName());
 		addressItem.click();
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 	}
@@ -143,10 +143,9 @@ public class CheckOutPage extends BasePage {
 
 	private void openAddresses() {
 		try {
-			WaitUtil.waitOn(myDriver, 2000).untilListShown(By.cssSelector(VIEW_ALL_ADDRESS_CSS));
-
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2)
+					.untilListShown(By.cssSelector(VIEW_ALL_ADDRESS_CSS));
 			String classValue0 = viewAllAddress.getAttribute("class");
-
 			if (!classValue0.contains("more")) {
 				return;
 			}
@@ -217,10 +216,10 @@ public class CheckOutPage extends BasePage {
 	 * 点击【去支付】进入支付页面
 	 */
 	public void checkOutAndNaviToPayment() {
-		WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CHECKOUT_BUTTON_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilShown(By.cssSelector(CHECKOUT_BUTTON_CSS));
 		super.scrollMoveToElement(checkoutButton);
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CHECKOUT_BUTTON_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		checkoutButton.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -269,7 +268,7 @@ public class CheckOutPage extends BasePage {
 			specialInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-			WaitUtil.waitOn(myDriver).waitTime(500);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 			regularInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -320,7 +319,7 @@ public class CheckOutPage extends BasePage {
 			regularInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-			WaitUtil.waitOn(myDriver).waitTime(500);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 			specialInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -367,7 +366,7 @@ public class CheckOutPage extends BasePage {
 			regularInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-			WaitUtil.waitOn(myDriver).waitTime(500);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 			digitalInvoiceRadio.click();
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
@@ -411,7 +410,7 @@ public class CheckOutPage extends BasePage {
 
 	private WebElement getCartItemByUser(String user) {
 		WaitUtil.waitOn(myDriver).untilListShown(By.cssSelector(CART_LIST_CSS));
-		WaitUtil.waitOn(myDriver).waitTime(500);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		for (WebElement cart : cartList) {
 			WebElement userElement = cart.findElement(By.cssSelector(CART_ITEM_USER_CSS));
 			String value = userElement.getText();
