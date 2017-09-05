@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,11 +32,11 @@ public class OrderDetailPage extends BasePage {
 	public static final String INVOICE_DETAIL_LINK_CSS = ".item-digi-invoice a";
 	@FindBy(css = INVOICE_DETAIL_LINK_CSS)
 	private WebElement invoiceDetailLink;
-	
+
 	public static final String INVOICE_DETAIL_CLOSE_ID = "cboxClose";
 	@FindBy(id = INVOICE_DETAIL_CLOSE_ID)
 	private WebElement invoiceDetailClose;
-	
+
 	public static final String INVOICE_DETAIL_TITLE_ID = "cboxTitle";
 	@FindBy(id = INVOICE_DETAIL_TITLE_ID)
 	private WebElement invoiceDetailTitle;
@@ -59,7 +60,7 @@ public class OrderDetailPage extends BasePage {
 	public static final String ORDER_STATUS_ORDER_CANCEL = "取消订单";
 
 	public static final String REFUND_STATUS_SUCCESS = "退款成功";
-	
+
 	public static final String REFUND_STATUS_CSS = ".payment-detail-list .payment-status";
 	@FindBy(css = REFUND_STATUS_CSS)
 	private WebElement refundStatus;
@@ -106,9 +107,9 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.id(INVOICE_DETAIL_CLOSE_ID));
 		WaitUtil.waitOn(myDriver).untilShown(By.id(INVOICE_DETAIL_TITLE_ID));
-		
+
 		String text = invoiceDetailTitle.getText().trim();
-		
+
 		if ("REGULAR".equals(type.name())) {
 			return text.contains("增值税普通发票") && text.indexOf("电子版") == -1;
 		} else if ("SPECIAL".equals(type.name())) {
@@ -119,7 +120,7 @@ public class OrderDetailPage extends BasePage {
 
 		return false;
 	}
-	
+
 	public void closeInvoiceDetail() {
 		invoiceDetailClose.click();
 		WaitUtil.waitOn(myDriver).untilHidden(By.id(INVOICE_DETAIL_CLOSE_ID));
@@ -167,14 +168,14 @@ public class OrderDetailPage extends BasePage {
 		}
 
 		for (DigitalTicket ticket : tickets) {
-			if ( !ticket.isUsed(usedTicketList)) {
+			if (!ticket.isUsed(usedTicketList)) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
-	//Deduct points
+
+	// Deduct points
 	public static final String DEDUCT_AMPLUS_POINTS_CSS = ".pricing-summary .pricing-summary-value";
 	@FindBy(css = DEDUCT_AMPLUS_POINTS_CSS)
 	private List<WebElement> deductAmplusPoint;
@@ -185,4 +186,45 @@ public class OrderDetailPage extends BasePage {
 		return point.equals(value);
 	}
 
+	public static final String CANCEL_ORDER_ERROR_CSS = "#cboxLoadedContent .order-max-error .order-cancel-text .p-text";
+	@FindBy(css = CANCEL_ORDER_ERROR_CSS)
+	private List<WebElement> cancelOrderErrors;
+
+	public boolean verifyCancelOrderErrorMore5(String[] msgs) {
+		boolean cancelSuccess = false;
+
+		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CANCEL_ORDER_CSS));
+		WaitUtil.waitOn(myDriver).waitTime(200);
+		super.scrollMoveToElement(cancelOrderButton);
+		WaitUtil.waitOn(myDriver).waitTime(200);
+		cancelOrderButton.click();
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+		WaitUtil.waitOn(myDriver).untilPageDown();
+
+		try {
+			myDriver.findElement(By.cssSelector(CANCEL_CONFIRM_CSS));
+			cancelSuccess = cancelConfirmButton.isDisplayed();
+		} catch (NoSuchElementException e) {
+			cancelSuccess = false;
+		}
+
+		if (cancelSuccess) {
+			WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CANCEL_CONFIRM_CSS));
+			cancelConfirmButton.click();
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
+			WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
+			WaitUtil.waitOn(myDriver).untilPageDown();
+			WaitUtil.waitOn(myDriver, 1000).untilRemoved(By.cssSelector(CANCEL_CONFIRM_CSS));
+		} else {
+			WaitUtil.waitOn(myDriver).untilShown(By.cssSelector(CANCEL_ORDER_ERROR_CSS));
+			String msg0 = cancelOrderErrors.get(0).getText().trim();
+			String msg1 = cancelOrderErrors.get(1).getText().trim();
+
+			msgs[0] = msg0;
+			msgs[1] = msg1;
+		}
+
+		return cancelSuccess;
+	}
 }

@@ -120,9 +120,15 @@ public class BasePayAction {
 	}
 
 	@And("Navigate to order detail page from payment.")
-	public void navigateToOrderDetail() {
+	public void navigateToOrderDetailWithNewHandle() {
 		PaymentPage paymentPage = new PaymentPage();
 		paymentPage.navigateToOrderDetailWithNewHandle();
+	}
+
+	@And("Navigate to order detail page by click View Detail Link from payment.")
+	public void navigateToOrderDetail() {
+		PaymentPage paymentPage = new PaymentPage();
+		paymentPage.navigateToOrderDetail();
 	}
 
 	@Then("Cancel the order which is pay completed and verify the order status.")

@@ -150,10 +150,4 @@ public class AmplusAction {
 		Assert.assertTrue(paymentPage.verifyOrderSuccess());
 	}
 
-	@And("Navigate to order detail page by click View Detail Link from payment.")
-	public void navigateToOrderDetail() {
-		PaymentPage paymentPage = new PaymentPage();
-		paymentPage.navigateToOrderDetail();
-	}
-
 }
