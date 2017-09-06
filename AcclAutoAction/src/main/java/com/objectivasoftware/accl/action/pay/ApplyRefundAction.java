@@ -22,7 +22,8 @@ public class ApplyRefundAction {
 	public void verifyRefundStatus() {
 		OrderDetailPage orderDetailPage = new OrderDetailPage();
 		Assert.assertThat(orderDetailPage.getOrderStatus(), equalTo(OrderDetailPage.ORDER_STATUS_ORDER_CANCEL));
-		Assert.assertThat(orderDetailPage.getRefundStatus(), equalTo(OrderDetailPage.REFUND_STATUS_SUCCESS));
+		Assert.assertThat(orderDetailPage.getRefundStatus(),
+				anyOf(equalTo(OrderDetailPage.REFUND_STATUS_SUCCESS), equalTo(OrderDetailPage.REFUND_STATUS_WAIT)));
 	}
 
 }

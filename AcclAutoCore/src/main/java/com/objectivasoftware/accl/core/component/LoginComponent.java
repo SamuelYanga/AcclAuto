@@ -7,6 +7,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.objectivasoftware.accl.base.Configurations;
+import com.objectivasoftware.accl.base.Constants;
 import com.objectivasoftware.accl.base.frame.BaseComponent;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
@@ -56,21 +58,29 @@ public class LoginComponent extends BaseComponent {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(HeaderComponent.LOGIN_LINK_CSS));
 		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
-		WaitUtil.waitOn(myDriver, new UntilEvent() {
 
-			@Override
-			public boolean excute() {
-				WebElement eVouchersWrapper = myDriver
-						.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
-				String classValue = eVouchersWrapper.getAttribute("class");
-				return !classValue.contains("dropdown-active");
+		String currentUrl = myDriver.getCurrentUrl();
+
+		if (currentUrl.contains("promohome")) {
+			myDriver.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
+		} else {
+			WaitUtil.waitOn(myDriver, new UntilEvent() {
+
+				@Override
+				public boolean excute() {
+					WebElement eVouchersWrapper = myDriver
+							.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
+					String classValue = eVouchersWrapper.getAttribute("class");
+					return !classValue.contains("dropdown-active");
+				}
+			}).untilEventHappened();
+
+			try {
+				WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
+				closeNotification();
+			} catch (TimeoutException e) {
 			}
-		}).untilEventHappened();
-
-		try {
-			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
-			closeNotification();
-		} catch (TimeoutException e) {
 		}
 	}
 

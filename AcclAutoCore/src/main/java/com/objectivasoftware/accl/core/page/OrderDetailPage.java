@@ -60,6 +60,7 @@ public class OrderDetailPage extends BasePage {
 	public static final String ORDER_STATUS_ORDER_CANCEL = "取消订单";
 
 	public static final String REFUND_STATUS_SUCCESS = "退款成功";
+	public static final String REFUND_STATUS_WAIT = "退款中";
 
 	public static final String REFUND_STATUS_CSS = ".payment-detail-list .payment-status";
 	@FindBy(css = REFUND_STATUS_CSS)

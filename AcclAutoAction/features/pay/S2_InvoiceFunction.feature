@@ -10,6 +10,7 @@ Scenario Outline: Login->add to cart->check out->select Regular invoice->payment
     And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
+    And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Select a Regular invoice.
     And Click payment button, then navigate to payment page.
     And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
@@ -27,6 +28,7 @@ Scenario Outline: Login->add to cart->check out->select Special invoice->payment
     And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
+    And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Select a Special invoice.
     And Click payment button, then navigate to payment page.
     And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
@@ -44,6 +46,7 @@ Scenario Outline: Login->add to cart->check out->select Digital invoice->payment
     And Select a province for stock. provinceName="<provinceName>"
     And Search and add a product to card. productId="<product>"
     And Click checkout button on card page, then navigate to check out page.
+    And Add and select a delivery address by province on check out page. province="<provinceName>"
     And Select a Digital invoice.
     And Click payment button, then navigate to payment page.
     And Select Union-pay with multiple partial pay, and click pay now, then the Union-pay page displayed.
