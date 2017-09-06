@@ -64,23 +64,23 @@ public class LoginComponent extends BaseComponent {
 		if (currentUrl.contains("promohome")) {
 			myDriver.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
 			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
-		} else {
-			WaitUtil.waitOn(myDriver, new UntilEvent() {
+		}
 
-				@Override
-				public boolean excute() {
-					WebElement eVouchersWrapper = myDriver
-							.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
-					String classValue = eVouchersWrapper.getAttribute("class");
-					return !classValue.contains("dropdown-active");
-				}
-			}).untilEventHappened();
+		WaitUtil.waitOn(myDriver, new UntilEvent() {
 
-			try {
-				WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
-				closeNotification();
-			} catch (TimeoutException e) {
+			@Override
+			public boolean excute() {
+				WebElement eVouchersWrapper = myDriver
+						.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
+				String classValue = eVouchersWrapper.getAttribute("class");
+				return !classValue.contains("dropdown-active");
 			}
+		}).untilEventHappened();
+
+		try {
+			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));
+			closeNotification();
+		} catch (TimeoutException e) {
 		}
 	}
 
