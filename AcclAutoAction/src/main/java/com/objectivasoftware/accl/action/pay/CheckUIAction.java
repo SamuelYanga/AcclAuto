@@ -2,10 +2,10 @@ package com.objectivasoftware.accl.action.pay;
 
 import org.junit.Assert;
 
-import com.objectivasoftware.accl.core.component.FloatMenuComponent;
-import com.objectivasoftware.accl.core.component.FooterComponent;
-import com.objectivasoftware.accl.core.component.HeaderComponent;
-import com.objectivasoftware.accl.core.page.HomePage;
+import com.objectivasoftware.accl.core.desk.component.FloatMenuComponent;
+import com.objectivasoftware.accl.core.desk.component.FooterComponent;
+import com.objectivasoftware.accl.core.desk.component.HeaderComponent;
+import com.objectivasoftware.accl.core.desk.page.HomePage;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;

@@ -1,4 +1,4 @@
-package com.objectivasoftware.accl.core.component;
+package com.objectivasoftware.accl.core.desk.component;
 
 import java.util.List;
 

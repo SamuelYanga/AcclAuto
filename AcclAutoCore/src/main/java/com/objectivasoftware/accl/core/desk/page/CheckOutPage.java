@@ -1,4 +1,4 @@
-package com.objectivasoftware.accl.core.page;
+package com.objectivasoftware.accl.core.desk.page;
 
 import java.util.List;
 import java.util.Map;
@@ -12,8 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
-import com.objectivasoftware.accl.core.component.AddDeliveryAddressComponent;
-import com.objectivasoftware.accl.core.component.UseCouponComponent;
+import com.objectivasoftware.accl.core.desk.component.AddDeliveryAddressComponent;
+import com.objectivasoftware.accl.core.desk.component.UseCouponComponent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 import com.objectivasoftware.accl.core.util.enu.InvoiceType;
 import com.objectivasoftware.accl.core.vo.checkout.DeliveryAddressVO;

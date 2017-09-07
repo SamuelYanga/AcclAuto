@@ -2,7 +2,8 @@ package com.objectivasoftware.accl.action.pay;
 
 import static org.hamcrest.Matchers.*;
 import org.junit.Assert;
-import com.objectivasoftware.accl.core.page.OrderDetailPage;
+
+import com.objectivasoftware.accl.core.desk.page.OrderDetailPage;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 
 import cucumber.api.java.en.Then;

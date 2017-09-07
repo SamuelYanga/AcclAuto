@@ -4,20 +4,20 @@ import org.junit.Assert;
 
 import static org.hamcrest.Matchers.*;
 
-import com.objectivasoftware.accl.core.component.HeaderComponent;
-import com.objectivasoftware.accl.core.component.LoginComponent;
-import com.objectivasoftware.accl.core.page.CartPage;
-import com.objectivasoftware.accl.core.page.CheckOutPage;
-import com.objectivasoftware.accl.core.page.HomePage;
-import com.objectivasoftware.accl.core.page.OrderDetailPage;
-import com.objectivasoftware.accl.core.page.PaymentPage;
-import com.objectivasoftware.accl.core.page.ProductDetailPage;
-import com.objectivasoftware.accl.core.page.SearchPage;
-import com.objectivasoftware.accl.core.page.UnionPayPage;
-import com.objectivasoftware.accl.core.page.UnionPayResultPage;
-import com.objectivasoftware.accl.core.page.PaymentPage.PayMethod;
-import com.objectivasoftware.accl.core.page.PaymentPage.PayType;
-import com.objectivasoftware.accl.core.page.PaymentSuccessReceiptPage;
+import com.objectivasoftware.accl.core.desk.component.HeaderComponent;
+import com.objectivasoftware.accl.core.desk.component.LoginComponent;
+import com.objectivasoftware.accl.core.desk.page.CartPage;
+import com.objectivasoftware.accl.core.desk.page.CheckOutPage;
+import com.objectivasoftware.accl.core.desk.page.HomePage;
+import com.objectivasoftware.accl.core.desk.page.OrderDetailPage;
+import com.objectivasoftware.accl.core.desk.page.PaymentPage;
+import com.objectivasoftware.accl.core.desk.page.PaymentSuccessReceiptPage;
+import com.objectivasoftware.accl.core.desk.page.ProductDetailPage;
+import com.objectivasoftware.accl.core.desk.page.SearchPage;
+import com.objectivasoftware.accl.core.desk.page.UnionPayPage;
+import com.objectivasoftware.accl.core.desk.page.UnionPayResultPage;
+import com.objectivasoftware.accl.core.desk.page.PaymentPage.PayMethod;
+import com.objectivasoftware.accl.core.desk.page.PaymentPage.PayType;
 import com.objectivasoftware.accl.core.vo.checkout.UnionPayVO;
 
 import cucumber.api.java.en.And;

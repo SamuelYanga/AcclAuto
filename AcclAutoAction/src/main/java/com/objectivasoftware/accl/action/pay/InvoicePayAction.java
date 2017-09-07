@@ -2,8 +2,8 @@ package com.objectivasoftware.accl.action.pay;
 
 import org.junit.Assert;
 
-import com.objectivasoftware.accl.core.page.CheckOutPage;
-import com.objectivasoftware.accl.core.page.OrderDetailPage;
+import com.objectivasoftware.accl.core.desk.page.CheckOutPage;
+import com.objectivasoftware.accl.core.desk.page.OrderDetailPage;
 import com.objectivasoftware.accl.core.util.enu.InvoiceType;
 
 import cucumber.api.java.en.And;

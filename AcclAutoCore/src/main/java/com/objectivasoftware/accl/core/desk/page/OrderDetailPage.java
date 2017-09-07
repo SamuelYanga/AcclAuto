@@ -1,4 +1,4 @@
-package com.objectivasoftware.accl.core.page;
+package com.objectivasoftware.accl.core.desk.page;
 
 import java.util.ArrayList;
 import java.util.List;

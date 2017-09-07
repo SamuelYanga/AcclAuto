@@ -2,11 +2,11 @@ package com.objectivasoftware.accl.action.pay;
 
 import org.junit.Assert;
 
-import com.objectivasoftware.accl.core.component.HeaderComponent;
-import com.objectivasoftware.accl.core.page.CartPage;
-import com.objectivasoftware.accl.core.page.ProductDetailPage;
-import com.objectivasoftware.accl.core.page.PromotionListPage;
-import com.objectivasoftware.accl.core.page.PromotionPage;
+import com.objectivasoftware.accl.core.desk.component.HeaderComponent;
+import com.objectivasoftware.accl.core.desk.page.CartPage;
+import com.objectivasoftware.accl.core.desk.page.ProductDetailPage;
+import com.objectivasoftware.accl.core.desk.page.PromotionListPage;
+import com.objectivasoftware.accl.core.desk.page.PromotionPage;
 
 import cucumber.api.java.en.And;
 

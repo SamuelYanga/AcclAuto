@@ -1,6 +1,6 @@
 package com.objectivasoftware.accl.action.pay;
 
-import com.objectivasoftware.accl.core.page.CartPage;
+import com.objectivasoftware.accl.core.desk.page.CartPage;
 
 import cucumber.api.java.en.And;
 

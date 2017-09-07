@@ -1,4 +1,4 @@
-package com.objectivasoftware.accl.core.page;
+package com.objectivasoftware.accl.core.desk.page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import com.objectivasoftware.accl.base.frame.BasePage;
 import com.objectivasoftware.accl.base.wait.WaitUtil;
 import com.objectivasoftware.accl.base.wait.WaitUtil.UntilEvent;
-import com.objectivasoftware.accl.core.component.AecLocationComponent;
-import com.objectivasoftware.accl.core.component.ChangeBuyerComponent;
+import com.objectivasoftware.accl.core.desk.component.AecLocationComponent;
+import com.objectivasoftware.accl.core.desk.component.ChangeBuyerComponent;
 import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class CartPage extends BasePage {

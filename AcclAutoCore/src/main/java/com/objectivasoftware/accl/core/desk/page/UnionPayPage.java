@@ -1,4 +1,4 @@
-package com.objectivasoftware.accl.core.page;
+package com.objectivasoftware.accl.core.desk.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

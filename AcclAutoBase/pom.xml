@@ -122,5 +122,10 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+        <dependency>
+        	<groupId>io.appium</groupId>
+        	<artifactId>java-client</artifactId>
+        	<version>5.0.0-BETA9</version>
+        </dependency>
 	</dependencies>
 </project>
