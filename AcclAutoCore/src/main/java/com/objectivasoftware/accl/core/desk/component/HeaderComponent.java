@@ -19,7 +19,7 @@ import com.objectivasoftware.accl.core.util.waitEvent.WaitClassChange;
 
 public class HeaderComponent extends BaseComponent {
 
-	public static final String LOGIN_LINK_CSS = ".login-link.loginDesktop";
+	public static final String LOGIN_LINK_CSS = ".loginDesktop";
 	@FindBy(css = LOGIN_LINK_CSS)
 	private WebElement loginLink;
 
