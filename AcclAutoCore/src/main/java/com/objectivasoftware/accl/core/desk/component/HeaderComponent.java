@@ -181,10 +181,10 @@ public class HeaderComponent extends BaseComponent {
 		try {
 			myDriver.findElement(By.cssSelector(MINI_CART_DETAIL_CSS));
 		} catch (NoSuchElementException e) {
+			mouseMoveToElement(searchButton);
+			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 			return true;
 		}
-		mouseMoveToElement(searchButton);
-		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		return false;
 	}
 
