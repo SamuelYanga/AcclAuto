@@ -183,6 +183,8 @@ public class HeaderComponent extends BaseComponent {
 		} catch (NoSuchElementException e) {
 			return true;
 		}
+		mouseMoveToElement(searchButton);
+		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		return false;
 	}
 
