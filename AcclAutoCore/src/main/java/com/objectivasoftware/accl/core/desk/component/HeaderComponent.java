@@ -49,7 +49,7 @@ public class HeaderComponent extends BaseComponent {
 			WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(LOGIN_LINK_CSS));
 			loginLink.click();
 		}
-		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilShown(By.id(LoginComponent.LOGIN_PAGE_ID));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilShown(By.id(LoginComponent.USER_NAME_ID));
 		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 	}
 

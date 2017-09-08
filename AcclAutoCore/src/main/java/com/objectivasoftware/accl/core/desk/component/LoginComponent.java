@@ -16,11 +16,7 @@ import com.objectivasoftware.accl.core.util.CommonConstant;
 
 public class LoginComponent extends BaseComponent {
 
-	// page id
-	public static final String LOGIN_PAGE_ID = "cboxTitle";
-
 	protected List<String> getLoadIdentifier() {
-		WaitUtil.waitOn(myDriver).untilShown(By.id(LOGIN_PAGE_ID));
 		return super.getLoadIdentifier();
 	}
 
