@@ -296,7 +296,7 @@ public class HomePage extends BasePage {
 
 		String currentUrl = myDriver.getCurrentUrl();
 
-		if (currentUrl.contains("promohome")) {
+		if (currentUrl.contains("promohome") || currentUrl.contains("quota")) {
 			myDriver.get(Configurations.getConfiguration(Constants.SELENIUM_TARGETURL));
 			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		}
