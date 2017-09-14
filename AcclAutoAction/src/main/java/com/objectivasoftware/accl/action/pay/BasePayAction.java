@@ -35,11 +35,17 @@ public class BasePayAction {
 		HeaderComponent headerComponent = new HeaderComponent();
 		if (!headerComponent.isLogin()) {
 			headerComponent.clickLogin();
-			LoginComponent loginComponent = new LoginComponent();
-			loginComponent.login(userName, password);
-			
-//			HomePage homePage = new HomePage();
-//			homePage.login(userName, password);
+
+			String currentUrl = headerComponent.getCurrentUrl();
+
+			if (currentUrl.contains("login")) {
+				HomePage homePage = new HomePage();
+				homePage.login(userName, password);
+			} else {
+				LoginComponent loginComponent = new LoginComponent();
+				loginComponent.login(userName, password);
+			}
+
 		}
 
 		if (!headerComponent.isCartNull()) {
