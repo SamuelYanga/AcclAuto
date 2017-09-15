@@ -76,7 +76,7 @@ public class AddDeliveryAddressComponent extends BaseComponent {
 		WaitUtil.waitOn(myDriver).untilPageDown();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
-		WaitUtil.waitOn(myDriver).untilHidden(By.id(COMPONENT_PAGE_ID));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilHidden(By.id(COMPONENT_PAGE_ID));
 	}
 
 	public void selectRegion(String name) {
