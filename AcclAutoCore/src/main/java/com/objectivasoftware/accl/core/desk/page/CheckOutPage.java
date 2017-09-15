@@ -179,6 +179,7 @@ public class CheckOutPage extends BasePage {
 			}
 		}).untilEventHappened();
 
+		addressScroll(0);
 		for (int i = 0; i < size; i++) {
 			int move = i - 6;
 			if (move > 0) {
