@@ -87,7 +87,7 @@ public class OrderDetailPage extends BasePage {
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).untilElementToBeClickable(By.cssSelector(CANCEL_CONFIRM_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilElementToBeClickable(By.cssSelector(CANCEL_CONFIRM_CSS));
 		cancelConfirmButton.click();
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_ICON_CSS));
 		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(CommonConstant.LOADER_INNER_CSS));
