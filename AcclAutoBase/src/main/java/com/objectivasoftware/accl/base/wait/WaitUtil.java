@@ -23,6 +23,7 @@ import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.lift.Matchers;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -557,8 +558,34 @@ public class WaitUtil {
 					}
 				});
 	}
+
+
+	/** 注入jQuery支持 */
+	public void inJectJquery() {
+		if (jQueryLoaded()) {
+			return;
+		}
+		MyDriver browser = DriverFactory.getBrowser();
+		browser.executeScript("var headID = document.getElementsByTagName(\"head\")[0];"
+				+ "var newScript = document.createElement('script');" + "newScript.type = 'text/Javascript';"
+				+ "newScript.src=\"http://code.jquery.com/jquery-2.1.4.min.js\";" + "headID.appendChild(newScript);");
+	}
+
+	/** 判断当前页面是否使用了jQuery */
+	public Boolean jQueryLoaded() {
+		Boolean loaded = true;
+		try {
+			MyDriver browser = DriverFactory.getBrowser();
+			loaded = (Boolean) browser.executeScript("return jQuery()! = null");
+		} catch (WebDriverException e) {
+			loaded = false;
+		}
+
+		return loaded;
+	}
 	
 	public Boolean untilPageDown() {
+		inJectJquery();
 		return new FluentWait<SearchContext>(context).withTimeout(timeout, timeUnit)
 				.pollingEvery(interval, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class, JavascriptException.class)
 				.until(new Function<SearchContext, Boolean>() {
