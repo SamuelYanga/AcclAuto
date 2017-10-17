@@ -52,7 +52,7 @@ public class LoginComponent extends BaseComponent {
 		passwordInput.sendKeys(password);
 		loginBtn.click();
 		WaitUtil.waitOn(myDriver).untilPageDown();
-		WaitUtil.waitOn(myDriver).untilRemoved(By.cssSelector(HeaderComponent.LOGIN_LINK_CSS));
+		WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL3).untilRemoved(By.cssSelector(HeaderComponent.LOGIN_LINK_CSS));
 		WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 
 		String currentUrl = myDriver.getCurrentUrl();
@@ -62,16 +62,18 @@ public class LoginComponent extends BaseComponent {
 			WaitUtil.waitOn(myDriver).waitTime(CommonConstant.WAIT_TIME_LEVEL0);
 		}
 
-		WaitUtil.waitOn(myDriver, new UntilEvent() {
+		if (elementIsShown(By.cssSelector(".link.voucher-link"))) {
+			WaitUtil.waitOn(myDriver, new UntilEvent() {
 
-			@Override
-			public boolean excute() {
-				WebElement eVouchersWrapper = myDriver
-						.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
-				String classValue = eVouchersWrapper.getAttribute("class");
-				return !classValue.contains("dropdown-active");
-			}
-		}).untilEventHappened();
+				@Override
+				public boolean excute() {
+					WebElement eVouchersWrapper = myDriver
+							.findElement(By.cssSelector(HeaderComponent.E_VOUCHERS_WRAPPER_CSS));
+					String classValue = eVouchersWrapper.getAttribute("class");
+					return !classValue.contains("dropdown-active");
+				}
+			}).untilEventHappened();
+		}
 
 		try {
 			WaitUtil.waitOn(myDriver, CommonConstant.WAIT_TIME_LEVEL2).untilShown(By.cssSelector(NOTIFICATION_BTN_CSS));

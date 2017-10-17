@@ -18,4 +18,4 @@ Scenario Outline: Login->add to cart->check out->add new address->payment page->
     Then Cancel the order which is pay completed and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
-    |59376340		|123456		|广东省			|61694		|
+    |59378563		|123456		|广东省			|61694		|

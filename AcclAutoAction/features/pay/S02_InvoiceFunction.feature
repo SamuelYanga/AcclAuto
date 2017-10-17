@@ -20,7 +20,7 @@ Scenario Outline: Login->add to cart->check out->select Regular invoice->payment
     Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
-    |59376340		|123456		|北京市			|31573		|
+    |59378563		|123456		|北京市			|31573		|
 
 @SpecialInvoice
 Scenario Outline: Login->add to cart->check out->select Special invoice->payment page->order detail page->Verify Special invoice->cancel order
@@ -38,7 +38,7 @@ Scenario Outline: Login->add to cart->check out->select Special invoice->payment
     Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
-    |59376340		|123456		|北京市			|31573		|
+    |59378563		|123456		|北京市			|31573		|
 
 @DigitalInvoice
 Scenario Outline: Login->add to cart->check out->select Digital invoice->payment page->order detail page->Verify Digital invoice->cancel order
@@ -56,4 +56,4 @@ Scenario Outline: Login->add to cart->check out->select Digital invoice->payment
     Then Cancel the order which is in payment and verify the order status.
     Examples:
     |userName		|password	|provinceName	|product	|
-    |59376340		|123456		|北京市			|31573		|
+    |59378563		|123456		|北京市			|31573		|
