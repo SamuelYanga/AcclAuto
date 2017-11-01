@@ -73,7 +73,7 @@ public class HomePage extends BasePage {
 			LOGGER.info("The [change location popup] is not displayed");
 		}
 
-		WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL4).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
+//		WaitUtil.waitOn(browser, CommonConstant.WAIT_TIME_LEVEL4).untilHidden(By.cssSelector(HeaderComponent.HEADER_BANNER_CLOSE_CSS));
 		WaitUtil.waitOn(browser).waitTime(CommonConstant.WAIT_TIME_LEVEL1);
 		firstOpen = true;
 		
